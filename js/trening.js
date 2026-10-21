@@ -408,6 +408,7 @@
   function aktualizujUklad() {
     var poziomo = window.innerWidth > window.innerHeight;
     if (widok.wymuszony && poziomo) { widok.wymuszony = false; log('obrót telefonu zastąpił obrót CSS'); }
+    if (widok.wymuszony && widok.zPelnego && !pelnyEkran()) { widok.wymuszony = false; widok.zPelnego = false; log('koniec pełnego ekranu, koniec obrotu CSS'); }
     var fs = !!pelnyEkran();
     var kino = mqKino.matches || fs || widok.wymuszony;
     var poprzedni = widok.tryb;
@@ -443,7 +444,8 @@
       Promise.resolve(wynik).then(function () {
         log('pełny ekran: tak');
         function obrocJesliPion() {
-          if (window.innerWidth < window.innerHeight && DOTYK) { widok.wymuszony = true; aktualizujUklad(); log('pełny ekran w pionie, włączam obrót CSS'); }
+          /* Tylko gdy nadal jest pełny ekran: spóźniona odpowiedź po wyjściu nie może z powrotem obrócić obrazu */
+          if (pelnyEkran() && window.innerWidth < window.innerHeight && DOTYK) { widok.wymuszony = true; widok.zPelnego = true; aktualizujUklad(); log('pełny ekran w pionie, włączam obrót CSS'); }
         }
         if (screen.orientation && screen.orientation.lock) {
           return screen.orientation.lock('landscape').then(function () { log('orientation.lock: poziomo'); })

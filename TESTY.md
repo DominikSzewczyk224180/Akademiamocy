@@ -1,4 +1,4 @@
-# Testy na telefonach (etapy 3 i 4)
+# Testy na telefonach (etapy 3, 4 i 5)
 
 Odtwarzacz przeszedł 31 testów automatycznych na emulowanym iPhonie, Androidzie i komputerze (lista na końcu). Emulacja nie zastąpi prawdziwego telefonu, więc ta lista prowadzi przez test na iPhonie i Androidzie. Całość zajmuje około 15 minut na jeden telefon.
 
@@ -105,3 +105,23 @@ Link: `https://dominikszewczyk224180.github.io/AkademiaMocy/logowanie.html`. Ca�
 | S9 | Dolny pasek na telefonie | Panel, Parkur, Próba i Postępy przełączają się bez przewijania w bok, pasek nie zasłania treści |
 
 Co sprawdziły testy automatyczne strefy: przekierowanie do logowania, logowanie demo, zaliczenie przeszkód 11 i 12 w odtwarzaczu z zapisem, odblokowanie i zaliczenie Próby, rozeta, certyfikat, odblokowanie Kłusa, scenariusz niezaliczonej Próby, układ na iPhonie bez przewijania w bok, brak błędów JavaScript i brakujących plików. Wszystkie 7 stron strefy działa na 1440 i 390 px.
+
+# Zakup i konto (etap 5)
+
+Zacznij od `https://dominikszewczyk224180.github.io/AkademiaMocy/cennik.html`. Całość zajmuje około 10 minut. Wszystko zostaje w przeglądarce telefonu, więc do czystego startu użyj karty prywatnej.
+
+| Nr | Co zrobić | Co powinno się stać |
+|---|---|---|
+| Z1 | Cennik, „Wybieram program”, wybierz Ranne Moce, wpisz imię i e-mail, kod START10 | Do zapłaty 161,10 zł, dostęp od dziś na 12 miesięcy |
+| Z2 | Przejdź do płatności, wpisz BLIK 000 000 | Komunikat o błędnym kodzie, można wpisać nowy |
+| Z3 | Wpisz BLIK 111 111 | Po chwili „Płatność odrzucona w aplikacji banku”, nic nie zostało pobrane |
+| Z4 | „Spróbuj jeszcze raz”, wpisz dowolny inny kod | „Potwierdź w aplikacji banku”, potem strona „Gotowe, program jest odblokowany” |
+| Z5 | „Wejdź do strefy kursantki” | Panel z Rannymi Mocami, przeszkoda 1 z 14, w „Twoje programy” dwa programy do kupienia |
+| Z6 | Konto i zakupy, potem „Wyloguj się”. Zaloguj się tym samym adresem | Wraca to samo konto z tym samym programem |
+| Z7 | Wejdź jako kursantka demo, kup karnet „Na prezent, jako voucher” | Strona „Voucher jest gotowy” z kodem, PDF ma imię, podpis i życzenia |
+| Z8 | Wyloguj się, otwórz „Aktywuj voucher”, wpisz kod z Z7, załóż nowe konto | „Voucher aktywny”, panel ma wszystkie 3 programy, mapa ma zakładki programów |
+| Z9 | Ten sam kod jeszcze raz | Komunikat, że voucher jest już aktywowany |
+| Z10 | Konto demo, Panel demo, „Dostęp się kończy”, potem „Przedłuż dostęp” | Przypomnienie w panelu, w koszyku informacja, że nowy okres zacznie się po obecnym |
+| Z11 | Na telefonie: pole kodu BLIK | Otwiera się klawiatura numeryczna, kod dzieli się na 2 części po 3 cyfry |
+
+Co sprawdziły testy automatyczne etapu 5 (29 sprawdzeń): przejście z cennika do koszyka, walidacja formularza, kod rabatowy, błędny i odrzucony BLIK, ponowna płatność, odblokowanie programu i nowe konto, panel i mapa po zakupie (14 przeszkód), konto z zamówieniem, wylogowanie i logowanie tym samym adresem, nieznany adres, zakup vouchera, PDF vouchera, aktywacja z nowym kontem, zakładki programów, ponowna aktywacja tego samego kodu, przypomnienie o końcu dostępu, przedłużenie z kolejnym okresem, „Kup ten program” na stronie programu, brak błędów JavaScript i brakujących plików.

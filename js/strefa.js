@@ -327,6 +327,28 @@
       ]
     }
   };
+  /* Układ mapy dla dowolnej liczby punktów (przeszkody i Próba). Dla 13 punktów zostaje ręczny układ z UKLADY. */
+  function uklad(nazwa, punkty) {
+    var baza = UKLADY[nazwa];
+    if (punkty === baza.punkty.length) { return baza; }
+    var poziom = nazwa === 'poziom';
+    var naRzad = poziom ? 5 : 2;
+    var rzedy = Math.ceil(punkty / naRzad);
+    var podst = Math.floor(punkty / rzedy), extra = punkty % rzedy;
+    var y0 = poziom ? 175 : 165, dy = poziom ? 195 : 190;
+    var L = poziom ? 200 : 130, R = poziom ? 1000 : 290;
+    var lista = [];
+    for (var r = 0; r < rzedy; r++) {
+      var k = podst + (r < extra ? 1 : 0);
+      var kier = r % 2 === 0 ? 1 : -1;
+      for (var i = 0; i < k; i++) {
+        var x = k === 1 ? (L + R) / 2 : L + i * (R - L) / (k - 1);
+        if (kier < 0) { x = L + R - x; }
+        lista.push([Math.round(x), y0 + r * dy, r, kier]);
+      }
+    }
+    return { W: baza.W, H: y0 + (rzedy - 1) * dy + (poziom ? 155 : 155), start: baza.start, lewo: baza.lewo, prawo: baza.prawo, zawrot: baza.zawrot, skala: baza.skala, punkty: lista };
+  }
   function noga(a, b, u) {
     if (a[2] === b[2]) { return 'M' + a[0] + ' ' + a[1] + ' L' + b[0] + ' ' + b[1]; }
     var krawedz = a[3] > 0 ? u.prawo : u.lewo;
@@ -356,7 +378,7 @@
       '</g>';
   }
   function svgParkur(k, p, st, nazwaUkladu) {
-    var u = UKLADY[nazwaUkladu];
+    var u = uklad(nazwaUkladu, p.liczba + 1);
     var pkt = u.punkty;
     var stanP = function (n) { return p.wpisy[n] ? 'done' : (n === p.biezaca ? 'now' : 'next'); };
     var s = '<svg class="sz-map__svg" viewBox="0 0 ' + u.W + ' ' + u.H + '" role="group" aria-labelledby="sz-map-tytul">';
@@ -1216,14 +1238,18 @@
       wyslane.hidden = false;
       $('[data-l-wejdz]').focus();
     });
+    if (params.get('email')) { email.value = params.get('email'); }
     $('[data-l-wejdz]').addEventListener('click', function (e) {
       e.preventDefault();
-      if (!AK.zalogowana()) { AK.zaloguj(imieZMaila(email.value.trim())); }
-      location.href = wroc;
+      var adres = email.value.trim();
+      if (AK.zalogujEmail && AK.zalogujEmail(adres)) { location.href = wroc; return; }
+      if (!AK.zalogujEmail) { AK.zaloguj(imieZMaila(adres)); location.href = wroc; return; }
+      var brak = $('[data-l-brak]');
+      if (brak) { brak.hidden = false; brak.querySelector('[data-l-brak-adres]').textContent = adres; brak.focus(); }
     });
     $('[data-l-demo]').addEventListener('click', function (e) {
       e.preventDefault();
-      if (!AK.zalogowana()) { AK.zaloguj('Kasia'); }
+      AK.zaloguj('Kasia');
       location.href = wroc;
     });
   }

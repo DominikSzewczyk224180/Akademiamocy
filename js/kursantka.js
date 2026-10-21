@@ -6,7 +6,10 @@
 (function () {
   'use strict';
 
-  var KLUCZ = 'akademia-kursantka';
+  var KLUCZ = 'akademia-kursantka';          /* zapis jednego konta z etapu 4, przenoszony do kont */
+  var KLUCZ_KONTA = 'akademia-konta';        /* etap 5: wszystkie konta w tej przeglądarce, po adresie e-mail */
+  var KLUCZ_SESJA = 'akademia-sesja';        /* e-mail zalogowanej osoby */
+  var DEMO_EMAIL = 'kasia@przyklad.pl';
   var DANE = window.AKADEMIA || { programy: [], levele: [] };
   var TR = window.AKADEMIA_TRENINGI || { treningi: [], kursy: [], cwiczenia: {}, klipy: {} };
   var PROBY = window.AKADEMIA_PROBY || {};
@@ -83,15 +86,92 @@
     return t.bloki.reduce(function (a, b) { return a + b.cwiczenia.length * (b.rundy || 1); }, 0);
   }
 
-  /* Zapis */
+  /* Zapis: konta po adresie e-mail i sesja. Wylogowanie nie kasuje konta, tylko sesję. */
   var stan = null;
+  var pamiecKont = null;
+  function konta() {
+    try { var k = JSON.parse(localStorage.getItem(KLUCZ_KONTA)); if (k && typeof k === 'object') { return k; } } catch (e) { /* brak */ }
+    return pamiecKont || {};
+  }
+  function zapiszKonta(k) { pamiecKont = k; try { localStorage.setItem(KLUCZ_KONTA, JSON.stringify(k)); } catch (e) { /* tryb prywatny: zostaje w pamięci */ } }
+  function sesja() { try { return localStorage.getItem(KLUCZ_SESJA) || ''; } catch (e) { return ''; } }
+  function ustawSesje(email) { try { if (email) { localStorage.setItem(KLUCZ_SESJA, email); } else { localStorage.removeItem(KLUCZ_SESJA); } } catch (e) { /* brak */ } }
+  function klucz(email) { return String(email || '').trim().toLowerCase(); }
   function wczytaj() {
-    try { stan = JSON.parse(localStorage.getItem(KLUCZ)); } catch (e) { stan = null; }
-    if (stan && stan.wersja !== 1) { stan = null; }
+    try {
+      var stary = JSON.parse(localStorage.getItem(KLUCZ));
+      if (stary && stary.wersja === 1) {
+        var kk = konta(), em = klucz(stary.email || DEMO_EMAIL);
+        if (!kk[em]) { kk[em] = stary; zapiszKonta(kk); }
+        if (!sesja()) { ustawSesje(em); }
+        localStorage.removeItem(KLUCZ);
+      }
+    } catch (e) { /* brak starego zapisu */ }
+    var k = konta(), e = sesja();
+    stan = e && k[e] && k[e].wersja === 1 ? k[e] : null;
+    if (stan) { uzupelnij(stan); }
     return stan;
   }
   function zapisz() {
-    try { localStorage.setItem(KLUCZ, JSON.stringify(stan)); } catch (e) { /* tryb prywatny */ }
+    if (!stan) { return; }
+    var k = konta();
+    k[klucz(stan.email)] = stan;
+    zapiszKonta(k);
+  }
+
+  /* Dostępy: co kursantka kupiła albo aktywowała voucherem */
+  var WSZYSTKIE = ['gimnastyka', 'ogolny', 'ranne-moce'];
+  function plusMiesiace(d, m) { var x = new Date(d.getTime()); x.setMonth(x.getMonth() + m); return x; }
+  function uzupelnij(s) {
+    if (!s.dostepy) { s.dostepy = []; }
+    if (!s.zamowienia) { s.zamowienia = []; }
+    if (!s.dostepy.length && (klucz(s.email) === DEMO_EMAIL || !s.zrodlo)) {
+      var od = zIso(s.start || iso(dzis()));
+      s.dostepy.push({ id: 'demo', produkt: 'karnet-12', nazwa: 'Karnet 12 miesięcy', programy: WSZYSTKIE.slice(), od: iso(od), do: iso(plusMiesiace(od, 12)), zrodlo: 'demo' });
+    }
+    return s;
+  }
+  function aktywne(s) { var d = iso(dzis()); return (s.dostepy || []).filter(function (x) { return x.od <= d && x.do >= d; }); }
+  function programyKonta(s) {
+    var zb = {};
+    aktywne(s).forEach(function (x) { x.programy.forEach(function (p) { zb[p] = true; }); });
+    return WSZYSTKIE.filter(function (p) { return zb[p]; });
+  }
+  function kursStartowy(pid, s) {
+    s = s || stan;
+    var kk = (TR.kursy || []).filter(function (k) { return k.program === pid; });
+    var k = kk.filter(function (x) { return x.level === 'step'; })[0] || kk[0];
+    while (k && k.nastepny && s && s.rozety.some(function (r) { return r.kurs === k.id; }) && kurs(k.nastepny)) { k = kurs(k.nastepny); }
+    return k ? k.id : null;
+  }
+  /* Dopisanie dostępu do dowolnego konta (np. zakup na adres istniejącego konta bez logowania na tym urządzeniu) */
+  function nowyDostep(d) {
+    return { id: d.id || ('d' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5)), produkt: d.produkt, nazwa: d.nazwa, programy: d.programy.slice(), od: d.od, do: d.do, zrodlo: d.zrodlo || 'zakup', zamowienie: d.zamowienie || null, voucher: d.voucher || null };
+  }
+  function dodajDostepDla(email, d) {
+    var k = konta(), em = klucz(email);
+    if (!k[em]) { return null; }
+    var s = uzupelnij(k[em]);
+    var wpis = nowyDostep(d);
+    s.dostepy.push(wpis);
+    if (!s.program || !s.kurs || programyKonta(s).indexOf(s.program) === -1) {
+      var kid = kursStartowy(d.programy[0], s);
+      if (kid) { s.program = d.programy[0]; s.kurs = kid; }
+    }
+    if (d.zamowienie && s.zamowienia.indexOf(d.zamowienie) === -1) { s.zamowienia.push(d.zamowienie); }
+    k[em] = s;
+    zapiszKonta(k);
+    if (stan && klucz(stan.email) === em) { stan = s; }
+    return wpis;
+  }
+  function ustawProgram(pid) {
+    if (!stan) { return false; }
+    var kid = kursStartowy(pid);
+    if (!kid) { return false; }
+    stan.program = pid;
+    stan.kurs = kid;
+    zapisz();
+    return true;
   }
 
   var OCENY = ['ok', 'ok', 'lekko', 'ok', 'ciezko', 'ok', 'ok', 'lekko', 'ok', 'ok', 'ok', 'lekko'];
@@ -200,8 +280,84 @@
     wczytaj: wczytaj,
     zalogowana: function () { return !!wymagaj(); },
     stan: function () { return wymagaj(); },
-    zaloguj: function (imie) { stan = przyklad(imie); zapisz(); return stan; },
-    wyloguj: function () { stan = null; try { localStorage.removeItem(KLUCZ); } catch (e) { /* brak */ } },
+    /* Konto demo: Kasia z karnetem. Przy kolejnym logowaniu wraca jej zapisany postęp. */
+    zaloguj: function (imie) {
+      var k = konta();
+      if (k[DEMO_EMAIL] && k[DEMO_EMAIL].wersja === 1) { stan = k[DEMO_EMAIL]; }
+      else { stan = przyklad(imie || 'Kasia'); stan.email = DEMO_EMAIL; }
+      uzupelnij(stan);
+      ustawSesje(DEMO_EMAIL);
+      zapisz();
+      return stan;
+    },
+    istnieje: function (email) { return !!konta()[klucz(email)]; },
+    zalogujEmail: function (email) {
+      var k = konta(), em = klucz(email);
+      if (!k[em]) { return false; }
+      stan = uzupelnij(k[em]);
+      ustawSesje(em);
+      zapisz();
+      return true;
+    },
+    zalozKonto: function (dane) {
+      var em = klucz(dane.email);
+      var k = konta();
+      if (k[em]) { stan = uzupelnij(k[em]); ustawSesje(em); return stan; }
+      stan = nowyStan(dane.imie || 'Kursantka');
+      stan.email = em;
+      stan.zrodlo = 'zakup';
+      stan.program = null;
+      stan.kurs = null;
+      stan.dostepy = [];
+      stan.zamowienia = [];
+      ustawSesje(em);
+      zapisz();
+      return stan;
+    },
+    wyloguj: function () { stan = null; ustawSesje(''); },
+    demoEmail: DEMO_EMAIL,
+
+    /* Dostępy i zamówienia (etap 5) */
+    dostepy: function () { return wymagaj() ? stan.dostepy.slice() : []; },
+    aktywneDostepy: function () { return wymagaj() ? aktywne(stan) : []; },
+    programyKonta: function () { return wymagaj() ? programyKonta(stan) : []; },
+    maDostep: function (pid) { return !!wymagaj() && programyKonta(stan).indexOf(pid) !== -1; },
+    kursStartowy: kursStartowy,
+    ustawProgram: ustawProgram,
+    plusMiesiace: function (s, m) { return iso(plusMiesiace(zIso(s), m)); },
+    /* Dostęp do programu kończący się najwcześniej (do pokazania przypomnienia) */
+    koniecDostepu: function (pid) {
+      if (!wymagaj()) { return null; }
+      var d = aktywne(stan).filter(function (x) { return x.programy.indexOf(pid) !== -1; });
+      if (!d.length) { return null; }
+      var najdalej = d.map(function (x) { return x.do; }).sort().pop();
+      return { do: najdalej, dni: roznicaDni(dzis(), zIso(najdalej)) };
+    },
+    dodajDostep: function (d) {
+      if (!wymagaj()) { return null; }
+      return dodajDostepDla(stan.email, d);
+    },
+    dodajDostepDla: dodajDostepDla,
+    /* Konto, które ma już dostęp do tych programów: nowy okres zaczyna się po końcu obecnego */
+    poczatekNowegoOkresu: function (email, programy) {
+      var k = konta(), s = k[klucz(email)];
+      var d = iso(dzis());
+      if (!s) { return d; }
+      var najdalej = aktywne(uzupelnij(s)).filter(function (x) { return programy.every(function (p) { return x.programy.indexOf(p) !== -1; }); }).map(function (x) { return x.do; }).sort().pop();
+      return najdalej ? iso(dodajDni(zIso(najdalej), 1)) : d;
+    },
+    dodajZamowienie: function (nr) { if (wymagaj() && stan.zamowienia.indexOf(nr) === -1) { stan.zamowienia.push(nr); zapisz(); } },
+    dodajZamowienieDla: function (email, nr) {
+      var k = konta(), em = klucz(email);
+      if (!k[em]) { return false; }
+      var s = uzupelnij(k[em]);
+      if (s.zamowienia.indexOf(nr) === -1) { s.zamowienia.push(nr); }
+      k[em] = s;
+      zapiszKonta(k);
+      if (stan && klucz(stan.email) === em) { stan = s; }
+      return true;
+    },
+    ustawImie: function (imie) { if (wymagaj() && imie) { stan.imie = imie; zapisz(); } },
     postep: postep,
     statusProby: statusProby,
     tydzien: tydzien,
@@ -251,6 +407,7 @@
     /* Scenariusze do pokazania demo */
     demo: function (nazwa) {
       var imie = stan ? stan.imie : 'Kasia';
+      var konto = stan ? { email: stan.email, dostepy: stan.dostepy || [], zamowienia: stan.zamowienia || [], zrodlo: stan.zrodlo } : null;
       var wczoraj = dodajDni(dzis(), -1);
       if (nazwa === 'przyklad') { stan = przyklad(imie); }
       else if (nazwa === 'nowa') { stan = nowyStan(imie); }
@@ -276,6 +433,19 @@
         stan.rozety.push({ kurs: 'gimnastyka-step', program: 'gimnastyka', level: 'step', data: iso(wczoraj) });
         stan.kurs = 'gimnastyka-klus';
         stan.historia.push(wpis('gimnastyka-klus', 1, dzis(), 1));
+      }
+      /* Scenariusz zmienia postęp, ale konto zostaje to samo: e-mail, dostępy i zamówienia */
+      if (konto) {
+        stan.email = konto.email; stan.dostepy = konto.dostepy; stan.zamowienia = konto.zamowienia;
+        if (konto.zrodlo) { stan.zrodlo = konto.zrodlo; }
+      }
+      uzupelnij(stan);
+      if (nazwa !== 'nastepna' && programyKonta(stan).indexOf('gimnastyka') === -1) {
+        stan.dostepy.push({ id: 'demo-' + Date.now().toString(36), produkt: 'karnet-12', nazwa: 'Dostęp demo', programy: ['gimnastyka'], od: iso(dzis()), do: iso(plusMiesiace(dzis(), 12)), zrodlo: 'demo' });
+      }
+      if (nazwa === 'wygasa') {
+        var d = aktywne(stan).filter(function (x) { return x.programy.indexOf(stan.program || 'gimnastyka') !== -1; });
+        d.forEach(function (x) { x.do = iso(dodajDni(dzis(), 5)); });
       }
       zapisz();
       return stan;

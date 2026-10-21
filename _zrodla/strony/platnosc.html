@@ -1,0 +1,63 @@
+<!--
+tytul: Płatność | Akademia Mocy Jeździeckich
+og_tytul: Płatność za zamówienie
+opis: Symulacja bramki płatności z BLIK-iem.
+uklad: bramka
+css: sklep.css
+body_klasa: strona-bramka
+-->
+  <main id="tresc" class="bramka" data-sklep="platnosc">
+    <div class="bramka__card">
+      <header class="bramka__top">
+        <span class="bramka__safe"><svg class="ico" aria-hidden="true"><use href="#i-klodka"/></svg>Bezpieczna płatność</span>
+        <span class="bramka__demo">symulacja w demo</span>
+      </header>
+      <div class="bramka__merchant">
+        <span class="bramka__logo" aria-hidden="true">{{> grafiki/znak.svg}}</span>
+        <span class="bramka__who"><strong>Akademia Mocy Jeździeckich</strong><span data-b-nr>Zamówienie</span></span>
+        <span class="bramka__kwota" data-b-kwota></span>
+      </div>
+      <div class="bramka__metody" role="group" aria-label="Metoda płatności">
+        <button type="button" class="bramka__metoda is-on" aria-pressed="true" data-b-metoda="blik"><strong>BLIK</strong><span>kod z aplikacji</span></button>
+        <button type="button" class="bramka__metoda" aria-pressed="false" data-b-metoda="przelew"><strong>Przelew</strong><span>szybki</span></button>
+        <button type="button" class="bramka__metoda" aria-pressed="false" data-b-metoda="karta"><strong>Karta</strong><span>Visa, Mastercard</span></button>
+      </div>
+
+      <section class="bramka__ekran" data-b-ekran="kod" aria-labelledby="b-kod-tytul">
+        <form class="bramka__form" data-b-form novalidate>
+          <label class="bramka__label" id="b-kod-tytul" for="b-kod">Wpisz kod BLIK z aplikacji banku</label>
+          <input class="bramka__kod" id="b-kod" name="kod" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="7" placeholder="000 000" aria-describedby="b-kod-blad b-kod-podpowiedz" required>
+          <p class="field__error" id="b-kod-blad" data-b-blad hidden>Kod BLIK ma 6 cyfr.</p>
+          <p class="bramka__hint" id="b-kod-podpowiedz">Demo: zadziała dowolny 6-cyfrowy kod. 000 000 udaje błędny kod, a 111 111 płatność odrzuconą w banku.</p>
+          <button class="btn btn--dark btn--block bramka__zaplac" type="submit" data-b-zaplac>Zapłać</button>
+        </form>
+        <p class="bramka__inna" data-b-inna hidden></p>
+      </section>
+
+      <section class="bramka__ekran bramka__ekran--czekaj" data-b-ekran="czekaj" hidden aria-live="polite">
+        <span class="bramka__tel" aria-hidden="true"><span class="bramka__tel-ok"><svg class="ico"><use href="#i-check"/></svg></span></span>
+        <p class="bramka__h">Potwierdź płatność w aplikacji banku</p>
+        <p class="bramka__p">Masz na to <strong data-b-czas>1:00</strong>. Nie zamykaj tej strony.</p>
+        <div class="bramka__pasek" aria-hidden="true"><i data-b-pasek></i></div>
+      </section>
+
+      <section class="bramka__ekran bramka__ekran--ok" data-b-ekran="ok" hidden aria-live="polite">
+        <span class="bramka__ok" aria-hidden="true"><svg class="ico"><use href="#i-check"/></svg></span>
+        <p class="bramka__h">Płatność przyjęta</p>
+        <p class="bramka__p">Wracamy do Akademii Mocy Jeździeckich.</p>
+        <a class="btn btn--dark btn--block" href="#" data-b-wroc-ok>Wróć do sklepu</a>
+      </section>
+
+      <section class="bramka__ekran bramka__ekran--blad" data-b-ekran="blad" hidden aria-live="assertive">
+        <span class="bramka__x" aria-hidden="true"><svg class="ico"><use href="#i-x"/></svg></span>
+        <p class="bramka__h" data-b-blad-tytul>Płatność odrzucona</p>
+        <p class="bramka__p" data-b-blad-opis>Bank nie potwierdził płatności. Pieniądze nie zostały pobrane.</p>
+        <button class="btn btn--dark btn--block" type="button" data-b-ponow>Spróbuj jeszcze raz</button>
+      </section>
+
+      <footer class="bramka__foot">
+        <a class="link" href="koszyk.html" data-b-anuluj>Wróć do sklepu</a>
+        <span>Płatności obsługuje Przelewy24</span>
+      </footer>
+    </div>
+  </main>

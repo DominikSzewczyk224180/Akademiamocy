@@ -4,7 +4,7 @@ og_tytul: Logowanie do strefy kursantki
 opis: Zaloguj się do strefy kursantki Akademii Mocy Jeździeckich.
 aktywny:
 skrypty: strefa
-css: strefa.css
+css: strefa.css, sklep.css
 body_klasa: strona-logowanie
 -->
   <main id="tresc" data-strona="logowanie">
@@ -27,12 +27,17 @@ body_klasa: strona-logowanie
           <div class="login__sent" data-l-wyslane hidden>
             <span class="badge badge--rose" aria-hidden="true">mail</span>
             <p class="h3">Sprawdź skrzynkę</p>
-            <p>Wysłaliśmy link na <strong data-l-adres></strong>. W demo nic nie wysyłamy, więc możesz otworzyć go tutaj.</p>
+            <p>Jeśli mamy konto z adresem <strong data-l-adres></strong>, właśnie wysłaliśmy na nie link do logowania. W demo nic nie wysyłamy, więc możesz otworzyć go tutaj.</p>
             <a class="btn btn--dark btn--block" href="panel.html" data-l-wejdz>Otwórz link z maila</a>
+            <div class="login__brak" data-l-brak tabindex="-1" hidden>
+              <p>W tej przeglądarce nie ma konta z adresem <strong data-l-brak-adres></strong>. Konto powstaje przy zakupie albo przy aktywacji vouchera.</p>
+              <p class="login__brak-akcje"><a class="link" href="cennik.html">Zobacz cennik</a><a class="link" href="aktywuj.html">Mam voucher</a></p>
+            </div>
           </div>
           <div class="login__or"><span>albo</span></div>
           <a class="btn btn--light btn--block" href="panel.html" data-l-demo>Wejdź jako kursantka demo</a>
           <p class="form__fine">Demo: dane kursantki zapisują się tylko w tej przeglądarce.</p>
+          <p class="login__linki"><a class="link" href="aktywuj.html">Masz voucher? Aktywuj go</a><a class="link" href="cennik.html">Nie masz jeszcze dostępu?</a></p>
         </div>
       </div>
     </section>

@@ -2356,3 +2356,7 @@ button.menu__item {
    ========================================================================== */
 .training__full { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; margin-top: 1.75rem; }
 .training__full span { font-size: var(--fs-sm); color: var(--cocoa-2); }
+
+
+/* Etap 5: link do aktywacji vouchera w cenniku */
+.voucher__aktywuj { margin-left: 0.75rem; font-size: var(--fs-sm); }

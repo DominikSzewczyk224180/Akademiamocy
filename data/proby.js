@@ -68,5 +68,129 @@ window.AKADEMIA_PROBY = {
         "celowany": "Stanie na jednej nodze przy ścianie: 3 serie po 30 s na nogę"
       }
     ]
+  },
+  "ogolny-step": {
+    "nazwa": "Próba Mocy: Stęp",
+    "program": "ogolny",
+    "level": "step",
+    "otwiera": "Kłus",
+    "czas": "ok. 10 minut",
+    "sprzet": ["Mata", "Ściana"],
+    "dniDoPowtorki": 7,
+    "testy": [
+      {
+        "id": "polsiad",
+        "nazwa": "Półsiad przy ścianie",
+        "typ": "czas",
+        "cel": 45,
+        "obraz": "assets/proba/polsiad.jpg",
+        "kroki": ["Oprzyj plecy o ścianę i zejdź w dół", "Uda prawie poziomo, kolana nad stopami", "Pięty w dół, jak w strzemionach"],
+        "technika": ["Plecy przy ścianie przez cały czas", "Kolana nie uciekają do środka", "Pięty na podłodze"],
+        "celowany": "Półsiad przy ścianie: 3 serie po 25 s z przerwą 30 s"
+      },
+      {
+        "id": "deska",
+        "nazwa": "Deska",
+        "typ": "czas",
+        "cel": 40,
+        "obraz": "assets/proba/deska.jpg",
+        "kroki": ["Łokcie pod barkami, przedramiona na macie", "Unieś biodra, aż ciało ułoży się w jednej linii", "Oddychaj spokojnie, brzuch napięty"],
+        "technika": ["Biodra nie opadają", "Barki nad łokciami", "Głowa w przedłużeniu kręgosłupa"],
+        "celowany": "Deska z kolan: 3 serie po 25 s"
+      },
+      {
+        "id": "noga-oczy",
+        "nazwa": "Stanie na jednej nodze z zamkniętymi oczami",
+        "typ": "czas",
+        "cel": 15,
+        "strony": true,
+        "obraz": "assets/proba/jedna-noga.jpg",
+        "kroki": ["Stań obok ściany, żeby móc się asekurować", "Unieś jedną nogę i zamknij oczy", "Licz czas do pierwszego podparcia"],
+        "technika": ["Biodra na jednej wysokości", "Kolano nogi podporowej miękko", "Bez podpierania się"],
+        "celowany": "Stanie na jednej nodze z otwartymi oczami: 3 serie po 30 s na nogę"
+      },
+      {
+        "id": "mostek-jednonoz",
+        "nazwa": "Mostek jednonóż",
+        "typ": "wybor",
+        "pytanie": "Ile powtórzeń robisz na każdą nogę z równą miednicą?",
+        "opcje": [
+          { "tekst": "Mniej niż 6", "zalicza": false },
+          { "tekst": "Od 6 do 9", "zalicza": false },
+          { "tekst": "10 albo więcej", "zalicza": true }
+        ],
+        "obraz": "assets/proba/mostek-jednonoz.jpg",
+        "kroki": ["Połóż się na plecach, jedna stopa na macie", "Drugą nogę wyprostuj w linii z udem", "Unoś biodra i opuszczaj je powoli"],
+        "technika": ["Miednica nie przechyla się na bok", "Pracują pośladki, nie lędźwie", "Ruch powolny, bez szarpnięć"],
+        "celowany": "Mostek biodrowy na dwóch nogach: 3 serie po 12 powtórzeń"
+      }
+    ]
+  },
+  "ranne-moce-step": {
+    "nazwa": "Próba Mocy: Stęp",
+    "program": "ranne-moce",
+    "level": "step",
+    "otwiera": "Kłus",
+    "czas": "ok. 8 minut",
+    "sprzet": ["Bez sprzętu"],
+    "dniDoPowtorki": 7,
+    "testy": [
+      {
+        "id": "seria-porankow",
+        "nazwa": "Seria poranków",
+        "typ": "wybor",
+        "pytanie": "Ile poranków udało się zrobić w ostatnich 3 tygodniach?",
+        "opcje": [
+          { "tekst": "Mniej niż 10", "zalicza": false },
+          { "tekst": "Od 10 do 13", "zalicza": false },
+          { "tekst": "14 albo więcej", "zalicza": true }
+        ],
+        "obraz": "assets/wideo/marsz.jpg",
+        "kroki": ["Zajrzyj do kalendarza w Postępach", "Policz poranki z ostatnich 21 dni", "Wybierz odpowiedź poniżej"],
+        "technika": ["Liczę tylko pełne poranki", "Każdy poranek był w innym dniu"],
+        "celowany": "Tydzień celowany: poranek codziennie, nawet najkrótszy Poranek C"
+      },
+      {
+        "id": "jedna-noga-rm",
+        "nazwa": "Stanie na jednej nodze",
+        "typ": "czas",
+        "cel": 30,
+        "strony": true,
+        "obraz": "assets/proba/jedna-noga.jpg",
+        "kroki": ["Stań prosto, dłonie na biodrach", "Unieś jedną nogę, wzrok przed siebie", "Licz czas do pierwszego podparcia"],
+        "technika": ["Biodra na jednej wysokości", "Bez podpierania się", "Spokojny oddech"],
+        "celowany": "Stanie na jednej nodze przy ścianie: 3 serie po 20 s na nogę"
+      },
+      {
+        "id": "wspiecia",
+        "nazwa": "Wspięcia na palce",
+        "typ": "wybor",
+        "pytanie": "Ile spokojnych wspięć na palce robisz bez podparcia?",
+        "opcje": [
+          { "tekst": "Mniej niż 12", "zalicza": false },
+          { "tekst": "Od 12 do 19", "zalicza": false },
+          { "tekst": "20 albo więcej", "zalicza": true }
+        ],
+        "obraz": "assets/proba/wspiecia.jpg",
+        "kroki": ["Stań prosto, stopy na szerokość bioder", "Powoli wznieś się na palce", "Jeszcze wolniej opuść pięty"],
+        "technika": ["Kolana proste, ale nie zablokowane", "Ciężar na dużym palcu, nie na zewnętrznej krawędzi", "Tempo spokojne w górę i w dół"],
+        "celowany": "Wspięcia na palce przy ścianie: 3 serie po 12 powtórzeń"
+      },
+      {
+        "id": "koci-zakres",
+        "nazwa": "Koci grzbiet w pełnym zakresie",
+        "typ": "wybor",
+        "pytanie": "Jak wygląda ruch w 5 powolnych kocich grzbietach?",
+        "opcje": [
+          { "tekst": "Coś boli albo mocno ciągnie", "zalicza": false },
+          { "tekst": "Zakres mniejszy w jedną stronę", "zalicza": false },
+          { "tekst": "Pełny zakres w obie strony, bez bólu", "zalicza": true }
+        ],
+        "obraz": "assets/wideo/koci-grzbiet.jpg",
+        "kroki": ["Klęk podparty, dłonie pod barkami", "Z wydechem zaokrąglij plecy, z wdechem je wygnij", "Zrób 5 spokojnych powtórzeń"],
+        "technika": ["Ruch zaczyna się w miednicy", "Barki daleko od uszu", "Oddech prowadzi ruch"],
+        "celowany": "Koci grzbiet w mniejszym zakresie: 3 serie po 8 powtórzeń"
+      }
+    ]
   }
 };

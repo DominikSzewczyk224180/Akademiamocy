@@ -221,7 +221,11 @@ def zloz(meta, tresc, dodatkowe=None):
     css = meta.get("css", "").strip()
     zmienne["dodatkowe_css"] = "".join('\n  <link rel="stylesheet" href="css/%s">' % c.strip() for c in css.split(",") if c.strip())
     skrypty = meta.get("skrypty", "").strip()
-    zmienne["dodatkowe_skrypty"] = ("".join('\n  <script src="%s"></script>' % x for x in ("data/treningi.js", "data/proby.js", "js/kursantka.js", "js/strefa.js"))) if skrypty == "strefa" else ""
+    ZESTAWY = {
+        "strefa": ("data/treningi.js", "data/proby.js", "js/kursantka.js", "js/strefa.js"),
+        "sklep": ("data/treningi.js", "data/proby.js", "data/sklep.js", "js/kursantka.js", "js/sklep.js"),
+    }
+    zmienne["dodatkowe_skrypty"] = "".join('\n  <script src="%s"></script>' % x for x in ZESTAWY.get(skrypty, ()))
     zmienne.update(dodatkowe or {})
     uklad = meta.get("uklad", "").strip()
     if uklad == "aplikacja":
@@ -230,6 +234,8 @@ def zloz(meta, tresc, dodatkowe=None):
         kawalki = [czesc("head.html"), czesc("ikony.html"), czesc("naglowek-strefa.html"), tresc.rstrip("\n"), czesc("stopka-strefa.html")]
     elif uklad == "druk":
         kawalki = [czesc("head.html"), czesc("ikony.html"), tresc.rstrip("\n"), czesc("stopka-druk.html")]
+    elif uklad == "bramka":
+        kawalki = [czesc("head.html"), czesc("ikony.html"), tresc.rstrip("\n"), czesc("koniec-bramka.html")]
     else:
         kawalki = [czesc("head.html"), czesc("ikony.html"), czesc("naglowek.html"), tresc.rstrip("\n"), czesc("stopka.html"), czesc("koniec.html")]
     dokument = "\n".join(kawalki) + "\n"

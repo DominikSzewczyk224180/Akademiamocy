@@ -1,0 +1,528 @@
+/*
+  Akademia Mocy Jeździeckich: zakup i konto (etap 5).
+  Korzysta z tokenów, pól formularza (.field, .input, .opt, .check) i przycisków z style.css.
+*/
+
+/* Wspólne ----------------------------------------------------------------- */
+/* Atrybut hidden ma pierwszeństwo przed display z klas (sekcje koszyka, ekrany bramki) */
+[data-sklep] [hidden] { display: none !important; }
+.page-hero--sklep { padding-bottom: clamp(1.25rem, 1rem + 1vw, 2rem); }
+.page-title--sklep { font-size: clamp(2.4rem, 1.4rem + 3.4vw, 4rem); max-width: none; }
+.field__hint { margin-top: 0.35rem; font-size: var(--fs-xs); color: var(--cocoa-2); }
+.field__hint.is-bad { color: var(--error); }
+.input--area { min-height: 84px; padding-top: 0.8rem; resize: vertical; line-height: 1.45; }
+.input[readonly] { background: var(--ballet-soft); color: var(--cocoa-2); }
+
+.zakup-kroki {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin: 0.25rem 0 1.25rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--cocoa-2);
+}
+.zakup-kroki li { display: inline-flex; align-items: center; gap: 0.5rem; }
+.zakup-kroki span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: inset 0 0 0 1.5px var(--line-2);
+  font-size: var(--fs-xs);
+}
+.zakup-kroki .is-on { color: var(--cocoa); }
+.zakup-kroki .is-on span { background: var(--cocoa); color: var(--on-dark); box-shadow: none; }
+.zakup-kroki .is-done span { background: var(--sage); color: var(--sage-ink); box-shadow: none; }
+
+.sk-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.5rem 0; }
+.sk-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--r-pill);
+  background: var(--ballet);
+  font-size: var(--fs-xs);
+  font-weight: 650;
+}
+.sk-chip .ico { width: 15px; height: 15px; }
+.sk-chip--sage { background: var(--sage); }
+.sk-chip--butter { background: var(--butter); }
+
+/* 1. Koszyk --------------------------------------------------------------- */
+.koszyk { display: grid; gap: 1.5rem; align-items: start; }
+.koszyk__form { display: grid; gap: 1rem; min-width: 0; }
+.koszyk__alert {
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--r-m);
+  background: var(--ballet);
+  font-weight: 600;
+}
+.koszyk__alert--info { background: var(--butter-soft); }
+.kbox {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(1.1rem, 0.9rem + 1vw, 1.6rem);
+  border: 0;
+  border-radius: var(--r-l);
+  background: var(--white);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.kbox__title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  float: left;
+  width: 100%;
+  margin-bottom: 0.25rem;
+  padding: 0;
+  font-family: var(--font-display);
+  font-stretch: 88%;
+  font-size: 1.3rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+.kbox__title + * { clear: both; }
+.kbox__title span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--pink);
+  font-family: var(--font);
+  font-stretch: 100%;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+.kbox__sub { font-size: var(--fs-sm); font-weight: 650; }
+.kbox__fine { font-size: var(--fs-sm); color: var(--cocoa-2); }
+.kgrid { display: grid; gap: 1rem; }
+@media (min-width: 640px) { .kgrid { grid-template-columns: 1fr 1fr; } }
+.kprodukty { display: grid; gap: 0.6rem; }
+.kprod { position: relative; display: block; cursor: pointer; }
+.kprod input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.kprod__tresc {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem 1.1rem 1rem 3.1rem;
+  border-radius: var(--r-m);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1.5px var(--line-2);
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.kprod__tresc::before {
+  content: "";
+  position: absolute;
+  left: 1.1rem;
+  top: 1.15rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px var(--line-2);
+  background: var(--white);
+}
+.kprod input:checked + .kprod__tresc { background: var(--ballet-soft); box-shadow: inset 0 0 0 2px var(--cocoa); }
+.kprod input:checked + .kprod__tresc::before { box-shadow: inset 0 0 0 6px var(--cocoa); }
+.kprod input:focus-visible + .kprod__tresc { outline: 2.5px solid var(--rose); outline-offset: 2px; }
+.kprod__gora { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+.kprod__nazwa { font-size: 1.05rem; }
+.kprod__cena { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.kprod__opis { font-size: var(--fs-sm); color: var(--cocoa-2); }
+.kprod__badge {
+  justify-self: start;
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--r-pill);
+  background: var(--butter);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.kprogram { display: grid; gap: 0.6rem; padding-top: 0.25rem; }
+.kprezent { display: grid; gap: 1rem; }
+.kkonto { padding: 0.75rem 1rem; border-radius: var(--r-m); background: var(--sage); font-size: var(--fs-sm); }
+.kkonto .linkbtn { font-size: var(--fs-sm); }
+
+.koszyk__sum { min-width: 0; }
+.ksum {
+  display: grid;
+  gap: 0.9rem;
+  padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  border-radius: var(--band-r);
+  background: var(--white);
+  box-shadow: 0 0 0 1px rgba(47, 35, 35, 0.06), 0 34px 60px -44px rgba(47, 35, 35, 0.55);
+}
+.ksum__title { font-weight: 700; }
+.ksum__nazwa {
+  display: block;
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-size: 1.8rem;
+  font-weight: var(--display-bold);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.ksum__brak { font-size: var(--fs-sm); color: var(--error); }
+.ksum__lista { display: grid; grid-template-columns: auto 1fr; gap: 0.45rem 1rem; font-size: var(--fs-sm); }
+.ksum__lista dt { color: var(--cocoa-2); }
+.ksum__lista dd { margin: 0; text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.ksum__kod summary { cursor: pointer; font-size: var(--fs-sm); font-weight: 600; text-decoration: underline; text-decoration-color: var(--rose); text-underline-offset: 0.25em; }
+.ksum__kod-row { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+.ksum__kod-row .input { flex: 1; min-width: 0; text-transform: uppercase; }
+.ksum__razem {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+.ksum__razem strong {
+  font-family: var(--font-display);
+  font-stretch: 80%;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.ksum__btn { min-height: 58px; font-size: 1.05rem; }
+.pay--small { margin-top: 0; }
+.pay--small li { padding: 0.3rem 0.7rem; font-size: var(--fs-xs); }
+.ksum__fine { display: flex; gap: 0.45rem; align-items: flex-start; font-size: var(--fs-xs); color: var(--cocoa-2); }
+.ksum__fine .ico { flex: none; width: 15px; height: 15px; margin-top: 1px; }
+@media (min-width: 1024px) {
+  .koszyk { grid-template-columns: minmax(0, 1fr) 380px; gap: 2rem; }
+  .koszyk__sum { position: sticky; top: calc(var(--top) + var(--bar-h) + 1.25rem); }
+}
+
+/* 2. Bramka płatności (symulacja) --------------------------------------------- */
+.strona-bramka { background: #EEF0F3; }
+.strona-bramka .skip { display: none; }
+.bramka {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: calc(env(safe-area-inset-top, 0px) + 1rem) 1rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
+}
+.bramka__card {
+  display: grid;
+  gap: 1.1rem;
+  width: min(100%, 440px);
+  padding: 1.25rem;
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 1px 2px rgba(20, 28, 40, 0.08), 0 24px 48px -28px rgba(20, 28, 40, 0.35);
+  color: #1B2430;
+}
+.bramka__top { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; font-size: var(--fs-xs); font-weight: 650; color: #4A5563; }
+.bramka__safe { display: inline-flex; align-items: center; gap: 0.35rem; }
+.bramka__safe .ico { width: 15px; height: 15px; }
+.bramka__demo { padding: 0.2rem 0.6rem; border-radius: var(--r-pill); background: #FFF2CC; color: #6B5310; }
+.bramka__merchant {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.9rem;
+  border-radius: 14px;
+  background: #F6F7F9;
+}
+.bramka__logo .brand__mark { width: 36px; height: 36px; }
+.bramka__who { display: grid; gap: 2px; min-width: 0; font-size: var(--fs-sm); }
+.bramka__who span { font-size: var(--fs-xs); color: #4A5563; overflow-wrap: anywhere; }
+.bramka__kwota { font-size: 1.25rem; font-weight: 750; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bramka__metody { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+.bramka__metoda {
+  display: grid;
+  gap: 1px;
+  padding: 0.6rem 0.4rem;
+  border: 0;
+  border-radius: 12px;
+  background: #F6F7F9;
+  box-shadow: inset 0 0 0 1px #DDE1E7;
+  color: inherit;
+  font-size: var(--fs-xs);
+  text-align: center;
+}
+.bramka__metoda strong { font-size: 0.95rem; }
+.bramka__metoda span { color: #6B7480; font-size: 0.72rem; }
+.bramka__metoda.is-on { background: var(--white); box-shadow: inset 0 0 0 2px #1B2430; }
+.bramka__ekran { display: grid; gap: 0.75rem; }
+.bramka__form { display: grid; gap: 0.6rem; }
+.bramka__label { font-weight: 650; }
+.bramka__label:focus, .bramka__h:focus { outline: none; }
+.bramka__kod {
+  width: 100%;
+  height: 72px;
+  border: 0;
+  border-radius: 14px;
+  background: #F6F7F9;
+  box-shadow: inset 0 0 0 1.5px #C9CFD8;
+  color: #1B2430;
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.18em;
+  text-align: center;
+}
+.bramka__kod:focus { outline: none; box-shadow: inset 0 0 0 2px #1B2430, 0 0 0 4px rgba(27, 36, 48, 0.12); }
+.bramka__kod[aria-invalid="true"] { box-shadow: inset 0 0 0 2px var(--error); }
+.bramka__hint { font-size: var(--fs-xs); color: #6B7480; }
+.bramka__zaplac { min-height: 56px; background: #1B2430; }
+.bramka__inna { padding: 0.75rem 0.9rem; border-radius: 12px; background: #FFF2CC; font-size: var(--fs-sm); }
+.bramka__ekran--czekaj, .bramka__ekran--ok, .bramka__ekran--blad { justify-items: center; text-align: center; padding: 0.75rem 0 0.5rem; }
+.bramka__h { font-size: 1.25rem; font-weight: 750; }
+.bramka__p { color: #4A5563; font-size: var(--fs-sm); }
+.bramka__tel {
+  position: relative;
+  width: 76px;
+  height: 128px;
+  border-radius: 18px;
+  background: #1B2430;
+  box-shadow: inset 0 0 0 5px #1B2430, inset 0 0 0 7px #3A4554;
+  animation: tel 1.4s ease-in-out infinite;
+}
+.bramka__tel-ok {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--sage-deep);
+  color: var(--white);
+  transform: translate(-50%, -50%);
+}
+.bramka__tel-ok .ico { width: 20px; height: 20px; stroke-width: 2.6; }
+@keyframes tel { 50% { transform: translateY(-4px) rotate(-2deg); } }
+.bramka__pasek { width: 100%; height: 6px; overflow: hidden; border-radius: 3px; background: #E5E8EC; }
+.bramka__pasek i { display: block; width: 0; height: 100%; background: #1B2430; transition: width 0.1s linear; }
+.bramka__ok, .bramka__x { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; }
+.bramka__ok { background: var(--sage); color: var(--sage-ink); }
+.bramka__x { background: #FBE2E6; color: var(--error); }
+.bramka__ok .ico, .bramka__x .ico { width: 32px; height: 32px; stroke-width: 2.6; }
+.bramka__foot { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 0.75rem; border-top: 1px solid #E5E8EC; font-size: var(--fs-xs); color: #6B7480; }
+@media (prefers-reduced-motion: reduce) { .bramka__tel { animation: none; } }
+
+/* 3. Zamówienie ----------------------------------------------------------------- */
+.zam { display: grid; gap: 1.5rem; align-items: start; }
+.zam__glowny { display: grid; gap: 1rem; min-width: 0; }
+.zam__hero {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  padding: clamp(1.4rem, 1rem + 2vw, 2.5rem);
+  border-radius: var(--band-r);
+  background: var(--sage);
+}
+.zam__hero--prezent { background: var(--ballet); }
+.zam__hero .page-lead { margin-top: 0; color: var(--cocoa); }
+.zam__badge { width: 92px; font-size: 0.85rem; transform: rotate(-8deg); }
+.zam__akcje { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.zam__info { font-size: var(--fs-sm); color: var(--cocoa-2); }
+.zam__pusto { display: grid; gap: 1rem; justify-items: start; max-width: 640px; }
+.zam__bok { display: grid; gap: 0.9rem; padding: 1.5rem; border-radius: var(--r-l); background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.zam__mail { border-radius: var(--r-l); background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.zam__mail > summary { padding: 1rem 1.25rem; cursor: pointer; font-weight: 650; }
+.mail { margin: 0 1.25rem 1.25rem; border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 1px var(--line-2); }
+.mail__head { display: grid; gap: 2px; padding: 0.8rem 1rem; background: var(--ballet-soft); font-size: var(--fs-xs); color: var(--cocoa-2); }
+.mail__head strong { margin-top: 0.3rem; color: var(--cocoa); font-size: var(--fs-sm); }
+.mail__body { display: grid; gap: 0.7rem; padding: 1.1rem 1rem 1.25rem; background: var(--white); font-size: var(--fs-sm); }
+.mail__btn { justify-self: start; padding: 0.6rem 1.1rem; border-radius: var(--r-pill); background: var(--cocoa); color: var(--on-dark); font-weight: 650; }
+.mail__fine { font-size: var(--fs-xs); color: var(--cocoa-2); }
+@media (min-width: 1024px) { .zam { grid-template-columns: minmax(0, 1fr) 360px; gap: 2rem; } }
+
+/* Karta vouchera (podgląd) */
+.vkarta {
+  position: relative;
+  display: grid;
+  gap: 0.45rem;
+  width: min(100%, 420px);
+  padding: 1.4rem;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--pink), var(--ballet));
+  box-shadow: 0 26px 46px -30px rgba(47, 35, 35, 0.55);
+}
+.vkarta__top { display: flex; justify-content: space-between; gap: 1rem; font-size: var(--fs-xs); font-weight: 650; }
+.vkarta__typ { padding: 0.15rem 0.6rem; border-radius: var(--r-pill); background: rgba(255, 255, 255, 0.7); }
+.vkarta__nazwa {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-size: 1.7rem;
+  font-weight: var(--display-bold);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+.vkarta__dla { font-weight: 600; }
+.vkarta__msg { font-size: var(--fs-sm); }
+.vkarta__kod {
+  display: grid;
+  gap: 2px;
+  margin-top: 0.6rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed rgba(47, 35, 35, 0.3);
+}
+.vkarta__kod span { font-size: var(--fs-xs); color: var(--cocoa-2); }
+.vkarta__kod strong { font-size: 1.35rem; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
+.vkarta__wazny { font-size: var(--fs-xs); color: var(--cocoa-2); }
+
+/* 4. Aktywacja vouchera ------------------------------------------------------------- */
+.aktywuj { display: grid; gap: 2rem; align-items: start; }
+.aktywuj__kroki { display: grid; gap: 0.6rem; margin-top: 1.5rem; }
+.aktywuj__kroki li { display: flex; align-items: center; gap: 0.7rem; font-weight: 600; }
+.aktywuj__kroki span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--pink);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+.aktywuj__card {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+  border-radius: var(--band-r);
+  background: var(--white);
+  box-shadow: 0 0 0 1px rgba(47, 35, 35, 0.06), 0 40px 70px -46px rgba(47, 35, 35, 0.55);
+}
+.aktywuj__form, .aktywuj__dane, .aktywuj__krok2, .aktywuj__ok { display: grid; gap: 1rem; }
+.aktywuj__krok2[hidden], .aktywuj__form[hidden] { display: none; }
+.aktywuj__kod { text-transform: uppercase; letter-spacing: 0.06em; font-variant-numeric: tabular-nums; }
+.aktywuj__konto { padding: 0.75rem 1rem; border-radius: var(--r-m); background: var(--sage); font-size: var(--fs-sm); }
+.aktywuj__login { font-size: var(--fs-sm); color: var(--cocoa-2); }
+.aktywuj__ok { justify-items: start; }
+.aktywuj__ok .badge { width: 84px; font-size: 0.8rem; }
+.aktywuj__ok .h3:focus { outline: none; }
+@media (min-width: 1024px) { .aktywuj { grid-template-columns: 1fr minmax(400px, 480px); } }
+
+/* 5. Voucher do druku ------------------------------------------------------------------ */
+.strona-voucher { background: var(--ballet-soft); }
+.vpage { display: grid; gap: 1.25rem; justify-items: center; padding: calc(env(safe-area-inset-top, 0px) + 1.25rem) 1rem 2.5rem; }
+.vpage__tools { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.vdruk {
+  position: relative;
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  width: min(100%, 880px);
+  padding: clamp(1.75rem, 1rem + 4vw, 3.5rem);
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--pink) 0%, var(--ballet) 55%, var(--paper) 100%);
+  box-shadow: 0 40px 70px -46px rgba(47, 35, 35, 0.55);
+  overflow: hidden;
+}
+.vdruk__rozeta { justify-self: center; width: clamp(110px, 20vw, 170px); }
+.vdruk__rozeta svg { width: 100%; height: auto; }
+.vdruk__tresc { display: grid; gap: 0.6rem; }
+.vdruk__marka { font-size: var(--fs-sm); font-weight: 700; }
+.vdruk__typ { font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-ink); }
+.vdruk__nazwa {
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-size: clamp(2.2rem, 1.4rem + 3vw, 3.6rem);
+  font-weight: var(--display-bold);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+.vdruk__dla { font-size: 1.15rem; font-weight: 600; }
+.vdruk__msg { font-size: 1.05rem; }
+.vdruk__kod {
+  display: grid;
+  gap: 2px;
+  justify-self: start;
+  margin-top: 0.5rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 16px;
+  background: var(--white);
+  border: 2px dashed var(--rose);
+}
+.vdruk__kod span { font-size: var(--fs-xs); color: var(--cocoa-2); }
+.vdruk__kod strong { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem); letter-spacing: 0.1em; font-variant-numeric: tabular-nums; }
+.vdruk__jak, .vdruk__wazny { font-size: var(--fs-sm); color: var(--cocoa-2); max-width: 60ch; overflow-wrap: anywhere; }
+.vdruk__stempel {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.4rem 1rem;
+  border: 2.5px solid var(--error);
+  border-radius: 10px;
+  color: var(--error);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(8deg);
+}
+.vdruk__brak { font-weight: 600; }
+@media (min-width: 760px) { .vdruk { grid-template-columns: auto 1fr; gap: 2.5rem; } }
+@media print {
+  @page { size: A4 landscape; margin: 12mm; }
+  .strona-voucher { background: var(--white); }
+  .vpage { padding: 0; }
+  .vpage__tools, .toast { display: none !important; }
+  .vdruk { width: 100%; box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* 6. Konto ----------------------------------------------------------------------------------- */
+.konto { display: grid; gap: 1rem; }
+.kkarta {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+  padding: clamp(1.2rem, 1rem + 1vw, 1.75rem);
+  border-radius: var(--r-l);
+  background: var(--white);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.kkarta__tytul { font-family: var(--font-display); font-stretch: 88%; font-size: 1.35rem; font-weight: 650; letter-spacing: -0.02em; }
+.kkarta__fine { font-size: var(--fs-sm); color: var(--cocoa-2); }
+.kkarta__akcje { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.kdane { display: flex; align-items: center; gap: 0.9rem; }
+.kdane__avatar { width: 52px; height: 52px; font-size: 1.2rem; }
+.kdane__txt { display: grid; flex: 1; min-width: 0; }
+.kdane__txt span { font-size: var(--fs-sm); color: var(--cocoa-2); overflow-wrap: anywhere; }
+.kdane__edycja { display: grid; gap: 0.4rem; }
+.kdane__edycja[hidden] { display: none; }
+.kdane__row { display: flex; gap: 0.5rem; }
+.kdane__row .input { flex: 1; min-width: 0; }
+.kdost { display: grid; gap: 0.35rem; padding: 1rem; border-radius: var(--r-m); background: var(--ballet-soft); justify-items: start; }
+.kdost__gora { display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: 100%; }
+.kdost__stan { padding: 0.2rem 0.6rem; border-radius: var(--r-pill); background: var(--sage); color: var(--sage-ink); font-size: var(--fs-xs); font-weight: 700; }
+.kdost--wygasl { background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); }
+.kdost--wygasl .kdost__stan { background: var(--line); color: var(--cocoa-2); }
+.kdost--przyszly .kdost__stan { background: var(--butter); color: #6B5310; }
+.kdost__daty { font-size: var(--fs-sm); color: var(--cocoa-2); }
+.kdost__pasek { width: 100%; height: 6px; overflow: hidden; border-radius: 3px; background: var(--white); }
+.kdost__pasek i { display: block; height: 100%; background: var(--rose); }
+.kzam { display: grid; gap: 0.4rem; }
+.kzam__it { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
+.kzam__link { display: grid; gap: 1px; min-width: 0; text-decoration: none; }
+.kzam__link strong { text-decoration: underline; text-decoration-color: var(--rose); text-underline-offset: 0.2em; }
+.kzam__link span { font-size: var(--fs-xs); color: var(--cocoa-2); overflow-wrap: anywhere; }
+.kzam__kwota { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.kvou { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
+.kvou__txt { display: grid; flex: 1 1 200px; min-width: 0; }
+.kvou__txt strong { letter-spacing: 0.06em; font-variant-numeric: tabular-nums; }
+.kvou__txt span { font-size: var(--fs-xs); color: var(--cocoa-2); }
+.kvou__stan { padding: 0.2rem 0.6rem; border-radius: var(--r-pill); font-size: var(--fs-xs); font-weight: 700; background: var(--butter); }
+.kvou__stan--wykorzystany { background: var(--sage); color: var(--sage-ink); }
+@media (min-width: 900px) {
+  .konto { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kkarta--dostep, .kkarta--zam { grid-row: span 2; }
+}
+
+/* Logowanie: brak konta i linki */
+.login__brak { display: grid; gap: 0.5rem; margin-top: 0.75rem; padding: 0.9rem 1rem; border-radius: var(--r-m); background: var(--butter-soft); font-size: var(--fs-sm); }
+.login__brak[hidden] { display: none; }
+.login__brak:focus { outline: none; }
+.login__brak-akcje, .login__linki { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: var(--fs-sm); }
+.login__linki { justify-content: center; margin-top: 0.25rem; }

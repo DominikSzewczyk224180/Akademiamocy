@@ -1,0 +1,116 @@
+<!--
+tytul: Koszyk | Akademia Mocy Jeździeckich
+og_tytul: Koszyk Akademii Mocy Jeździeckich
+opis: Wybierz program albo karnet i zapłać BLIK-iem. Dostęp dostajesz od razu po płatności.
+aktywny: cennik
+css: sklep.css
+skrypty: sklep
+body_klasa: strona-sklep
+-->
+  <main id="tresc" data-sklep="koszyk">
+    <section class="page-hero page-hero--sklep" aria-labelledby="k-tytul">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Akademia</a><span aria-hidden="true">/</span><a href="cennik.html">Cennik</a><span aria-hidden="true">/</span><span aria-current="page">Koszyk</span></nav>
+        <ol class="zakup-kroki" aria-label="Etapy zakupu">
+          <li class="is-on" aria-current="step"><span>1</span>Koszyk</li>
+          <li><span>2</span>Płatność</li>
+          <li><span>3</span>Gotowe</li>
+        </ol>
+        <h1 class="page-title page-title--sklep" id="k-tytul">Koszyk</h1>
+      </div>
+    </section>
+
+    <section class="section section--tight-top" aria-label="Zamówienie">
+      <div class="wrap koszyk">
+        <form class="koszyk__form" id="k-form" data-k-form novalidate>
+          <p class="koszyk__alert" data-k-alert role="status" hidden></p>
+
+          <fieldset class="kbox">
+            <legend class="kbox__title"><span>1</span>Co kupujesz</legend>
+            <div class="kprodukty" data-k-produkty></div>
+            <div class="kprogram" data-k-program hidden>
+              <p class="kbox__sub" id="k-program-tytul">Wybierz program</p>
+              <div class="opts" role="radiogroup" aria-labelledby="k-program-tytul" data-k-programy></div>
+              <p class="field__error" data-k-program-blad hidden>Wybierz program.</p>
+            </div>
+          </fieldset>
+
+          <fieldset class="kbox">
+            <legend class="kbox__title"><span>2</span>Dla kogo</legend>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="dla" value="siebie" checked><span>Dla siebie</span></label>
+              <label class="opt"><input type="radio" name="dla" value="prezent"><span>Na prezent, jako voucher</span></label>
+            </div>
+            <div class="kprezent" data-k-prezent hidden>
+              <p class="kbox__fine">Dostajesz voucher w PDF z kodem. Osoba obdarowana aktywuje go, kiedy chce zacząć, a dostęp liczy się od aktywacji.</p>
+              <div class="kgrid">
+                <div class="field"><label class="field__label" for="k-dla">Imię osoby obdarowanej</label><input class="input" id="k-dla" name="dlaImie" type="text" autocomplete="off" placeholder="np. Ola"></div>
+                <div class="field"><label class="field__label" for="k-od">Podpis na voucherze</label><input class="input" id="k-od" name="odKogo" type="text" autocomplete="off" placeholder="np. Kasia"></div>
+              </div>
+              <div class="field">
+                <label class="field__label" for="k-zyczenia">Życzenia <span class="field__hint">(opcjonalnie, do 160 znaków)</span></label>
+                <textarea class="input input--area" id="k-zyczenia" name="zyczenia" maxlength="160" rows="2" placeholder="np. Na wiosenną formę w siodle!"></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="kbox">
+            <legend class="kbox__title"><span>3</span>Twoje dane</legend>
+            <p class="kkonto" data-k-konto hidden></p>
+            <div class="kgrid">
+              <div class="field">
+                <label class="field__label" for="k-imie">Imię</label>
+                <input class="input" id="k-imie" name="imie" type="text" autocomplete="given-name" aria-describedby="k-imie-blad" required>
+                <p class="field__error" id="k-imie-blad" hidden>Wpisz imię.</p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="k-email">E-mail</label>
+                <input class="input" id="k-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="imie@przyklad.pl" aria-describedby="k-email-opis k-email-blad" required>
+                <p class="field__hint" id="k-email-opis">Na ten adres przyjdzie potwierdzenie i link do logowania.</p>
+                <p class="field__error" id="k-email-blad" hidden>Wpisz poprawny adres e-mail.</p>
+              </div>
+            </div>
+            <label class="check" for="k-faktura"><input id="k-faktura" name="faktura" type="checkbox"><span>Potrzebuję faktury na firmę</span></label>
+            <div class="kgrid" data-k-faktura hidden>
+              <div class="field"><label class="field__label" for="k-firma">Nazwa firmy</label><input class="input" id="k-firma" name="firma" type="text" autocomplete="organization"></div>
+              <div class="field"><label class="field__label" for="k-nip">NIP</label><input class="input" id="k-nip" name="nip" type="text" inputmode="numeric" autocomplete="off" placeholder="10 cyfr" aria-describedby="k-nip-blad"><p class="field__error" id="k-nip-blad" hidden>NIP ma 10 cyfr.</p></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="kbox">
+            <legend class="kbox__title"><span>4</span>Zgody</legend>
+            <div class="field">
+              <label class="check" for="k-regulamin"><input id="k-regulamin" name="regulamin" type="checkbox" aria-describedby="k-regulamin-blad" required><span>Akceptuję <a class="link" href="#" data-demo-soon="Regulamin powstanie przed startem.">regulamin</a> i <a class="link" href="#" data-demo-soon="Polityka prywatności powstanie przed startem.">politykę prywatności</a>.</span></label>
+              <p class="field__error" id="k-regulamin-blad" hidden>Ta zgoda jest potrzebna do zakupu.</p>
+            </div>
+            <div class="field" data-k-zgoda-dostep>
+              <label class="check" for="k-dostep"><input id="k-dostep" name="dostepTeraz" type="checkbox" aria-describedby="k-dostep-blad" required><span>Chcę dostęp od razu po płatności. Wiem, że po rozpoczęciu korzystania z treści tracę prawo do odstąpienia od umowy.</span></label>
+              <p class="field__error" id="k-dostep-blad" hidden>Zaznacz, żeby dostać dostęp od razu.</p>
+            </div>
+            <label class="check" for="k-zgoda-mail"><input id="k-zgoda-mail" name="newsletter" type="checkbox"><span>Chcę dostawać wiadomości o nowych treningach. <span class="field__hint">(opcjonalnie)</span></span></label>
+          </fieldset>
+        </form>
+
+        <aside class="koszyk__sum" aria-labelledby="k-sum-tytul">
+          <div class="ksum">
+            <p class="ksum__title" id="k-sum-tytul">Podsumowanie</p>
+            <div class="ksum__produkt" data-k-sum-produkt></div>
+            <dl class="ksum__lista" data-k-sum-lista></dl>
+            <details class="ksum__kod" data-k-kod-box>
+              <summary>Masz kod rabatowy?</summary>
+              <div class="ksum__kod-row">
+                <label class="visually-hidden" for="k-kod">Kod rabatowy</label>
+                <input class="input" id="k-kod" type="text" autocomplete="off" autocapitalize="characters" placeholder="np. START10" form="k-form" aria-describedby="k-kod-info">
+                <button class="btn btn--light btn--sm" type="button" data-k-kod>Zastosuj</button>
+              </div>
+              <p class="field__hint" id="k-kod-info" data-k-kod-info>W demo działa kod START10.</p>
+            </details>
+            <div class="ksum__razem"><span>Do zapłaty</span><strong data-k-razem>499 zł</strong></div>
+            <button class="btn btn--dark btn--block ksum__btn" type="submit" form="k-form" data-k-zaplac>Przejdź do płatności</button>
+            <ul class="pay pay--small" aria-label="Metody płatności"><li>BLIK</li><li>Szybki przelew</li><li>Karta</li></ul>
+            <p class="ksum__fine"><svg class="ico" aria-hidden="true"><use href="#i-klodka"/></svg>Płatność obsługuje Przelewy24. W demo płacisz udawanym BLIK-iem.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>

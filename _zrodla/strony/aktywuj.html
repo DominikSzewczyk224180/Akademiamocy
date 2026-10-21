@@ -1,0 +1,36 @@
+<!--
+tytul: Aktywuj voucher | Akademia Mocy Jeździeckich
+og_tytul: Aktywuj voucher Akademii Mocy Jeździeckich
+opis: Wpisz kod z vouchera i zacznij trening. Dostęp liczy się od dnia aktywacji.
+css: sklep.css
+skrypty: sklep
+body_klasa: strona-sklep
+-->
+  <main id="tresc" data-sklep="aktywuj">
+    <section class="page-hero page-hero--sklep" aria-labelledby="a-tytul">
+      <div class="wrap aktywuj">
+        <div class="aktywuj__copy">
+          <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Akademia</a><span aria-hidden="true">/</span><span aria-current="page">Aktywuj voucher</span></nav>
+          <h1 class="page-title" id="a-tytul"><span class="page-title__l1">Masz voucher?</span><span class="page-title__l2">Wpisz kod i zacznij</span></h1>
+          <p class="page-lead">Dostęp liczy się od dnia aktywacji, więc voucher możesz odłożyć na dogodny moment. Kod znajdziesz na voucherze w PDF.</p>
+          <ol class="aktywuj__kroki">
+            <li><span>1</span>Wpisz kod z vouchera</li>
+            <li><span>2</span>Podaj imię i e-mail albo zaloguj się</li>
+            <li><span>3</span>Program jest odblokowany od razu</li>
+          </ol>
+        </div>
+        <div class="aktywuj__card" data-a-karta>
+          <form class="aktywuj__form" data-a-form novalidate>
+            <div class="field">
+              <label class="field__label" for="a-kod">Kod vouchera</label>
+              <input class="input aktywuj__kod" id="a-kod" name="kod" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="AMJ-XXXX-XXXX" aria-describedby="a-kod-blad a-kod-podpowiedz" required>
+              <p class="field__error" id="a-kod-blad" data-a-blad hidden></p>
+              <p class="field__hint" id="a-kod-podpowiedz">Demo: działa kod AMJ-DEMO-2026 i każdy voucher kupiony w tej przeglądarce.</p>
+            </div>
+            <button class="btn btn--dark btn--block" type="submit">Sprawdź voucher</button>
+          </form>
+          <div class="aktywuj__krok2" data-a-krok2 hidden></div>
+        </div>
+      </div>
+    </section>
+  </main>

@@ -7,7 +7,7 @@
   Klip: "mp4" w repo (demo). W produkcji dopisujemy "hls" z Bunny Stream.
   "lustro": true pozwala pokazać drugą stronę ćwiczenia przez odbicie klipu.
   Blok: "rundy" powtarza ćwiczenia bloku, "przerwa" jest po każdym ćwiczeniu, "przerwaRundy" między rundami.
-  Parkur ("kursy"): level jako 12 przeszkód (treningi A, B, C na zmianę), na końcu Próba Mocy.
+  Parkur ("kursy"): level jako 12 przeszkód (w Rannych Mocach 14), treningi A, B, C na zmianę, na końcu Próba Mocy.
   "progProby": jaka część przeszkód musi być zaliczona, żeby odblokować Próbę (1 = wszystkie, 0.8 = 80%).
 */
 window.AKADEMIA_TRENINGI = {
@@ -129,6 +129,77 @@ window.AKADEMIA_TRENINGI = {
         { "nazwa": "Część główna", "rundy": 4, "przerwaRundy": 15, "cwiczenia": [ { "cw": "mostek", "czas": 45 } ] },
         { "nazwa": "Rozciąganie", "cwiczenia": [ { "cw": "pozycja-dziecka", "czas": 75 } ] }
       ]
+    },
+    {
+      "id": "ogolny-step-a", "program": "ogolny", "level": "step", "nazwa": "Trening A",
+      "naglowek": "Ogólny program dla jeźdźców, Stęp",
+      "opis": "Siła i stabilizacja: dłuższe przytrzymania w trzech rundach.",
+      "sprzet": ["Mata"], "przygotowanie": 5, "zmianaStrony": 5,
+      "bloki": [
+        { "nazwa": "Rozgrzewka", "cwiczenia": [{"cw": "marsz", "czas": 90}] },
+        { "nazwa": "Mobilność", "cwiczenia": [{"cw": "koci-grzbiet", "powtorzenia": 8, "czasOk": 48}] },
+        { "nazwa": "Część główna", "rundy": 3, "przerwa": 15, "przerwaRundy": 30, "cwiczenia": [{"cw": "mostek", "czas": 45}, {"cw": "ptak-pies", "czas": 35, "strony": true}] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [{"cw": "pozycja-dziecka", "czas": 45}] }
+      ]
+    },
+    {
+      "id": "ogolny-step-b", "program": "ogolny", "level": "step", "nazwa": "Trening B",
+      "naglowek": "Ogólny program dla jeźdźców, Stęp",
+      "opis": "Kondycja: dłuższy marsz i krótkie przerwy w części głównej.",
+      "sprzet": ["Mata"], "przygotowanie": 5, "zmianaStrony": 5,
+      "bloki": [
+        { "nazwa": "Rozgrzewka", "cwiczenia": [{"cw": "marsz", "czas": 120}] },
+        { "nazwa": "Mobilność", "cwiczenia": [{"cw": "koci-grzbiet", "powtorzenia": 8, "czasOk": 48}] },
+        { "nazwa": "Część główna", "rundy": 3, "przerwa": 10, "przerwaRundy": 20, "cwiczenia": [{"cw": "ptak-pies", "czas": 30, "strony": true}, {"cw": "mostek", "czas": 45}] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [{"cw": "pozycja-dziecka", "czas": 45}] }
+      ]
+    },
+    {
+      "id": "ogolny-step-c", "program": "ogolny", "level": "step", "nazwa": "Trening C",
+      "naglowek": "Ogólny program dla jeźdźców, Stęp",
+      "opis": "Równowaga i tułów: wolniejsze tempo i dłuższe przytrzymania ptaka-psa.",
+      "sprzet": ["Mata"], "przygotowanie": 5, "zmianaStrony": 5,
+      "bloki": [
+        { "nazwa": "Rozgrzewka", "cwiczenia": [{"cw": "marsz", "czas": 90}] },
+        { "nazwa": "Mobilność", "cwiczenia": [{"cw": "koci-grzbiet", "powtorzenia": 10, "czasOk": 60}] },
+        { "nazwa": "Część główna", "rundy": 3, "przerwa": 15, "przerwaRundy": 25, "cwiczenia": [{"cw": "mostek", "czas": 40}, {"cw": "ptak-pies", "czas": 40, "strony": true}] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [{"cw": "pozycja-dziecka", "czas": 45}] }
+      ]
+    },
+    {
+      "id": "ranne-moce-step-a", "program": "ranne-moce", "level": "step", "nazwa": "Poranek A",
+      "naglowek": "Ranne Moce Jeździeckie, Stęp",
+      "opis": "Krótki poranek: aktywacja, mobilność i rozciąganie.",
+      "sprzet": ["Bez sprzętu"], "przygotowanie": 4, "zmianaStrony": 4,
+      "bloki": [
+        { "nazwa": "Rozgrzewka", "cwiczenia": [{"cw": "marsz", "czas": 45}] },
+        { "nazwa": "Mobilność", "cwiczenia": [{"cw": "koci-grzbiet", "powtorzenia": 8, "czasOk": 45}] },
+        { "nazwa": "Część główna", "cwiczenia": [{"cw": "ptak-pies", "czas": 20, "strony": true}] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [{"cw": "pozycja-dziecka", "czas": 45}] }
+      ]
+    },
+    {
+      "id": "ranne-moce-step-b", "program": "ranne-moce", "level": "step", "nazwa": "Poranek B",
+      "naglowek": "Ranne Moce Jeździeckie, Stęp",
+      "opis": "Poranek z mostkiem: pobudka dla pośladków przed dniem w stajni.",
+      "sprzet": ["Bez sprzętu"], "przygotowanie": 4, "zmianaStrony": 4,
+      "bloki": [
+        { "nazwa": "Rozgrzewka", "cwiczenia": [{"cw": "marsz", "czas": 45}] },
+        { "nazwa": "Mobilność", "cwiczenia": [{"cw": "koci-grzbiet", "powtorzenia": 6, "czasOk": 36}] },
+        { "nazwa": "Część główna", "cwiczenia": [{"cw": "mostek", "czas": 30}] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [{"cw": "pozycja-dziecka", "czas": 45}] }
+      ]
+    },
+    {
+      "id": "ranne-moce-step-c", "program": "ranne-moce", "level": "step", "nazwa": "Poranek C",
+      "naglowek": "Ranne Moce Jeździeckie, Stęp",
+      "opis": "Najkrótszy poranek, gdy czasu jest naprawdę mało.",
+      "sprzet": ["Bez sprzętu"], "przygotowanie": 4, "zmianaStrony": 4,
+      "bloki": [
+        { "nazwa": "Rozgrzewka", "cwiczenia": [{"cw": "marsz", "czas": 30}] },
+        { "nazwa": "Mobilność", "cwiczenia": [{"cw": "koci-grzbiet", "powtorzenia": 6, "czasOk": 36}] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [{"cw": "pozycja-dziecka", "czas": 60}] }
+      ]
     }
   ],
 
@@ -152,6 +223,26 @@ window.AKADEMIA_TRENINGI = {
       "proba": "",
       "nastepny": "",
       "przeszkody": ["gimnastyka-klus-a", "gimnastyka-klus-b", "gimnastyka-klus-c", "gimnastyka-klus-a", "gimnastyka-klus-b", "gimnastyka-klus-c", "gimnastyka-klus-a", "gimnastyka-klus-b", "gimnastyka-klus-c", "gimnastyka-klus-a", "gimnastyka-klus-b", "gimnastyka-klus-c"]
+    },
+    {
+      "id": "ogolny-step",
+      "program": "ogolny",
+      "level": "step",
+      "nazwa": "Parkur Stęp",
+      "progProby": 1,
+      "proba": "ogolny-step",
+      "nastepny": "",
+      "przeszkody": ["ogolny-step-a", "ogolny-step-b", "ogolny-step-c", "ogolny-step-a", "ogolny-step-b", "ogolny-step-c", "ogolny-step-a", "ogolny-step-b", "ogolny-step-c", "ogolny-step-a", "ogolny-step-b", "ogolny-step-c"]
+    },
+    {
+      "id": "ranne-moce-step",
+      "program": "ranne-moce",
+      "level": "step",
+      "nazwa": "Parkur Stęp",
+      "progProby": 1,
+      "proba": "ranne-moce-step",
+      "nastepny": "",
+      "przeszkody": ["ranne-moce-step-a", "ranne-moce-step-b", "ranne-moce-step-c", "ranne-moce-step-a", "ranne-moce-step-b", "ranne-moce-step-c", "ranne-moce-step-a", "ranne-moce-step-b", "ranne-moce-step-c", "ranne-moce-step-a", "ranne-moce-step-b", "ranne-moce-step-c", "ranne-moce-step-a", "ranne-moce-step-b"]
     }
   ]
 };

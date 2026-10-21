@@ -1,6 +1,6 @@
-# Akademia Mocy Jeździeckich: demo, etap 4
+# Akademia Mocy Jeździeckich: demo, etap 5
 
-Część publiczna (etap 2), pełny odtwarzacz treningu (etap 3) i strefa kursantki (etap 4): panel, mapa parkuru, przegląd treningu, Próba Mocy z rozetą, postępy i certyfikat.
+Część publiczna (etap 2), pełny odtwarzacz treningu (etap 3), strefa kursantki (etap 4) oraz zakup i konto (etap 5): cennik, koszyk, udawana płatność BLIK, odblokowany program, logowanie i vouchery.
 Wygląd, kroje i kolory są te same co w etapie 1. Testy na telefonach: `TESTY.md`.
 
 ## Strony
@@ -23,6 +23,12 @@ Wygląd, kroje i kolory są te same co w etapie 1. Testy na telefonach: `TESTY.m
 | `proba.html` | Próba Mocy: testy ze stoperem, technika do odhaczenia, rozeta albo tydzień celowany |
 | `postepy.html` | Postępy: liczby, kalendarz treningów, cel tygodnia, wyniki Prób, rozety, „Jak było?” |
 | `certyfikat.html` | Certyfikat po zaliczonej Próbie, do zapisania jako PDF |
+| `koszyk.html` | Koszyk: oferta, program, dla siebie albo na prezent, dane, faktura, zgody, kod rabatowy |
+| `platnosc.html` | Udawana bramka płatności z BLIK-iem (tak jak przekierowanie do Przelewy24) |
+| `zamowienie.html` | Wynik płatności: odblokowany program albo gotowy voucher, szczegóły, podgląd maila |
+| `aktywuj.html` | Aktywacja vouchera kodem, z założeniem konta albo na zalogowane konto |
+| `voucher.html` | Voucher prezentowy do zapisania jako PDF |
+| `konto.html` | Konto i zakupy: dane, dostępy, zamówienia, vouchery, ustawienia |
 
 ## Co nowego w etapie 2
 
@@ -105,6 +111,24 @@ Na dole każdej strony strefy jest „Panel demo”. Przełącza stan konta, że
 - `data/proby.js`: testy Prób Mocy, cele, kroki, technika i ćwiczenia na tydzień celowany. Progi są przykładowe: ustala je Justyna z fizjoterapią.
 - `js/strefa.js`: wszystkie ekrany strefy, mapa parkuru rysowana w SVG.
 
+## Etap 5: zakup i konto
+
+Ścieżka: cennik, koszyk, płatność BLIK, odblokowany program. Działa tak jak w produkcji: koszyk zakłada zamówienie ze statusem „oczekuje”, bramka przyjmuje płatność i dopiero „powiadomienie o płatności” włącza dostęp albo tworzy voucher. W produkcji to powiadomienie wysyła Przelewy24 do Django, a strona zamówienia tylko pokazuje wynik.
+
+- Cennik, „Kup ten program” na stronach programów i „Kup voucher” prowadzą do koszyka z wybraną ofertą.
+- Koszyk: oferta (przy „Programie” także wybór programu), dla siebie albo na prezent (imię, podpis, życzenia), dane, faktura z NIP-em, regulamin i zgoda na dostęp od razu, kod rabatowy. W demo działa kod START10 (10%).
+- Bramka płatności: BLIK z kodem z aplikacji banku. W demo każdy 6-cyfrowy kod przechodzi, 000 000 udaje błędny kod, a 111 111 płatność odrzuconą w banku. Przelew i karta pokazują, co będzie w produkcji.
+- Po płatności: strona zamówienia z datami dostępu, szczegółami i podglądem maila z potwierdzeniem. Nowa kursantka ma od razu konto i jest zalogowana. Jeśli konto z tym adresem już istniało, dostęp dopisuje się do niego, a strona prosi o zalogowanie.
+- Przedłużenie: kupno tego samego dostępu, który jeszcze trwa, zaczyna nowy okres zaraz po obecnym. Panel przypomina o końcu dostępu 14 dni wcześniej.
+- Vouchery: zakup na prezent daje kod (AMJ-XXXX-XXXX) i voucher w PDF. Osoba obdarowana aktywuje go w `aktywuj.html`, a dostęp liczy się od aktywacji. Kod działa raz. Do testów jest gotowy kod AMJ-DEMO-2026 (karnet 3 miesiące).
+- Logowanie: bez hasła, linkiem na e-mail (w demo przycisk „Otwórz link z maila”). Konta przetrwają wylogowanie, więc ten sam adres wraca do tego samego konta. Dla nieznanego adresu strona podpowiada zakup albo voucher, ale nie zdradza, czy konto istnieje.
+- Strefa: „Twoje programy” w panelu (odblokowane i do kupienia), zakładki programów na mapie, menu „Konto i zakupy” i „Aktywuj voucher”. Ogólny program i Ranne Moce mają teraz własne parkury (12 i 14 przeszkód) i Próby Mocy, więc każdy kupiony program ma treść.
+- Panel demo ma nowy stan „Dostęp się kończy”, żeby pokazać przypomnienie o przedłużeniu.
+
+Dane: `data/sklep.js` (produkty, ceny, kody, voucher demo). Konta i dostępy prowadzi `js/kursantka.js`, a ekrany sklepu i konta `js/sklep.js`. Zamówienia i vouchery w demo leżą w przeglądarce (`akademia-zamowienia`, `akademia-vouchery`), konta pod `akademia-konta`.
+
+Do sprawdzenia z prawnikiem przed startem: treść zgody na natychmiastowy dostęp i utratę prawa odstąpienia, zasady zwrotu voucherów, dokument zakupu (paragon albo faktura).
+
 ## Jak zmieniać strony
 
 Menu, stopka i head są wspólne dla wszystkich stron, więc trzymamy je w jednym miejscu, a gotowe pliki `.html` składa skrypt.
@@ -117,6 +141,7 @@ _zrodla/
 data/programs.js      dane programów: opisy, levele, ćwiczenia, testy Próby, pytania
 data/treningi.js      pełne treningi, klipy, słownik ćwiczeń i parkury
 data/proby.js         testy Prób Mocy
+data/sklep.js         produkty, ceny, kody rabatowe i voucher demo
 ```
 
 Po zmianie w `_zrodla` albo w `data/programs.js` uruchom z katalogu repo:
@@ -184,5 +209,5 @@ Demo działa też po dwukliku w `index.html` na dysku, bez serwera.
 1. Etap 1: strona główna
 2. Etap 2: strony programów, cennik, O Akademii, pytania, lista chętnych
 3. Etap 3: pełny odtwarzacz treningu
-4. Etap 4: strefa kursantki: panel, mapa parkuru, przegląd treningu, Próba Mocy z rozetą, postępy, certyfikat (ta paczka)
-5. Etap 5: zakup i konto (koszyk, udawana płatność BLIK, voucher)
+4. Etap 4: strefa kursantki: panel, mapa parkuru, przegląd treningu, Próba Mocy z rozetą, postępy, certyfikat
+5. Etap 5: zakup i konto: cennik, koszyk, udawana płatność BLIK, odblokowany program, logowanie, vouchery (ta paczka)

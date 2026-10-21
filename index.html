@@ -2,11 +2,11 @@
 <html lang="pl">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Akademia Mocy Jeździeckich | Treningi dla jeźdźców na telefonie</title>
   <meta name="description" content="Krótkie treningi dla jeźdźców: rozgrzewka, mobilność, siła i rozciąganie. Ćwiczysz 20 minut w domu, różnicę czujesz w siodle.">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#FCF7F5">
+  <meta name="theme-color" content="#FFF9F8">
   <meta name="color-scheme" content="light">
 
   <!-- Podgląd linku w WhatsAppie i Messengerze. Jeśli repo ma inną nazwę niż AkademiaMocy, popraw adres obrazka. -->
@@ -19,12 +19,11 @@
   <meta property="og:image:height" content="630">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/fraunces-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 
   <script>
-    /* Demo: wariant krojów nagłówków. Link z ?fonty=b pokazuje wariant B, wybór zapamiętuje przeglądarka. */
+    /* Demo: drugi wariant krojów pod ?fonty=b. Wybór zapamiętuje przeglądarka. */
     (function () {
       var v = null;
       try { v = new URLSearchParams(location.search).get('fonty'); } catch (e) {}
@@ -39,9 +38,8 @@
 <body>
   <a class="skip" href="#tresc">Przejdź do treści</a>
 
-  <!-- Ikony (rysowane jedną linią, kolor z currentColor) -->
   <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5.5 12.5l4 4L18.5 7.5"/></symbol>
     <symbol id="i-zegar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
     <symbol id="i-kalendarz" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
     <symbol id="i-dom" viewBox="0 0 24 24"><path d="M3.5 11.2L12 4.5l8.5 6.7"/><path d="M6 9.6v10h12v-10"/><path d="M10 19.6v-5h4v5"/></symbol>
@@ -49,138 +47,134 @@
     <symbol id="i-obrot" viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="13" rx="2"/><path d="M3.8 14.5a8.6 8.6 0 0 0 15.6 4"/><path d="M20 15.2l-.6 3.3-3.3-.8"/></symbol>
     <symbol id="i-zarowka" viewBox="0 0 24 24"><path d="M9.5 18h5M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.4 10.9c.6.4.9 1.1.9 1.8v.3h5v-.3c0-.7.3-1.4.9-1.8A6 6 0 0 0 12 3z"/></symbol>
     <symbol id="i-prezent" viewBox="0 0 24 24"><rect x="3.5" y="9" width="17" height="11.5" rx="2"/><path d="M3.5 13.5h17M12 9v11.5"/><path d="M12 9C10.4 6 6.8 5.4 6.8 7.6 6.8 9 9.4 9 12 9zm0 0c1.6-3 5.2-3.6 5.2-1.4C17.2 9 14.6 9 12 9z"/></symbol>
-    <symbol id="i-podkowa" viewBox="0 0 24 24"><path d="M5.6 4C3.4 7 3.1 11.2 4.6 14.6 6 17.9 8.8 20.4 12 20.4s6-2.5 7.4-5.8C20.9 11.2 20.6 7 18.4 4"/><path d="M9 4.6c-1.3 2.3-1.5 5.4-.6 8.1.8 2.2 2.1 3.8 3.6 3.8s2.8-1.6 3.6-3.8c.9-2.7.7-5.8-.6-8.1"/><path d="M5.6 4H9M15 4h3.4"/><path d="M6.3 9.4h.01M6.9 13.3h.01M17.7 9.4h.01M17.1 13.3h.01" stroke-width="2.2"/></symbol>
-    <symbol id="i-slonce" viewBox="0 0 24 24"><path d="M3.5 17.5h17"/><path d="M7.4 17.5a4.6 4.6 0 0 1 9.2 0"/><path d="M12 8.6V7M6.5 11.3l-1.1-1.1M17.5 11.3l1.1-1.1M4.6 15.2H3.4M20.6 15.2h-1.2"/><path d="M8 20.5h8"/></symbol>
+    <symbol id="i-podkowa" viewBox="0 0 24 24"><path d="M5.6 4C3.4 7 3.1 11.2 4.6 14.6 6 17.9 8.8 20.4 12 20.4s6-2.5 7.4-5.8C20.9 11.2 20.6 7 18.4 4"/><path d="M9 4.6c-1.3 2.3-1.5 5.4-.6 8.1.8 2.2 2.1 3.8 3.6 3.8s2.8-1.6 3.6-3.8c.9-2.7.7-5.8-.6-8.1"/><path d="M5.6 4H9M15 4h3.4"/></symbol>
+    <symbol id="i-slonce" viewBox="0 0 24 24"><path d="M3.5 17.5h17"/><path d="M7.4 17.5a4.6 4.6 0 0 1 9.2 0"/><path d="M12 8.6V7M6.5 11.3l-1.1-1.1M17.5 11.3l1.1-1.1M4.6 15.2H3.4M20.6 15.2h-1.2"/></symbol>
     <symbol id="i-wstazka" viewBox="0 0 24 24"><path d="M12 10.6C9.8 7.6 5.4 6.2 4.4 8.4c-1 2.3 2 4.6 7.6 2.2z"/><path d="M12 10.6c2.2-3 6.6-4.4 7.6-2.2 1 2.3-2 4.6-7.6 2.2z"/><circle cx="12" cy="10.8" r="1.6"/><path d="M11 12.2l-2.6 6.6 2-.7.8 2M13 12.2l2.6 6.6-2-.7-.8 2"/></symbol>
+    <symbol id="i-mata" viewBox="0 0 24 24"><path d="M3 18h14"/><path d="M3 18v-3.6h10"/><circle cx="16.5" cy="13.6" r="4.4"/><circle cx="16.5" cy="13.6" r="1.5"/></symbol>
     <symbol id="i-prev" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></symbol>
     <symbol id="i-next" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></symbol>
     <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6.5v11M15 6.5v11"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.8v12.4a.8.8 0 0 0 1.2.7l9.6-6.2a.8.8 0 0 0 0-1.4L9.2 5.1A.8.8 0 0 0 8 5.8z"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.2 6.8h.01" stroke-width="2.4"/></symbol>
     <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14.2 20.5v-7h2.5l.4-3h-2.9V8.7c0-.9.3-1.5 1.5-1.5h1.5V4.6c-.3 0-1.2-.1-2.2-.1-2.2 0-3.8 1.4-3.8 3.9v2.1H8.7v3h2.5v7"/></symbol>
   </svg>
 
-  <header class="site-header" data-header>
-    <div class="container site-header__inner">
-      <a class="logo" href="#top" aria-label="Akademia Mocy Jeździeckich, początek strony">
-        <svg class="logo__mark" viewBox="0 0 40 48" aria-hidden="true" focusable="false"><path d="M15 27L20.2 29L17.6 46L14.8 42.4L11.6 45.2Z" fill="#DDA7A5"/><path d="M25 27L19.8 29L22.4 46L25.2 42.4L28.4 45.2Z" fill="#DDA7A5"/><path d="M20.00 2.50A2.69 2.69 0 0 1 25.30 3.43A2.69 2.69 0 0 1 29.96 6.13A2.69 2.69 0 0 1 33.42 10.25A2.69 2.69 0 0 1 35.26 15.31A2.69 2.69 0 0 1 35.26 20.69A2.69 2.69 0 0 1 33.42 25.75A2.69 2.69 0 0 1 29.96 29.87A2.69 2.69 0 0 1 25.30 32.57A2.69 2.69 0 0 1 20.00 33.50A2.69 2.69 0 0 1 14.70 32.57A2.69 2.69 0 0 1 10.04 29.87A2.69 2.69 0 0 1 6.58 25.75A2.69 2.69 0 0 1 4.74 20.69A2.69 2.69 0 0 1 4.74 15.31A2.69 2.69 0 0 1 6.58 10.25A2.69 2.69 0 0 1 10.04 6.13A2.69 2.69 0 0 1 14.70 3.43A2.69 2.69 0 0 1 20.00 2.50Z" fill="#DDA7A5"/><path d="M22.57 6.79A2.56 2.56 0 0 1 27.18 9.01A2.56 2.56 0 0 1 30.36 13.02A2.56 2.56 0 0 1 31.50 18.01A2.56 2.56 0 0 1 30.36 23.00A2.56 2.56 0 0 1 27.16 27.00A2.56 2.56 0 0 1 22.55 29.21A2.56 2.56 0 0 1 17.43 29.21A2.56 2.56 0 0 1 12.82 26.99A2.56 2.56 0 0 1 9.64 22.98A2.56 2.56 0 0 1 8.50 17.99A2.56 2.56 0 0 1 9.64 13.00A2.56 2.56 0 0 1 12.84 9.00A2.56 2.56 0 0 1 17.45 6.79A2.56 2.56 0 0 1 22.57 6.79Z" fill="#F3D6D2"/><circle cx="20" cy="18" r="8.2" fill="#FFFDFB" stroke="#C9AE7C" stroke-width="1.3"/></svg>
-        <span class="logo__text"><span class="logo__name">Akademia Mocy</span><span class="logo__sub">Jeździeckich</span></span>
+  <!-- Menu: pływająca kapsuła, różowa pigułka śledzi aktywną sekcję -->
+  <header class="topbar" data-header>
+    <div class="topbar__bar">
+      <a class="brand" href="#top" aria-label="Akademia Mocy Jeździeckich, początek strony">
+        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20.00 3.50A3.67 3.67 0 0 1 27.16 5.13A3.67 3.67 0 0 1 32.90 9.71A3.67 3.67 0 0 1 36.09 16.33A3.67 3.67 0 0 1 36.09 23.67A3.67 3.67 0 0 1 32.90 30.29A3.67 3.67 0 0 1 27.16 34.87A3.67 3.67 0 0 1 20.00 36.50A3.67 3.67 0 0 1 12.84 34.87A3.67 3.67 0 0 1 7.10 30.29A3.67 3.67 0 0 1 3.91 23.67A3.67 3.67 0 0 1 3.91 16.33A3.67 3.67 0 0 1 7.10 9.71A3.67 3.67 0 0 1 12.84 5.13A3.67 3.67 0 0 1 20.00 3.50Z" fill="#E07D98"/><circle cx="20" cy="20" r="8.6" fill="#FFF9F8"/><circle cx="20" cy="20" r="3.2" fill="#2F2323"/></svg>
+        <span class="brand__text"><span class="brand__name">Akademia Mocy</span><span class="brand__sub">Jeździeckich</span></span>
       </a>
-      <nav class="nav" id="nawigacja" aria-label="Główna">
-        <ul class="nav__list">
-          <li><a href="#programy">Programy</a></li>
-          <li><a href="#jak-to-dziala">Jak to działa</a></li>
-          <li><a href="#cennik">Cennik</a></li>
-          <li><a href="#o-nas">O&nbsp;nas</a></li>
-          <li><a href="#faq">Pytania</a></li>
-        </ul>
-        <a class="btn btn--primary btn--sm nav__cta" href="#rozgrzewka">Darmowa rozgrzewka</a>
+      <nav class="menu" id="menu" aria-label="Główna">
+        <div class="menu__links" data-menu-links>
+          <span class="menu__pill" aria-hidden="true" data-menu-pill></span>
+          <a href="#programy" data-spy>Programy</a>
+          <a href="#jak-to-dziala" data-spy>Jak to działa</a>
+          <a href="#trening" data-spy>Trening</a>
+          <a href="#cennik" data-spy>Cennik</a>
+          <a href="#faq" data-spy>Pytania</a>
+        </div>
+        <div class="menu__actions">
+          <a class="menu__login" href="#" data-demo-soon="Logowanie do strefy kursantki pojawi się w kolejnym etapie demo.">Zaloguj</a>
+          <a class="btn btn--dark btn--sm" href="#rozgrzewka">Darmowa rozgrzewka</a>
+        </div>
+        <a class="menu__promo" href="#rozgrzewka">
+          <span class="badge badge--rose" aria-hidden="true">7&nbsp;min</span>
+          <span><strong>Rozgrzewka przed jazdą</strong><span>Za darmo, bez sprzętu, przy boksie</span></span>
+        </a>
       </nav>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nawigacja" data-nav-toggle>
-        <span class="nav-toggle__label">Menu</span>
-        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn>
+        <span class="menu-btn__label">Menu</span>
+        <span class="menu-btn__icon" aria-hidden="true"></span>
       </button>
     </div>
   </header>
 
   <main id="tresc">
 
-    <!-- 1. Hero: jeden ruch na macie i w siodle -->
+    <!-- 1. Hero -->
     <section class="hero" id="top" aria-labelledby="hero-tytul">
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <h1 class="h1 hero__title" id="hero-tytul">
-            <span class="hero__line">Ćwiczysz 20&nbsp;minut w&nbsp;domu.</span>
-            <span class="hero__line">Różnicę czujesz w&nbsp;siodle.</span>
+      <div class="wrap hero__grid">
+        <div class="hero__text">
+          <a class="hero__chip" href="#testy"><span class="hero__chip-dot" aria-hidden="true"></span>Szukamy 20&nbsp;osób do testów przed startem</a>
+          <h1 class="hero__title" id="hero-tytul">
+            <span class="hero__l1">Ćwiczysz 20&nbsp;minut w&nbsp;domu<span class="ipill ipill--pink" aria-hidden="true"><svg class="ico"><use href="#i-dom"/></svg></span></span>
+            <span class="hero__l2">Różnicę czujesz w&nbsp;siodle<span class="ipill ipill--sage" aria-hidden="true"><svg class="ico"><use href="#i-podkowa"/></svg></span></span>
           </h1>
-          <p class="lead hero__lead">Krótkie treningi dla jeźdźców, krok po kroku na telefonie. Rozgrzewka, mobilność, siła i&nbsp;rozciąganie, a&nbsp;efekt widać w&nbsp;dosiadzie: stabilniejsza łydka, prostsze plecy, lżejsze ręce.</p>
+          <p class="hero__lead">Krótkie treningi dla jeźdźców, krok po kroku na telefonie. Rozgrzewka, mobilność, siła i&nbsp;rozciąganie, a&nbsp;efekt widać w&nbsp;dosiadzie: stabilniejsza łydka, prostsze plecy, lżejsze ręce.</p>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#rozgrzewka">Odbierz darmową rozgrzewkę</a>
-            <a class="btn btn--ghost" href="#programy">Zobacz programy</a>
+            <a class="btn btn--dark" href="#rozgrzewka"><svg class="ico ico--fill"><use href="#i-play"/></svg>Odbierz darmową rozgrzewkę</a>
+            <a class="btn btn--light" href="#programy">Zobacz programy</a>
           </div>
           <ul class="hero__facts">
             <li><svg class="ico"><use href="#i-zegar"/></svg>10-30&nbsp;minut</li>
             <li><svg class="ico"><use href="#i-dom"/></svg>W&nbsp;domu, bez siłowni</li>
-            <li><svg class="ico"><use href="#i-telefon"/></svg>Telefon w&nbsp;pionie albo w&nbsp;poziomie</li>
+            <li><svg class="ico"><use href="#i-telefon"/></svg>W&nbsp;pionie i&nbsp;w&nbsp;poziomie</li>
           </ul>
-          <p class="hero__brand">Od twórczyni <a class="link" href="https://gotsforhorses.pl" target="_blank" rel="noopener">GOT’S for Horses</a>, naturalnych smaczków dla koni.</p>
         </div>
 
-        <div class="hero__art">
-          <figure class="arch hero__arch">
-            <img src="assets/img/hero-mata.svg" width="300" height="400" alt="Ilustracja: mata do ćwiczeń z gumą i hantelkami. Tu będzie zdjęcie ćwiczenia na macie.">
-            <figcaption class="arch__caption">Na macie</figcaption>
+        <div class="hero__visual">
+          <figure class="story story--mata">
+            <div class="story__bars" aria-hidden="true"><i class="is-done"></i><i class="is-run"></i><i></i></div>
+            <div class="story__top" aria-hidden="true"><svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20.00 3.50A3.67 3.67 0 0 1 27.16 5.13A3.67 3.67 0 0 1 32.90 9.71A3.67 3.67 0 0 1 36.09 16.33A3.67 3.67 0 0 1 36.09 23.67A3.67 3.67 0 0 1 32.90 30.29A3.67 3.67 0 0 1 27.16 34.87A3.67 3.67 0 0 1 20.00 36.50A3.67 3.67 0 0 1 12.84 34.87A3.67 3.67 0 0 1 7.10 30.29A3.67 3.67 0 0 1 3.91 23.67A3.67 3.67 0 0 1 3.91 16.33A3.67 3.67 0 0 1 7.10 9.71A3.67 3.67 0 0 1 12.84 5.13A3.67 3.67 0 0 1 20.00 3.50Z" fill="#E07D98"/><circle cx="20" cy="20" r="8.6" fill="#FFF9F8"/><circle cx="20" cy="20" r="3.2" fill="#2F2323"/></svg><span>Akademia Mocy</span><em>Mobilność</em></div>
+            <img src="assets/img/kadr-mata.svg" width="360" height="640" alt="Kadr z ćwiczenia na macie. Tu będzie krótki film z treningu.">
+            <figcaption class="story__cap"><strong>Na macie</strong><span>Mostek biodrowy, 0:35</span></figcaption>
           </figure>
-          <figure class="arch hero__arch">
-            <img src="assets/img/hero-siodlo.svg" width="300" height="400" alt="Ilustracja: przeszkoda z kwiatami i rozetą. Tu będzie zdjęcie tego samego ruchu w siodle.">
-            <figcaption class="arch__caption">W&nbsp;siodle</figcaption>
+          <figure class="story story--siodlo">
+            <div class="story__bars" aria-hidden="true"><i class="is-done"></i><i class="is-done"></i><i class="is-run"></i></div>
+            <div class="story__top" aria-hidden="true"><svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20.00 3.50A3.67 3.67 0 0 1 27.16 5.13A3.67 3.67 0 0 1 32.90 9.71A3.67 3.67 0 0 1 36.09 16.33A3.67 3.67 0 0 1 36.09 23.67A3.67 3.67 0 0 1 32.90 30.29A3.67 3.67 0 0 1 27.16 34.87A3.67 3.67 0 0 1 20.00 36.50A3.67 3.67 0 0 1 12.84 34.87A3.67 3.67 0 0 1 7.10 30.29A3.67 3.67 0 0 1 3.91 23.67A3.67 3.67 0 0 1 3.91 16.33A3.67 3.67 0 0 1 7.10 9.71A3.67 3.67 0 0 1 12.84 5.13A3.67 3.67 0 0 1 20.00 3.50Z" fill="#E07D98"/><circle cx="20" cy="20" r="8.6" fill="#FFF9F8"/><circle cx="20" cy="20" r="3.2" fill="#2F2323"/></svg><span>Akademia Mocy</span><em>W&nbsp;siodle</em></div>
+            <img src="assets/img/kadr-siodlo.svg" width="360" height="640" alt="Kadr z ujeżdżalni. Tu będzie ten sam ruch pokazany w siodle.">
+            <figcaption class="story__cap"><strong>W&nbsp;siodle</strong><span>Stabilna łydka w&nbsp;półsiadzie</span></figcaption>
           </figure>
-          <div class="hero__badge" aria-hidden="true">
-            <svg class="rosette rosette--badge" viewBox="0 0 120 170" aria-hidden="true" focusable="false"><path d="M47 84L59 88L53 160L45.5 151L37 158Z" fill="#DDA7A5"/><path d="M73 84L61 88L67 160L74.5 151L83 158Z" fill="#DDA7A5"/><path d="M53.4 96L48.8 150" stroke="#F3D6D2" stroke-width="1.3" stroke-linecap="round" opacity=".8"/><path d="M66.6 96L71.2 150" stroke="#F3D6D2" stroke-width="1.3" stroke-linecap="round" opacity=".8"/><path d="M60.00 10.00A6.03 6.03 0 0 1 71.97 11.45A6.03 6.03 0 0 1 83.24 15.73A6.03 6.03 0 0 1 93.16 22.57A6.03 6.03 0 0 1 101.15 31.60A6.03 6.03 0 0 1 106.75 42.27A6.03 6.03 0 0 1 109.64 53.97A6.03 6.03 0 0 1 109.64 66.03A6.03 6.03 0 0 1 106.75 77.73A6.03 6.03 0 0 1 101.15 88.40A6.03 6.03 0 0 1 93.16 97.43A6.03 6.03 0 0 1 83.24 104.27A6.03 6.03 0 0 1 71.97 108.55A6.03 6.03 0 0 1 60.00 110.00A6.03 6.03 0 0 1 48.03 108.55A6.03 6.03 0 0 1 36.76 104.27A6.03 6.03 0 0 1 26.84 97.43A6.03 6.03 0 0 1 18.85 88.40A6.03 6.03 0 0 1 13.25 77.73A6.03 6.03 0 0 1 10.36 66.03A6.03 6.03 0 0 1 10.36 53.97A6.03 6.03 0 0 1 13.25 42.27A6.03 6.03 0 0 1 18.85 31.60A6.03 6.03 0 0 1 26.84 22.57A6.03 6.03 0 0 1 36.76 15.73A6.03 6.03 0 0 1 48.03 11.45A6.03 6.03 0 0 1 60.00 10.00Z" fill="#DDA7A5"/><path d="M60.00 20.00L60.00 11.00M69.57 21.16L71.73 12.42M78.59 24.58L82.77 16.61M86.52 30.06L92.49 23.32M92.92 37.28L100.33 32.16M97.40 45.82L105.82 42.62M99.71 55.18L108.64 54.09M99.71 64.82L108.64 65.91M97.40 74.18L105.82 77.38M92.92 82.72L100.33 87.84M86.52 89.94L92.49 96.68M78.59 95.42L82.77 103.39M69.57 98.84L71.73 107.58M60.00 100.00L60.00 109.00M50.43 98.84L48.27 107.58M41.41 95.42L37.23 103.39M33.48 89.94L27.51 96.68M27.08 82.72L19.67 87.84M22.60 74.18L14.18 77.38M20.29 64.82L11.36 65.91M20.29 55.18L11.36 54.09M22.60 45.82L14.18 42.62M27.08 37.28L19.67 32.16M33.48 30.06L27.51 23.32M41.41 24.58L37.23 16.61M50.43 21.16L48.27 12.42" stroke="#F3D6D2" stroke-width="1.1" opacity=".8"/><path d="M65.79 23.46A5.79 5.79 0 0 1 76.80 27.03A5.79 5.79 0 0 1 86.16 33.84A5.79 5.79 0 0 1 92.97 43.20A5.79 5.79 0 0 1 96.54 54.21A5.79 5.79 0 0 1 96.54 65.79A5.79 5.79 0 0 1 92.97 76.80A5.79 5.79 0 0 1 86.16 86.16A5.79 5.79 0 0 1 76.80 92.97A5.79 5.79 0 0 1 65.79 96.54A5.79 5.79 0 0 1 54.21 96.54A5.79 5.79 0 0 1 43.20 92.97A5.79 5.79 0 0 1 33.84 86.16A5.79 5.79 0 0 1 27.03 76.80A5.79 5.79 0 0 1 23.46 65.79A5.79 5.79 0 0 1 23.46 54.21A5.79 5.79 0 0 1 27.03 43.20A5.79 5.79 0 0 1 33.84 33.84A5.79 5.79 0 0 1 43.20 27.03A5.79 5.79 0 0 1 54.21 23.46A5.79 5.79 0 0 1 65.79 23.46Z" fill="#F3D6D2"/><circle cx="60" cy="60" r="26" fill="#FFFDFB" stroke="#C9AE7C" stroke-width="2"/><circle cx="60" cy="60" r="21.5" fill="none" stroke="#C9AE7C" stroke-width=".8"/></svg>
-            <span class="hero__badge-text">ten sam<br>ruch</span>
-          </div>
+          <span class="badge badge--butter hero__same" aria-hidden="true">ten sam<br>ruch</span>
         </div>
       </div>
+      <p class="wrap hero__brand">Od twórczyni <a class="link" href="https://gotsforhorses.pl" target="_blank" rel="noopener">GOT’S for Horses</a>, naturalnych smaczków dla koni.</p>
     </section>
 
-    <!-- 2. Problemy słowami jeźdźców -->
+    <!-- 2. Co poczujesz w siodle -->
     <section class="section" id="w-siodle" aria-labelledby="w-siodle-tytul">
-      <div class="container">
-        <header class="section-head">
+      <div class="wrap feel">
+        <header class="feel__head">
           <h2 class="h2" id="w-siodle-tytul">Co poczujesz w&nbsp;siodle</h2>
           <p class="lead">Każde ćwiczenie ma jeden cel: lepszą jazdę. Zaczynamy od tego, co jeźdźcy mówią najczęściej.</p>
+          <p class="feel__horse">A&nbsp;Twój koń dostaje jeźdźca, który mu nie przeszkadza.</p>
         </header>
-        <ul class="pairs">
-          <li class="pair">
-            <q class="pair__quote">Ucieka mi łydka</q>
-            <p class="pair__result"><svg class="ico"><use href="#i-check"/></svg><span>Stabilna łydka, także w&nbsp;półsiadzie</span></p>
-          </li>
-          <li class="pair">
-            <q class="pair__quote">Zapadam się na jedną stronę</q>
-            <p class="pair__result"><svg class="ico"><use href="#i-check"/></svg><span>Prosty, symetryczny dosiad</span></p>
-          </li>
-          <li class="pair">
-            <q class="pair__quote">Mam sztywne biodra</q>
-            <p class="pair__result"><svg class="ico"><use href="#i-check"/></svg><span>Biodra, które miękko idą za ruchem konia</span></p>
-          </li>
-          <li class="pair">
-            <q class="pair__quote">Brakuje mi tchu w&nbsp;kłusie</q>
-            <p class="pair__result"><svg class="ico"><use href="#i-check"/></svg><span>Kondycja na cały trening i&nbsp;parkur</span></p>
-          </li>
-          <li class="pair">
-            <q class="pair__quote">Bolą mnie plecy po jeździe</q>
-            <p class="pair__result"><svg class="ico"><use href="#i-check"/></svg><span>Silny tułów i&nbsp;spokojniejsze plecy</span></p>
-          </li>
-          <li class="pair">
-            <q class="pair__quote">Trzymam się wodzy</q>
-            <p class="pair__result"><svg class="ico"><use href="#i-check"/></svg><span>Lekkie ręce, bo tułów sam się stabilizuje</span></p>
-          </li>
+        <ul class="fixes">
+          <li class="fix"><span class="fix__was">„Ucieka mi łydka”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Stabilna łydka, także w&nbsp;półsiadzie</span></li>
+          <li class="fix"><span class="fix__was">„Zapadam się na jedną stronę”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Prosty, symetryczny dosiad</span></li>
+          <li class="fix"><span class="fix__was">„Mam sztywne biodra”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Biodra, które miękko idą za ruchem konia</span></li>
+          <li class="fix"><span class="fix__was">„Brakuje mi tchu w&nbsp;kłusie”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Kondycja na cały trening i&nbsp;parkur</span></li>
+          <li class="fix"><span class="fix__was">„Bolą mnie plecy po jeździe”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Silny tułów i&nbsp;spokojniejsze plecy</span></li>
+          <li class="fix"><span class="fix__was">„Trzymam się wodzy”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Lekkie ręce, bo tułów sam się stabilizuje</span></li>
         </ul>
-        <p class="pull">A&nbsp;Twój koń dostaje jeźdźca, który mu nie przeszkadza.</p>
       </div>
     </section>
 
-    <!-- 3. Jak to działa: trzy przeszkody jak na parkurze -->
-    <section class="section section--blush" id="jak-to-dziala" aria-labelledby="jak-tytul">
-      <div class="container">
-        <header class="section-head">
+    <!-- 3. Jak to działa: plan parkuru -->
+    <section class="band band--pink" id="jak-to-dziala" aria-labelledby="jak-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
           <h2 class="h2" id="jak-tytul">Jak to działa</h2>
           <p class="lead">Jak na parkurze: przeszkoda po przeszkodzie, w&nbsp;swoim tempie.</p>
         </header>
+        <div class="course-wrap"><svg class="course" viewBox="0 0 1100 220" aria-hidden="true" focusable="false"><path d="M20 148C80 148 120 92 183 92C290 92 430 150 550 150C670 150 800 86 917 86C1000 86 1040 132 1080 132" fill="none" stroke="#E07D98" stroke-width="3" stroke-linecap="round" stroke-dasharray="0.5 11"/><g transform="translate(183 92)"><rect x="-5" y="-34" width="10" height="68" rx="5" fill="#F2B6C6"/><rect x="-5" y="-34" width="10" height="17" rx="3" fill="#FFFFFF"/><rect x="-5" y="17" width="10" height="17" rx="3" fill="#FFFFFF"/><rect x="-9" y="-44" width="18" height="12" rx="3" fill="#2F2323"/><rect x="-9" y="32" width="18" height="12" rx="3" fill="#2F2323"/><circle cx="34" cy="-40" r="17" fill="#FFFFFF"/><text x="34" y="-34.5" text-anchor="middle" class="course__num">1</text></g><g transform="translate(550 150)"><rect x="-5" y="-34" width="10" height="68" rx="5" fill="#F2B6C6"/><rect x="-5" y="-34" width="10" height="17" rx="3" fill="#FFFFFF"/><rect x="-5" y="17" width="10" height="17" rx="3" fill="#FFFFFF"/><rect x="-9" y="-44" width="18" height="12" rx="3" fill="#2F2323"/><rect x="-9" y="32" width="18" height="12" rx="3" fill="#2F2323"/><circle cx="34" cy="-40" r="17" fill="#FFFFFF"/><text x="34" y="-34.5" text-anchor="middle" class="course__num">2</text></g><g transform="translate(917 86)"><rect x="-5" y="-34" width="10" height="68" rx="5" fill="#F2B6C6"/><rect x="-5" y="-34" width="10" height="17" rx="3" fill="#FFFFFF"/><rect x="-5" y="17" width="10" height="17" rx="3" fill="#FFFFFF"/><rect x="-9" y="-44" width="18" height="12" rx="3" fill="#2F2323"/><rect x="-9" y="32" width="18" height="12" rx="3" fill="#2F2323"/><circle cx="34" cy="-40" r="17" fill="#FFFFFF"/><text x="34" y="-34.5" text-anchor="middle" class="course__num">3</text></g><g transform="translate(20 148)"><circle r="7" fill="#2F2323"/><text x="0" y="-18" text-anchor="middle" class="course__label">Start</text></g><g transform="translate(1080 132)"><circle r="7" fill="#E07D98"/><text x="0" y="-18" text-anchor="middle" class="course__label">Meta</text></g></svg></div>
         <ol class="steps">
           <li class="step">
-            <div class="step__fence"><svg class="fence" viewBox="0 0 64 44" aria-hidden="true" focusable="false"><path d="M2 41.5H62" stroke="#C9AE7C" stroke-width="1.3" stroke-linecap="round"/><rect x="11" y="12.5" width="7" height="5.5" fill="#A9BBA2"/><rect x="18" y="12.5" width="7" height="5.5" fill="#FFFDFB"/><rect x="25" y="12.5" width="7" height="5.5" fill="#A9BBA2"/><rect x="32" y="12.5" width="7" height="5.5" fill="#FFFDFB"/><rect x="39" y="12.5" width="7" height="5.5" fill="#A9BBA2"/><rect x="46" y="12.5" width="7" height="5.5" fill="#FFFDFB"/><rect x="11" y="12.5" width="42" height="5.5" rx="1" fill="none" stroke="#4B3A3A" stroke-width="1.1"/><rect x="11" y="24.0" width="7" height="5.5" fill="#DDA7A5"/><rect x="18" y="24.0" width="7" height="5.5" fill="#FFFDFB"/><rect x="25" y="24.0" width="7" height="5.5" fill="#DDA7A5"/><rect x="32" y="24.0" width="7" height="5.5" fill="#FFFDFB"/><rect x="39" y="24.0" width="7" height="5.5" fill="#DDA7A5"/><rect x="46" y="24.0" width="7" height="5.5" fill="#FFFDFB"/><rect x="11" y="24.0" width="42" height="5.5" rx="1" fill="none" stroke="#4B3A3A" stroke-width="1.1"/><rect x="5" y="6" width="6" height="35.5" rx="1.6" fill="#FFFDFB" stroke="#4B3A3A" stroke-width="1.2"/><circle cx="8" cy="5" r="2.7" fill="#E8DAB9" stroke="#4B3A3A" stroke-width="1"/><rect x="53" y="6" width="6" height="35.5" rx="1.6" fill="#FFFDFB" stroke="#4B3A3A" stroke-width="1.2"/><circle cx="56" cy="5" r="2.7" fill="#E8DAB9" stroke="#4B3A3A" stroke-width="1"/><circle cx="22.0" cy="38.6" r="2.3" fill="#DDA7A5" stroke="#4B3A3A" stroke-width=".7"/><circle cx="27.5" cy="38.6" r="2.3" fill="#F3D6D2" stroke="#4B3A3A" stroke-width=".7"/><circle cx="33.0" cy="38.6" r="2.3" fill="#E8DAB9" stroke="#4B3A3A" stroke-width=".7"/><circle cx="38.5" cy="38.6" r="2.3" fill="#DDA7A5" stroke="#4B3A3A" stroke-width=".7"/><circle cx="44.0" cy="38.6" r="2.3" fill="#F3D6D2" stroke="#4B3A3A" stroke-width=".7"/></svg><span class="step__num" aria-hidden="true">1</span></div>
-            <h3 class="h3 step__title">Wybierz program</h3>
-            <p class="step__text">Odpowiadasz na kilka pytań o&nbsp;swoją jazdę i&nbsp;dostajesz program oraz level na start.</p>
+            <span class="step__mark" aria-hidden="true"><svg class="mini-fence" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><rect x="17" y="4" width="10" height="36" rx="5" fill="#F2B6C6"/><rect x="17" y="4" width="10" height="9" rx="3" fill="#FFFFFF"/><rect x="17" y="31" width="10" height="9" rx="3" fill="#FFFFFF"/><rect x="13" y="0" width="18" height="7" rx="2" fill="#2F2323"/><rect x="13" y="37" width="18" height="7" rx="2" fill="#2F2323"/></svg><b>1</b></span>
+            <h3 class="h3">Wybierz program</h3>
+            <p>Odpowiadasz na kilka pytań o&nbsp;swoją jazdę i&nbsp;dostajesz program oraz level na start.</p>
           </li>
           <li class="step">
-            <div class="step__fence"><svg class="fence" viewBox="0 0 64 44" aria-hidden="true" focusable="false"><path d="M2 41.5H62" stroke="#C9AE7C" stroke-width="1.3" stroke-linecap="round"/><rect x="11" y="12.5" width="7" height="5.5" fill="#A9BBA2"/><rect x="18" y="12.5" width="7" height="5.5" fill="#FFFDFB"/><rect x="25" y="12.5" width="7" height="5.5" fill="#A9BBA2"/><rect x="32" y="12.5" width="7" height="5.5" fill="#FFFDFB"/><rect x="39" y="12.5" width="7" height="5.5" fill="#A9BBA2"/><rect x="46" y="12.5" width="7" height="5.5" fill="#FFFDFB"/><rect x="11" y="12.5" width="42" height="5.5" rx="1" fill="none" stroke="#4B3A3A" stroke-width="1.1"/><rect x="11" y="24.0" width="7" height="5.5" fill="#DDA7A5"/><rect x="18" y="24.0" width="7" height="5.5" fill="#FFFDFB"/><rect x="25" y="24.0" width="7" height="5.5" fill="#DDA7A5"/><rect x="32" y="24.0" width="7" height="5.5" fill="#FFFDFB"/><rect x="39" y="24.0" width="7" height="5.5" fill="#DDA7A5"/><rect x="46" y="24.0" width="7" height="5.5" fill="#FFFDFB"/><rect x="11" y="24.0" width="42" height="5.5" rx="1" fill="none" stroke="#4B3A3A" stroke-width="1.1"/><rect x="5" y="6" width="6" height="35.5" rx="1.6" fill="#FFFDFB" stroke="#4B3A3A" stroke-width="1.2"/><circle cx="8" cy="5" r="2.7" fill="#E8DAB9" stroke="#4B3A3A" stroke-width="1"/><rect x="53" y="6" width="6" height="35.5" rx="1.6" fill="#FFFDFB" stroke="#4B3A3A" stroke-width="1.2"/><circle cx="56" cy="5" r="2.7" fill="#E8DAB9" stroke="#4B3A3A" stroke-width="1"/><circle cx="22.0" cy="38.6" r="2.3" fill="#DDA7A5" stroke="#4B3A3A" stroke-width=".7"/><circle cx="27.5" cy="38.6" r="2.3" fill="#F3D6D2" stroke="#4B3A3A" stroke-width=".7"/><circle cx="33.0" cy="38.6" r="2.3" fill="#E8DAB9" stroke="#4B3A3A" stroke-width=".7"/><circle cx="38.5" cy="38.6" r="2.3" fill="#DDA7A5" stroke="#4B3A3A" stroke-width=".7"/><circle cx="44.0" cy="38.6" r="2.3" fill="#F3D6D2" stroke="#4B3A3A" stroke-width=".7"/></svg><span class="step__num" aria-hidden="true">2</span></div>
-            <h3 class="h3 step__title">Trenuj 10-30&nbsp;minut</h3>
-            <p class="step__text">Na telefonie, w&nbsp;domu albo w&nbsp;stajni. Każdy trening ma rozgrzewkę, mobilność, część główną i&nbsp;rozciąganie.</p>
+            <span class="step__mark" aria-hidden="true"><svg class="mini-fence" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><rect x="17" y="4" width="10" height="36" rx="5" fill="#F2B6C6"/><rect x="17" y="4" width="10" height="9" rx="3" fill="#FFFFFF"/><rect x="17" y="31" width="10" height="9" rx="3" fill="#FFFFFF"/><rect x="13" y="0" width="18" height="7" rx="2" fill="#2F2323"/><rect x="13" y="37" width="18" height="7" rx="2" fill="#2F2323"/></svg><b>2</b></span>
+            <h3 class="h3">Trenuj 10-30&nbsp;minut</h3>
+            <p>Na telefonie, w&nbsp;domu albo w&nbsp;stajni. Każdy trening ma rozgrzewkę, mobilność, część główną i&nbsp;rozciąganie.</p>
           </li>
           <li class="step">
-            <div class="step__fence"><svg class="fence" viewBox="0 0 64 44" aria-hidden="true" focusable="false"><path d="M2 41.5H62" stroke="#C9AE7C" stroke-width="1.3" stroke-linecap="round"/><rect x="11" y="12.5" width="7" height="5.5" fill="#A9BBA2"/><rect x="18" y="12.5" width="7" height="5.5" fill="#FFFDFB"/><rect x="25" y="12.5" width="7" height="5.5" fill="#A9BBA2"/><rect x="32" y="12.5" width="7" height="5.5" fill="#FFFDFB"/><rect x="39" y="12.5" width="7" height="5.5" fill="#A9BBA2"/><rect x="46" y="12.5" width="7" height="5.5" fill="#FFFDFB"/><rect x="11" y="12.5" width="42" height="5.5" rx="1" fill="none" stroke="#4B3A3A" stroke-width="1.1"/><rect x="11" y="24.0" width="7" height="5.5" fill="#DDA7A5"/><rect x="18" y="24.0" width="7" height="5.5" fill="#FFFDFB"/><rect x="25" y="24.0" width="7" height="5.5" fill="#DDA7A5"/><rect x="32" y="24.0" width="7" height="5.5" fill="#FFFDFB"/><rect x="39" y="24.0" width="7" height="5.5" fill="#DDA7A5"/><rect x="46" y="24.0" width="7" height="5.5" fill="#FFFDFB"/><rect x="11" y="24.0" width="42" height="5.5" rx="1" fill="none" stroke="#4B3A3A" stroke-width="1.1"/><rect x="5" y="6" width="6" height="35.5" rx="1.6" fill="#FFFDFB" stroke="#4B3A3A" stroke-width="1.2"/><circle cx="8" cy="5" r="2.7" fill="#E8DAB9" stroke="#4B3A3A" stroke-width="1"/><rect x="53" y="6" width="6" height="35.5" rx="1.6" fill="#FFFDFB" stroke="#4B3A3A" stroke-width="1.2"/><circle cx="56" cy="5" r="2.7" fill="#E8DAB9" stroke="#4B3A3A" stroke-width="1"/><circle cx="22.0" cy="38.6" r="2.3" fill="#DDA7A5" stroke="#4B3A3A" stroke-width=".7"/><circle cx="27.5" cy="38.6" r="2.3" fill="#F3D6D2" stroke="#4B3A3A" stroke-width=".7"/><circle cx="33.0" cy="38.6" r="2.3" fill="#E8DAB9" stroke="#4B3A3A" stroke-width=".7"/><circle cx="38.5" cy="38.6" r="2.3" fill="#DDA7A5" stroke="#4B3A3A" stroke-width=".7"/><circle cx="44.0" cy="38.6" r="2.3" fill="#F3D6D2" stroke="#4B3A3A" stroke-width=".7"/></svg><span class="step__num" aria-hidden="true">3</span></div>
-            <h3 class="h3 step__title">Zalicz Próbę Mocy</h3>
-            <p class="step__text">Krótki test na koniec levelu. Zaliczasz, odbierasz rozetę i&nbsp;wchodzisz poziom wyżej.</p>
+            <span class="step__mark" aria-hidden="true"><svg class="mini-fence" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><rect x="17" y="4" width="10" height="36" rx="5" fill="#F2B6C6"/><rect x="17" y="4" width="10" height="9" rx="3" fill="#FFFFFF"/><rect x="17" y="31" width="10" height="9" rx="3" fill="#FFFFFF"/><rect x="13" y="0" width="18" height="7" rx="2" fill="#2F2323"/><rect x="13" y="37" width="18" height="7" rx="2" fill="#2F2323"/></svg><b>3</b></span>
+            <h3 class="h3">Zalicz Próbę Mocy</h3>
+            <p>Krótki test na koniec levelu. Zaliczasz, odbierasz rozetę i&nbsp;wchodzisz poziom wyżej.</p>
           </li>
         </ol>
       </div>
@@ -188,19 +182,19 @@
 
     <!-- 4. Programy (dane z data/programs.js) -->
     <section class="section" id="programy" aria-labelledby="programy-tytul">
-      <div class="container">
-        <header class="section-head">
+      <div class="wrap">
+        <header class="section-head section-head--row">
           <h2 class="h2" id="programy-tytul">Trzy programy, jeden&nbsp;cel: lepszy dosiad</h2>
           <p class="lead">Każdy program ma co najmniej dwa levele. Zaczynasz od Stępu, a&nbsp;po Próbie Mocy wchodzisz w&nbsp;Kłus.</p>
         </header>
-        <div class="programs" data-programy></div>
+        <div class="progs" data-programy></div>
         <p class="note"><svg class="ico"><use href="#i-prezent"/></svg>Pierwszy trening każdego programu jest za darmo.</p>
       </div>
     </section>
 
-    <!-- 5. Budowa treningu i podgląd odtwarzacza -->
-    <section class="section section--sage" id="trening" aria-labelledby="trening-tytul">
-      <div class="container training">
+    <!-- 5. Każdy trening w czterech blokach + działający podgląd odtwarzacza -->
+    <section class="band band--sage" id="trening" aria-labelledby="trening-tytul">
+      <div class="wrap training">
         <div class="training__copy">
           <h2 class="h2" id="trening-tytul">Każdy trening w&nbsp;czterech blokach</h2>
           <p class="lead">Zawsze ta sama kolejność, więc od drugiego razu wiesz, czego się spodziewać. Telefon prowadzi przez każde ćwiczenie: pokazuje ruch, liczy czas i&nbsp;zapowiada, co dalej.</p>
@@ -217,64 +211,72 @@
           </ul>
         </div>
 
-        <div class="training__visual">
-          <div class="phone" role="img" aria-label="Podgląd ekranu treningu: ćwiczenie koci grzbiet, licznik 35 sekund, następne ćwiczenie mostek biodrowy.">
-            <div class="phone__screen">
-              <div class="phone__video">
-                <img src="assets/img/hero-mata.svg" alt="" width="300" height="400">
-                <span class="phone__tag">Mobilność, blok 2 z&nbsp;4</span>
-              </div>
-              <div class="phone__body">
-                <p class="phone__meta">Gimnastyka, Stęp, trening A</p>
-                <p class="phone__title">Koci grzbiet</p>
-                <p class="phone__timer">0:35</p>
-                <p class="phone__cue">Ruch z&nbsp;miednicy, spokojny oddech</p>
-                <p class="phone__next">Następne: mostek biodrowy</p>
-                <div class="phone__progress">
-                  <span class="is-done" style="--g: 5"></span><span class="is-now" style="--g: 6"></span><span style="--g: 12"></span><span style="--g: 5"></span>
-                </div>
-                <div class="phone__controls">
-                  <span class="ctrl"><svg class="ico"><use href="#i-prev"/></svg></span>
-                  <span class="ctrl ctrl--main"><svg class="ico"><use href="#i-pause"/></svg></span>
-                  <span class="ctrl"><svg class="ico"><use href="#i-next"/></svg></span>
+        <div class="training__demo">
+          <div class="stage">
+            <div class="device" data-device>
+              <div class="device__screen">
+                <div class="player" data-player role="group" aria-label="Działający podgląd odtwarzacza treningu">
+                  <div class="player__video" data-p-video>
+                    <img src="assets/img/kadr-mata.svg" alt="" width="360" height="640">
+                    <span class="player__block" data-p-block>Mobilność, blok 2 z&nbsp;4</span>
+                  </div>
+                  <div class="player__hud">
+                    <p class="player__meta" data-p-meta>Gimnastyka, Stęp, trening A</p>
+                    <p class="player__name" data-p-name>Koci grzbiet</p>
+                    <p class="player__timer" data-p-timer aria-live="off">0:35</p>
+                    <p class="player__cue" data-p-cue>Ruch z&nbsp;miednicy, spokojny oddech</p>
+                    <p class="player__next" data-p-next>Następne: otwieranie bioder</p>
+                    <div class="player__progress" data-p-progress aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+                    <div class="player__controls">
+                      <button class="ctrl" type="button" data-p-prev aria-label="Poprzednie ćwiczenie"><svg class="ico"><use href="#i-prev"/></svg></button>
+                      <button class="ctrl ctrl--main" type="button" data-p-play aria-label="Wstrzymaj" aria-pressed="true"><svg class="ico" data-p-icon><use href="#i-pause"/></svg></button>
+                      <button class="ctrl" type="button" data-p-next-btn aria-label="Następne ćwiczenie"><svg class="ico"><use href="#i-next"/></svg></button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="seg" role="group" aria-label="Orientacja telefonu">
+            <span class="seg__thumb" aria-hidden="true"></span>
+            <button type="button" class="seg__btn" data-orient="pion" aria-pressed="true">Pion</button>
+            <button type="button" class="seg__btn" data-orient="poziom" aria-pressed="false">Poziom</button>
+          </div>
+          <p class="training__hint">Obróć telefon i&nbsp;zobacz, jak zmienia się ekran. Trening leci dalej.</p>
         </div>
       </div>
     </section>
 
     <!-- 6. Próba Mocy i rozety -->
-    <section class="section proba" id="proba-mocy" aria-labelledby="proba-tytul">
-      <div class="container">
+    <section class="band band--dark" id="proba-mocy" aria-labelledby="proba-tytul">
+      <div class="wrap proba">
         <header class="section-head section-head--center">
           <h2 class="h2" id="proba-tytul">Próba Mocy i&nbsp;rozety</h2>
           <p class="lead">Na koniec każdego levelu czeka krótki test: kilka ćwiczeń, które pokazują, że ciało jest gotowe na więcej. Zaliczasz i&nbsp;odbierasz rozetę. Nie wyszło? Tydzień celowanego treningu i&nbsp;podchodzisz jeszcze raz.</p>
         </header>
         <ul class="rosettes">
-          <li class="rosette-card"><svg class="rosette" viewBox="0 0 120 170" role="img" aria-label="Rozeta Stęp, level 1"><path d="M47 84L59 88L53 160L45.5 151L37 158Z" fill="#DDA7A5"/><path d="M73 84L61 88L67 160L74.5 151L83 158Z" fill="#DDA7A5"/><path d="M53.4 96L48.8 150" stroke="#F3D6D2" stroke-width="1.3" stroke-linecap="round" opacity=".8"/><path d="M66.6 96L71.2 150" stroke="#F3D6D2" stroke-width="1.3" stroke-linecap="round" opacity=".8"/><path d="M60.00 10.00A6.03 6.03 0 0 1 71.97 11.45A6.03 6.03 0 0 1 83.24 15.73A6.03 6.03 0 0 1 93.16 22.57A6.03 6.03 0 0 1 101.15 31.60A6.03 6.03 0 0 1 106.75 42.27A6.03 6.03 0 0 1 109.64 53.97A6.03 6.03 0 0 1 109.64 66.03A6.03 6.03 0 0 1 106.75 77.73A6.03 6.03 0 0 1 101.15 88.40A6.03 6.03 0 0 1 93.16 97.43A6.03 6.03 0 0 1 83.24 104.27A6.03 6.03 0 0 1 71.97 108.55A6.03 6.03 0 0 1 60.00 110.00A6.03 6.03 0 0 1 48.03 108.55A6.03 6.03 0 0 1 36.76 104.27A6.03 6.03 0 0 1 26.84 97.43A6.03 6.03 0 0 1 18.85 88.40A6.03 6.03 0 0 1 13.25 77.73A6.03 6.03 0 0 1 10.36 66.03A6.03 6.03 0 0 1 10.36 53.97A6.03 6.03 0 0 1 13.25 42.27A6.03 6.03 0 0 1 18.85 31.60A6.03 6.03 0 0 1 26.84 22.57A6.03 6.03 0 0 1 36.76 15.73A6.03 6.03 0 0 1 48.03 11.45A6.03 6.03 0 0 1 60.00 10.00Z" fill="#DDA7A5"/><path d="M60.00 20.00L60.00 11.00M69.57 21.16L71.73 12.42M78.59 24.58L82.77 16.61M86.52 30.06L92.49 23.32M92.92 37.28L100.33 32.16M97.40 45.82L105.82 42.62M99.71 55.18L108.64 54.09M99.71 64.82L108.64 65.91M97.40 74.18L105.82 77.38M92.92 82.72L100.33 87.84M86.52 89.94L92.49 96.68M78.59 95.42L82.77 103.39M69.57 98.84L71.73 107.58M60.00 100.00L60.00 109.00M50.43 98.84L48.27 107.58M41.41 95.42L37.23 103.39M33.48 89.94L27.51 96.68M27.08 82.72L19.67 87.84M22.60 74.18L14.18 77.38M20.29 64.82L11.36 65.91M20.29 55.18L11.36 54.09M22.60 45.82L14.18 42.62M27.08 37.28L19.67 32.16M33.48 30.06L27.51 23.32M41.41 24.58L37.23 16.61M50.43 21.16L48.27 12.42" stroke="#F3D6D2" stroke-width="1.1" opacity=".8"/><path d="M65.79 23.46A5.79 5.79 0 0 1 76.80 27.03A5.79 5.79 0 0 1 86.16 33.84A5.79 5.79 0 0 1 92.97 43.20A5.79 5.79 0 0 1 96.54 54.21A5.79 5.79 0 0 1 96.54 65.79A5.79 5.79 0 0 1 92.97 76.80A5.79 5.79 0 0 1 86.16 86.16A5.79 5.79 0 0 1 76.80 92.97A5.79 5.79 0 0 1 65.79 96.54A5.79 5.79 0 0 1 54.21 96.54A5.79 5.79 0 0 1 43.20 92.97A5.79 5.79 0 0 1 33.84 86.16A5.79 5.79 0 0 1 27.03 76.80A5.79 5.79 0 0 1 23.46 65.79A5.79 5.79 0 0 1 23.46 54.21A5.79 5.79 0 0 1 27.03 43.20A5.79 5.79 0 0 1 33.84 33.84A5.79 5.79 0 0 1 43.20 27.03A5.79 5.79 0 0 1 54.21 23.46A5.79 5.79 0 0 1 65.79 23.46Z" fill="#F3D6D2"/><circle cx="60" cy="60" r="26" fill="#FFFDFB" stroke="#C9AE7C" stroke-width="2"/><circle cx="60" cy="60" r="21.5" fill="none" stroke="#C9AE7C" stroke-width=".8"/><text x="60" y="65" text-anchor="middle" class="rosette__label">Stęp</text></svg><span class="rosette-card__label">Level 1</span></li>
-          <li class="rosette-card"><svg class="rosette" viewBox="0 0 120 170" role="img" aria-label="Rozeta Kłus, level 2"><path d="M47 84L59 88L53 160L45.5 151L37 158Z" fill="#A9BBA2"/><path d="M73 84L61 88L67 160L74.5 151L83 158Z" fill="#A9BBA2"/><path d="M53.4 96L48.8 150" stroke="#DCE5D7" stroke-width="1.3" stroke-linecap="round" opacity=".8"/><path d="M66.6 96L71.2 150" stroke="#DCE5D7" stroke-width="1.3" stroke-linecap="round" opacity=".8"/><path d="M60.00 10.00A6.03 6.03 0 0 1 71.97 11.45A6.03 6.03 0 0 1 83.24 15.73A6.03 6.03 0 0 1 93.16 22.57A6.03 6.03 0 0 1 101.15 31.60A6.03 6.03 0 0 1 106.75 42.27A6.03 6.03 0 0 1 109.64 53.97A6.03 6.03 0 0 1 109.64 66.03A6.03 6.03 0 0 1 106.75 77.73A6.03 6.03 0 0 1 101.15 88.40A6.03 6.03 0 0 1 93.16 97.43A6.03 6.03 0 0 1 83.24 104.27A6.03 6.03 0 0 1 71.97 108.55A6.03 6.03 0 0 1 60.00 110.00A6.03 6.03 0 0 1 48.03 108.55A6.03 6.03 0 0 1 36.76 104.27A6.03 6.03 0 0 1 26.84 97.43A6.03 6.03 0 0 1 18.85 88.40A6.03 6.03 0 0 1 13.25 77.73A6.03 6.03 0 0 1 10.36 66.03A6.03 6.03 0 0 1 10.36 53.97A6.03 6.03 0 0 1 13.25 42.27A6.03 6.03 0 0 1 18.85 31.60A6.03 6.03 0 0 1 26.84 22.57A6.03 6.03 0 0 1 36.76 15.73A6.03 6.03 0 0 1 48.03 11.45A6.03 6.03 0 0 1 60.00 10.00Z" fill="#A9BBA2"/><path d="M60.00 20.00L60.00 11.00M69.57 21.16L71.73 12.42M78.59 24.58L82.77 16.61M86.52 30.06L92.49 23.32M92.92 37.28L100.33 32.16M97.40 45.82L105.82 42.62M99.71 55.18L108.64 54.09M99.71 64.82L108.64 65.91M97.40 74.18L105.82 77.38M92.92 82.72L100.33 87.84M86.52 89.94L92.49 96.68M78.59 95.42L82.77 103.39M69.57 98.84L71.73 107.58M60.00 100.00L60.00 109.00M50.43 98.84L48.27 107.58M41.41 95.42L37.23 103.39M33.48 89.94L27.51 96.68M27.08 82.72L19.67 87.84M22.60 74.18L14.18 77.38M20.29 64.82L11.36 65.91M20.29 55.18L11.36 54.09M22.60 45.82L14.18 42.62M27.08 37.28L19.67 32.16M33.48 30.06L27.51 23.32M41.41 24.58L37.23 16.61M50.43 21.16L48.27 12.42" stroke="#DCE5D7" stroke-width="1.1" opacity=".8"/><path d="M65.79 23.46A5.79 5.79 0 0 1 76.80 27.03A5.79 5.79 0 0 1 86.16 33.84A5.79 5.79 0 0 1 92.97 43.20A5.79 5.79 0 0 1 96.54 54.21A5.79 5.79 0 0 1 96.54 65.79A5.79 5.79 0 0 1 92.97 76.80A5.79 5.79 0 0 1 86.16 86.16A5.79 5.79 0 0 1 76.80 92.97A5.79 5.79 0 0 1 65.79 96.54A5.79 5.79 0 0 1 54.21 96.54A5.79 5.79 0 0 1 43.20 92.97A5.79 5.79 0 0 1 33.84 86.16A5.79 5.79 0 0 1 27.03 76.80A5.79 5.79 0 0 1 23.46 65.79A5.79 5.79 0 0 1 23.46 54.21A5.79 5.79 0 0 1 27.03 43.20A5.79 5.79 0 0 1 33.84 33.84A5.79 5.79 0 0 1 43.20 27.03A5.79 5.79 0 0 1 54.21 23.46A5.79 5.79 0 0 1 65.79 23.46Z" fill="#DCE5D7"/><circle cx="60" cy="60" r="26" fill="#FFFDFB" stroke="#C9AE7C" stroke-width="2"/><circle cx="60" cy="60" r="21.5" fill="none" stroke="#C9AE7C" stroke-width=".8"/><text x="60" y="65" text-anchor="middle" class="rosette__label">Kłus</text></svg><span class="rosette-card__label">Level 2</span></li>
-          <li class="rosette-card rosette-card--soon"><svg class="rosette" viewBox="0 0 120 170" role="img" aria-label="Rozeta Galop, level 3, wkrótce"><path d="M47 84L59 88L53 160L45.5 151L37 158Z" fill="#D6C08E"/><path d="M73 84L61 88L67 160L74.5 151L83 158Z" fill="#D6C08E"/><path d="M53.4 96L48.8 150" stroke="#EFE4C9" stroke-width="1.3" stroke-linecap="round" opacity=".8"/><path d="M66.6 96L71.2 150" stroke="#EFE4C9" stroke-width="1.3" stroke-linecap="round" opacity=".8"/><path d="M60.00 10.00A6.03 6.03 0 0 1 71.97 11.45A6.03 6.03 0 0 1 83.24 15.73A6.03 6.03 0 0 1 93.16 22.57A6.03 6.03 0 0 1 101.15 31.60A6.03 6.03 0 0 1 106.75 42.27A6.03 6.03 0 0 1 109.64 53.97A6.03 6.03 0 0 1 109.64 66.03A6.03 6.03 0 0 1 106.75 77.73A6.03 6.03 0 0 1 101.15 88.40A6.03 6.03 0 0 1 93.16 97.43A6.03 6.03 0 0 1 83.24 104.27A6.03 6.03 0 0 1 71.97 108.55A6.03 6.03 0 0 1 60.00 110.00A6.03 6.03 0 0 1 48.03 108.55A6.03 6.03 0 0 1 36.76 104.27A6.03 6.03 0 0 1 26.84 97.43A6.03 6.03 0 0 1 18.85 88.40A6.03 6.03 0 0 1 13.25 77.73A6.03 6.03 0 0 1 10.36 66.03A6.03 6.03 0 0 1 10.36 53.97A6.03 6.03 0 0 1 13.25 42.27A6.03 6.03 0 0 1 18.85 31.60A6.03 6.03 0 0 1 26.84 22.57A6.03 6.03 0 0 1 36.76 15.73A6.03 6.03 0 0 1 48.03 11.45A6.03 6.03 0 0 1 60.00 10.00Z" fill="#D6C08E"/><path d="M60.00 20.00L60.00 11.00M69.57 21.16L71.73 12.42M78.59 24.58L82.77 16.61M86.52 30.06L92.49 23.32M92.92 37.28L100.33 32.16M97.40 45.82L105.82 42.62M99.71 55.18L108.64 54.09M99.71 64.82L108.64 65.91M97.40 74.18L105.82 77.38M92.92 82.72L100.33 87.84M86.52 89.94L92.49 96.68M78.59 95.42L82.77 103.39M69.57 98.84L71.73 107.58M60.00 100.00L60.00 109.00M50.43 98.84L48.27 107.58M41.41 95.42L37.23 103.39M33.48 89.94L27.51 96.68M27.08 82.72L19.67 87.84M22.60 74.18L14.18 77.38M20.29 64.82L11.36 65.91M20.29 55.18L11.36 54.09M22.60 45.82L14.18 42.62M27.08 37.28L19.67 32.16M33.48 30.06L27.51 23.32M41.41 24.58L37.23 16.61M50.43 21.16L48.27 12.42" stroke="#EFE4C9" stroke-width="1.1" opacity=".8"/><path d="M65.79 23.46A5.79 5.79 0 0 1 76.80 27.03A5.79 5.79 0 0 1 86.16 33.84A5.79 5.79 0 0 1 92.97 43.20A5.79 5.79 0 0 1 96.54 54.21A5.79 5.79 0 0 1 96.54 65.79A5.79 5.79 0 0 1 92.97 76.80A5.79 5.79 0 0 1 86.16 86.16A5.79 5.79 0 0 1 76.80 92.97A5.79 5.79 0 0 1 65.79 96.54A5.79 5.79 0 0 1 54.21 96.54A5.79 5.79 0 0 1 43.20 92.97A5.79 5.79 0 0 1 33.84 86.16A5.79 5.79 0 0 1 27.03 76.80A5.79 5.79 0 0 1 23.46 65.79A5.79 5.79 0 0 1 23.46 54.21A5.79 5.79 0 0 1 27.03 43.20A5.79 5.79 0 0 1 33.84 33.84A5.79 5.79 0 0 1 43.20 27.03A5.79 5.79 0 0 1 54.21 23.46A5.79 5.79 0 0 1 65.79 23.46Z" fill="#EFE4C9"/><circle cx="60" cy="60" r="26" fill="#FFFDFB" stroke="#C9AE7C" stroke-width="2"/><circle cx="60" cy="60" r="21.5" fill="none" stroke="#C9AE7C" stroke-width=".8"/><text x="60" y="65" text-anchor="middle" class="rosette__label">Galop</text></svg><span class="rosette-card__label">Level 3, wkrótce</span></li>
+          <li class="rosette-card"><svg class="rosette" viewBox="0 0 120 172" role="img" aria-label="Rozeta Stęp, level 1"><path d="M46 84L60 89L53 164L45 154L36 161Z" fill="#D9788F"/><path d="M74 84L60 89L67 164L75 154L84 161Z" fill="#EFA3B6"/><path d="M60.00 9.00A6.66 6.66 0 0 1 73.20 10.74A6.66 6.66 0 0 1 85.50 15.83A6.66 6.66 0 0 1 96.06 23.94A6.66 6.66 0 0 1 104.17 34.50A6.66 6.66 0 0 1 109.26 46.80A6.66 6.66 0 0 1 111.00 60.00A6.66 6.66 0 0 1 109.26 73.20A6.66 6.66 0 0 1 104.17 85.50A6.66 6.66 0 0 1 96.06 96.06A6.66 6.66 0 0 1 85.50 104.17A6.66 6.66 0 0 1 73.20 109.26A6.66 6.66 0 0 1 60.00 111.00A6.66 6.66 0 0 1 46.80 109.26A6.66 6.66 0 0 1 34.50 104.17A6.66 6.66 0 0 1 23.94 96.06A6.66 6.66 0 0 1 15.83 85.50A6.66 6.66 0 0 1 10.74 73.20A6.66 6.66 0 0 1 9.00 60.00A6.66 6.66 0 0 1 10.74 46.80A6.66 6.66 0 0 1 15.83 34.50A6.66 6.66 0 0 1 23.94 23.94A6.66 6.66 0 0 1 34.50 15.83A6.66 6.66 0 0 1 46.80 10.74A6.66 6.66 0 0 1 60.00 9.00Z" fill="#EFA3B6"/><path d="M66.60 22.58A6.60 6.60 0 0 1 79.00 27.09A6.60 6.60 0 0 1 89.11 35.57A6.60 6.60 0 0 1 95.71 47.00A6.60 6.60 0 0 1 98.00 60.00A6.60 6.60 0 0 1 95.71 73.00A6.60 6.60 0 0 1 89.11 84.43A6.60 6.60 0 0 1 79.00 92.91A6.60 6.60 0 0 1 66.60 97.42A6.60 6.60 0 0 1 53.40 97.42A6.60 6.60 0 0 1 41.00 92.91A6.60 6.60 0 0 1 30.89 84.43A6.60 6.60 0 0 1 24.29 73.00A6.60 6.60 0 0 1 22.00 60.00A6.60 6.60 0 0 1 24.29 47.00A6.60 6.60 0 0 1 30.89 35.57A6.60 6.60 0 0 1 41.00 27.09A6.60 6.60 0 0 1 53.40 22.58A6.60 6.60 0 0 1 66.60 22.58Z" fill="#F9D9E2"/><circle cx="60" cy="60" r="26.5" fill="#FFFFFF"/><circle cx="60" cy="60" r="22" fill="none" stroke="#D9788F" stroke-width="1.4"/><text x="60" y="65" text-anchor="middle" class="rosette__label">Stęp</text></svg><span>Level 1</span></li>
+          <li class="rosette-card"><svg class="rosette" viewBox="0 0 120 172" role="img" aria-label="Rozeta Kłus, level 2"><path d="M46 84L60 89L53 164L45 154L36 161Z" fill="#7E9877"/><path d="M74 84L60 89L67 164L75 154L84 161Z" fill="#ADC3A4"/><path d="M60.00 9.00A6.66 6.66 0 0 1 73.20 10.74A6.66 6.66 0 0 1 85.50 15.83A6.66 6.66 0 0 1 96.06 23.94A6.66 6.66 0 0 1 104.17 34.50A6.66 6.66 0 0 1 109.26 46.80A6.66 6.66 0 0 1 111.00 60.00A6.66 6.66 0 0 1 109.26 73.20A6.66 6.66 0 0 1 104.17 85.50A6.66 6.66 0 0 1 96.06 96.06A6.66 6.66 0 0 1 85.50 104.17A6.66 6.66 0 0 1 73.20 109.26A6.66 6.66 0 0 1 60.00 111.00A6.66 6.66 0 0 1 46.80 109.26A6.66 6.66 0 0 1 34.50 104.17A6.66 6.66 0 0 1 23.94 96.06A6.66 6.66 0 0 1 15.83 85.50A6.66 6.66 0 0 1 10.74 73.20A6.66 6.66 0 0 1 9.00 60.00A6.66 6.66 0 0 1 10.74 46.80A6.66 6.66 0 0 1 15.83 34.50A6.66 6.66 0 0 1 23.94 23.94A6.66 6.66 0 0 1 34.50 15.83A6.66 6.66 0 0 1 46.80 10.74A6.66 6.66 0 0 1 60.00 9.00Z" fill="#ADC3A4"/><path d="M66.60 22.58A6.60 6.60 0 0 1 79.00 27.09A6.60 6.60 0 0 1 89.11 35.57A6.60 6.60 0 0 1 95.71 47.00A6.60 6.60 0 0 1 98.00 60.00A6.60 6.60 0 0 1 95.71 73.00A6.60 6.60 0 0 1 89.11 84.43A6.60 6.60 0 0 1 79.00 92.91A6.60 6.60 0 0 1 66.60 97.42A6.60 6.60 0 0 1 53.40 97.42A6.60 6.60 0 0 1 41.00 92.91A6.60 6.60 0 0 1 30.89 84.43A6.60 6.60 0 0 1 24.29 73.00A6.60 6.60 0 0 1 22.00 60.00A6.60 6.60 0 0 1 24.29 47.00A6.60 6.60 0 0 1 30.89 35.57A6.60 6.60 0 0 1 41.00 27.09A6.60 6.60 0 0 1 53.40 22.58A6.60 6.60 0 0 1 66.60 22.58Z" fill="#DEE8D8"/><circle cx="60" cy="60" r="26.5" fill="#FFFFFF"/><circle cx="60" cy="60" r="22" fill="none" stroke="#7E9877" stroke-width="1.4"/><text x="60" y="65" text-anchor="middle" class="rosette__label">Kłus</text></svg><span>Level 2</span></li>
+          <li class="rosette-card rosette-card--soon"><svg class="rosette" viewBox="0 0 120 172" role="img" aria-label="Rozeta Galop, level 3, wkrótce"><path d="M46 84L60 89L53 164L45 154L36 161Z" fill="#C3A748"/><path d="M74 84L60 89L67 164L75 154L84 161Z" fill="#E9D27F"/><path d="M60.00 9.00A6.66 6.66 0 0 1 73.20 10.74A6.66 6.66 0 0 1 85.50 15.83A6.66 6.66 0 0 1 96.06 23.94A6.66 6.66 0 0 1 104.17 34.50A6.66 6.66 0 0 1 109.26 46.80A6.66 6.66 0 0 1 111.00 60.00A6.66 6.66 0 0 1 109.26 73.20A6.66 6.66 0 0 1 104.17 85.50A6.66 6.66 0 0 1 96.06 96.06A6.66 6.66 0 0 1 85.50 104.17A6.66 6.66 0 0 1 73.20 109.26A6.66 6.66 0 0 1 60.00 111.00A6.66 6.66 0 0 1 46.80 109.26A6.66 6.66 0 0 1 34.50 104.17A6.66 6.66 0 0 1 23.94 96.06A6.66 6.66 0 0 1 15.83 85.50A6.66 6.66 0 0 1 10.74 73.20A6.66 6.66 0 0 1 9.00 60.00A6.66 6.66 0 0 1 10.74 46.80A6.66 6.66 0 0 1 15.83 34.50A6.66 6.66 0 0 1 23.94 23.94A6.66 6.66 0 0 1 34.50 15.83A6.66 6.66 0 0 1 46.80 10.74A6.66 6.66 0 0 1 60.00 9.00Z" fill="#E9D27F"/><path d="M66.60 22.58A6.60 6.60 0 0 1 79.00 27.09A6.60 6.60 0 0 1 89.11 35.57A6.60 6.60 0 0 1 95.71 47.00A6.60 6.60 0 0 1 98.00 60.00A6.60 6.60 0 0 1 95.71 73.00A6.60 6.60 0 0 1 89.11 84.43A6.60 6.60 0 0 1 79.00 92.91A6.60 6.60 0 0 1 66.60 97.42A6.60 6.60 0 0 1 53.40 97.42A6.60 6.60 0 0 1 41.00 92.91A6.60 6.60 0 0 1 30.89 84.43A6.60 6.60 0 0 1 24.29 73.00A6.60 6.60 0 0 1 22.00 60.00A6.60 6.60 0 0 1 24.29 47.00A6.60 6.60 0 0 1 30.89 35.57A6.60 6.60 0 0 1 41.00 27.09A6.60 6.60 0 0 1 53.40 22.58A6.60 6.60 0 0 1 66.60 22.58Z" fill="#F7EDC5"/><circle cx="60" cy="60" r="26.5" fill="#FFFFFF"/><circle cx="60" cy="60" r="22" fill="none" stroke="#C3A748" stroke-width="1.4"/><text x="60" y="65" text-anchor="middle" class="rosette__label">Galop</text></svg><span>Level 3, wkrótce</span></li>
         </ul>
         <div class="proba__tests">
-          <p class="proba__tests-title">Przykładowe testy</p>
+          <p>Przykładowe testy</p>
           <ul class="chips">
-            <li class="chip">Półsiad przy ścianie</li>
-            <li class="chip">Deska</li>
-            <li class="chip">Stanie na jednej nodze</li>
-            <li class="chip">Mostek jednonóż</li>
+            <li>Półsiad przy ścianie</li>
+            <li>Deska</li>
+            <li>Stanie na jednej nodze</li>
+            <li>Mostek jednonóż</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- 7. Darmowa rozgrzewka (lista mailingowa, w demo bez wysyłki) -->
-    <section class="section section--flush-top" id="rozgrzewka" aria-labelledby="rozgrzewka-tytul">
-      <div class="container">
+    <!-- 7. Darmowa rozgrzewka -->
+    <section class="section" id="rozgrzewka" aria-labelledby="rozgrzewka-tytul">
+      <div class="wrap">
         <div class="lead-panel">
+          <span class="badge badge--rose lead-panel__badge" aria-hidden="true">7&nbsp;min</span>
           <div class="lead-panel__copy">
-            <p class="lead-panel__time"><span>7</span> minut</p>
             <h2 class="h2" id="rozgrzewka-tytul">Darmowa rozgrzewka przed jazdą</h2>
             <p class="lead">Bez sprzętu, do zrobienia obok boksu. Zostaw e-mail, a&nbsp;wyślemy Ci ją od razu.</p>
             <ul class="check-list">
@@ -283,7 +285,6 @@
               <li><svg class="ico"><use href="#i-check"/></svg>Na start dostajesz też pierwszy trening z&nbsp;każdego programu</li>
             </ul>
           </div>
-
           <div class="lead-panel__form">
             <form class="form" data-lead-form novalidate>
               <div class="field">
@@ -298,12 +299,12 @@
                 </label>
                 <p class="field__error" id="lead-zgoda-blad" hidden>Zaznacz zgodę, żebyśmy mogli wysłać rozgrzewkę.</p>
               </div>
-              <button class="btn btn--primary btn--block" type="submit">Wyślij mi rozgrzewkę</button>
+              <button class="btn btn--dark btn--block" type="submit">Wyślij mi rozgrzewkę</button>
               <p class="form__fine">Zero spamu. Wypiszesz się jednym kliknięciem.</p>
             </form>
             <div class="form form--success" data-lead-success tabindex="-1" hidden>
-              <svg class="rosette rosette--small" viewBox="0 0 120 170" aria-hidden="true" focusable="false"><path d="M47 84L59 88L53 160L45.5 151L37 158Z" fill="#DDA7A5"/><path d="M73 84L61 88L67 160L74.5 151L83 158Z" fill="#DDA7A5"/><path d="M53.4 96L48.8 150" stroke="#F3D6D2" stroke-width="1.3" stroke-linecap="round" opacity=".8"/><path d="M66.6 96L71.2 150" stroke="#F3D6D2" stroke-width="1.3" stroke-linecap="round" opacity=".8"/><path d="M60.00 10.00A6.03 6.03 0 0 1 71.97 11.45A6.03 6.03 0 0 1 83.24 15.73A6.03 6.03 0 0 1 93.16 22.57A6.03 6.03 0 0 1 101.15 31.60A6.03 6.03 0 0 1 106.75 42.27A6.03 6.03 0 0 1 109.64 53.97A6.03 6.03 0 0 1 109.64 66.03A6.03 6.03 0 0 1 106.75 77.73A6.03 6.03 0 0 1 101.15 88.40A6.03 6.03 0 0 1 93.16 97.43A6.03 6.03 0 0 1 83.24 104.27A6.03 6.03 0 0 1 71.97 108.55A6.03 6.03 0 0 1 60.00 110.00A6.03 6.03 0 0 1 48.03 108.55A6.03 6.03 0 0 1 36.76 104.27A6.03 6.03 0 0 1 26.84 97.43A6.03 6.03 0 0 1 18.85 88.40A6.03 6.03 0 0 1 13.25 77.73A6.03 6.03 0 0 1 10.36 66.03A6.03 6.03 0 0 1 10.36 53.97A6.03 6.03 0 0 1 13.25 42.27A6.03 6.03 0 0 1 18.85 31.60A6.03 6.03 0 0 1 26.84 22.57A6.03 6.03 0 0 1 36.76 15.73A6.03 6.03 0 0 1 48.03 11.45A6.03 6.03 0 0 1 60.00 10.00Z" fill="#DDA7A5"/><path d="M60.00 20.00L60.00 11.00M69.57 21.16L71.73 12.42M78.59 24.58L82.77 16.61M86.52 30.06L92.49 23.32M92.92 37.28L100.33 32.16M97.40 45.82L105.82 42.62M99.71 55.18L108.64 54.09M99.71 64.82L108.64 65.91M97.40 74.18L105.82 77.38M92.92 82.72L100.33 87.84M86.52 89.94L92.49 96.68M78.59 95.42L82.77 103.39M69.57 98.84L71.73 107.58M60.00 100.00L60.00 109.00M50.43 98.84L48.27 107.58M41.41 95.42L37.23 103.39M33.48 89.94L27.51 96.68M27.08 82.72L19.67 87.84M22.60 74.18L14.18 77.38M20.29 64.82L11.36 65.91M20.29 55.18L11.36 54.09M22.60 45.82L14.18 42.62M27.08 37.28L19.67 32.16M33.48 30.06L27.51 23.32M41.41 24.58L37.23 16.61M50.43 21.16L48.27 12.42" stroke="#F3D6D2" stroke-width="1.1" opacity=".8"/><path d="M65.79 23.46A5.79 5.79 0 0 1 76.80 27.03A5.79 5.79 0 0 1 86.16 33.84A5.79 5.79 0 0 1 92.97 43.20A5.79 5.79 0 0 1 96.54 54.21A5.79 5.79 0 0 1 96.54 65.79A5.79 5.79 0 0 1 92.97 76.80A5.79 5.79 0 0 1 86.16 86.16A5.79 5.79 0 0 1 76.80 92.97A5.79 5.79 0 0 1 65.79 96.54A5.79 5.79 0 0 1 54.21 96.54A5.79 5.79 0 0 1 43.20 92.97A5.79 5.79 0 0 1 33.84 86.16A5.79 5.79 0 0 1 27.03 76.80A5.79 5.79 0 0 1 23.46 65.79A5.79 5.79 0 0 1 23.46 54.21A5.79 5.79 0 0 1 27.03 43.20A5.79 5.79 0 0 1 33.84 33.84A5.79 5.79 0 0 1 43.20 27.03A5.79 5.79 0 0 1 54.21 23.46A5.79 5.79 0 0 1 65.79 23.46Z" fill="#F3D6D2"/><circle cx="60" cy="60" r="26" fill="#FFFDFB" stroke="#C9AE7C" stroke-width="2"/><circle cx="60" cy="60" r="21.5" fill="none" stroke="#C9AE7C" stroke-width=".8"/></svg>
-              <p class="h3">Gotowe, rozgrzewka już leci</p>
+              <span class="badge badge--rose" aria-hidden="true">gotowe</span>
+              <p class="h3">Rozgrzewka już leci</p>
               <p>Sprawdź skrzynkę za kilka minut. W&nbsp;wersji demo nic nie wysyłamy, ale tak będzie wyglądać potwierdzenie.</p>
             </div>
           </div>
@@ -311,19 +312,16 @@
       </div>
     </section>
 
-    <!-- 8. O nas i testy przed startem -->
-    <section class="section" id="o-nas" aria-labelledby="o-nas-tytul">
-      <div class="container">
-        <header class="section-head">
+    <!-- 8. O nas i testy -->
+    <section class="section section--tight-top" id="o-nas" aria-labelledby="o-nas-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
           <h2 class="h2" id="o-nas-tytul">Kto stoi za Akademią</h2>
           <p class="lead">Programy powstają w&nbsp;duecie: jeździecka codzienność i&nbsp;fizjoterapia.</p>
         </header>
         <div class="people">
           <article class="person">
-            <figure class="arch arch--portrait person__photo">
-              <div class="monogram" role="img" aria-label="Miejsce na zdjęcie Justyny">J</div>
-              <figcaption class="arch__caption">Tu zdjęcie Justyny</figcaption>
-            </figure>
+            <figure class="person__photo person__photo--pink"><span class="person__initial" aria-hidden="true">J</span><figcaption>Tu zdjęcie Justyny</figcaption></figure>
             <div class="person__text">
               <h3 class="h3">Justyna Burzyńska-Ellis</h3>
               <p class="person__role">Pomysłodawczyni Akademii, twórczyni GOT’S for Horses</p>
@@ -331,10 +329,7 @@
             </div>
           </article>
           <article class="person">
-            <figure class="arch arch--portrait arch--sage person__photo">
-              <div class="monogram" role="img" aria-label="Miejsce na zdjęcie osoby od fizjoterapii">F</div>
-              <figcaption class="arch__caption">Tu zdjęcie</figcaption>
-            </figure>
+            <figure class="person__photo person__photo--sage"><span class="person__initial" aria-hidden="true">F</span><figcaption>Tu zdjęcie</figcaption></figure>
             <div class="person__text">
               <h3 class="h3">Imię i&nbsp;nazwisko</h3>
               <p class="person__role">Fizjoterapia</p>
@@ -342,21 +337,20 @@
             </div>
           </article>
         </div>
-
-        <div class="beta">
+        <div class="beta" id="testy">
           <div class="beta__copy">
             <h3 class="h3">Szukamy 20&nbsp;osób do testów</h3>
             <p>Przed startem 20&nbsp;osób dostanie pełny dostęp za darmo w&nbsp;zamian za szczerą opinię.</p>
           </div>
-          <a class="btn btn--primary" href="#rozgrzewka">Zgłoś się do testów</a>
+          <a class="btn btn--dark" href="#rozgrzewka">Zgłoś się do testów</a>
         </div>
       </div>
     </section>
 
     <!-- 9. Cennik (ceny przykładowe) -->
-    <section class="section section--blush" id="cennik" aria-labelledby="cennik-tytul">
-      <div class="container">
-        <header class="section-head">
+    <section class="band band--pink" id="cennik" aria-labelledby="cennik-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
           <h2 class="h2" id="cennik-tytul">Cennik</h2>
           <p class="lead">Płacisz raz, bez abonamentu. BLIK, przelew albo karta.</p>
         </header>
@@ -370,7 +364,7 @@
               <li><svg class="ico"><use href="#i-check"/></svg>Próby Mocy i&nbsp;rozety</li>
               <li><svg class="ico"><use href="#i-check"/></svg>Dostęp na 12&nbsp;miesięcy</li>
             </ul>
-            <a class="btn btn--soft btn--block" href="#" data-demo-soon="W demo zakup jest wyłączony. Ten przycisk poprowadzi do koszyka.">Wybieram program</a>
+            <a class="btn btn--light btn--block" href="#" data-demo-soon="W demo zakup jest wyłączony. Ten przycisk poprowadzi do koszyka.">Wybieram program</a>
           </article>
           <article class="price">
             <h3 class="price__name">Karnet 3&nbsp;miesiące</h3>
@@ -381,7 +375,7 @@
               <li><svg class="ico"><use href="#i-check"/></svg>Próby Mocy i&nbsp;rozety</li>
               <li><svg class="ico"><use href="#i-check"/></svg>Dostęp na 3&nbsp;miesiące</li>
             </ul>
-            <a class="btn btn--soft btn--block" href="#" data-demo-soon="W demo zakup jest wyłączony. Ten przycisk poprowadzi do koszyka.">Wybieram karnet</a>
+            <a class="btn btn--light btn--block" href="#" data-demo-soon="W demo zakup jest wyłączony. Ten przycisk poprowadzi do koszyka.">Wybieram karnet</a>
           </article>
           <article class="price price--featured">
             <p class="price__badge">Najlepsza wartość</p>
@@ -394,7 +388,7 @@
               <li><svg class="ico"><use href="#i-check"/></svg>Próby Mocy i&nbsp;rozety</li>
               <li><svg class="ico"><use href="#i-check"/></svg>Dostęp na 12&nbsp;miesięcy</li>
             </ul>
-            <a class="btn btn--light btn--block" href="#" data-demo-soon="W demo zakup jest wyłączony. Ten przycisk poprowadzi do koszyka.">Wybieram karnet roczny</a>
+            <a class="btn btn--pink btn--block" href="#" data-demo-soon="W demo zakup jest wyłączony. Ten przycisk poprowadzi do koszyka.">Wybieram karnet roczny</a>
           </article>
         </div>
         <p class="note"><svg class="ico"><use href="#i-prezent"/></svg>Każdy program i&nbsp;karnet kupisz też jako voucher prezentowy. Ceny w&nbsp;demo są przykładowe.</p>
@@ -403,67 +397,44 @@
 
     <!-- 10. Pytania i odpowiedzi -->
     <section class="section" id="faq" aria-labelledby="faq-tytul">
-      <div class="container faq-grid">
-        <header class="section-head faq-grid__head">
+      <div class="wrap faq-grid">
+        <header class="faq-grid__head">
           <h2 class="h2" id="faq-tytul">Pytania i&nbsp;odpowiedzi</h2>
           <p class="lead">Nie ma tu Twojego pytania? Napisz do nas, odpowiadamy po ludzku.</p>
           <p><a class="link" href="#" data-demo-soon="Formularz kontaktowy powstanie w kolejnym etapie.">Napisz do Akademii</a></p>
         </header>
         <div class="faq">
-          <details class="faq__item">
-            <summary>Ile czasu potrzebuję?</summary>
-            <div class="faq__answer"><p>Od 10 do 30&nbsp;minut, zależnie od programu. Ranne Moce trwają 10-15&nbsp;minut, pozostałe programy 20-35&nbsp;minut.</p></div>
-          </details>
-          <details class="faq__item">
-            <summary>Jaki sprzęt jest potrzebny?</summary>
-            <div class="faq__answer"><p>Mata, czasem guma oporowa albo piłka. Przed każdym treningiem widzisz listę sprzętu.</p></div>
-          </details>
-          <details class="faq__item">
-            <summary>Czy dam radę, jeśli nie mam formy?</summary>
-            <div class="faq__answer"><p>Tak. Level Stęp zaczyna od podstaw, a&nbsp;każde ćwiczenie ma wersję łatwiejszą.</p></div>
-          </details>
-          <details class="faq__item">
-            <summary>Czy mogę ćwiczyć w&nbsp;stajni?</summary>
-            <div class="faq__answer"><p>Tak, zwłaszcza rozgrzewkę przed jazdą. Wystarczy telefon i&nbsp;kawałek miejsca obok boksu.</p></div>
-          </details>
-          <details class="faq__item">
-            <summary>Czy to działa na telefonie?</summary>
-            <div class="faq__answer"><p>Tak, Akademia powstaje przede wszystkim z&nbsp;myślą o&nbsp;telefonie. Film działa w&nbsp;pionie i&nbsp;w&nbsp;poziomie, a&nbsp;ekran nie gaśnie w&nbsp;trakcie treningu.</p></div>
-          </details>
-          <details class="faq__item">
-            <summary>Co to jest Próba Mocy?</summary>
-            <div class="faq__answer"><p>Krótki test na koniec levelu. Pokazuje, że możesz przejść wyżej. Za zaliczenie dostajesz rozetę, a&nbsp;jeśli się nie uda, po tygodniu treningu podchodzisz jeszcze raz.</p></div>
-          </details>
-          <details class="faq__item">
-            <summary>Mam kontuzję albo jestem w&nbsp;ciąży. Czy mogę ćwiczyć?</summary>
-            <div class="faq__answer"><p>Najpierw porozmawiaj z&nbsp;lekarzem lub fizjoterapeutą. Ćwiczenia w&nbsp;Akademii nie zastępują leczenia ani rehabilitacji.</p></div>
-          </details>
-          <details class="faq__item">
-            <summary>Czy mogę kupić dostęp w&nbsp;prezencie?</summary>
-            <div class="faq__answer"><p>Tak, każdy program i&nbsp;karnet kupisz jako voucher prezentowy.</p></div>
-          </details>
+          <details class="faq__item"><summary>Ile czasu potrzebuję?</summary><div class="faq__answer"><p>Od 10 do 30&nbsp;minut, zależnie od programu. Ranne Moce trwają 10-15&nbsp;minut, pozostałe programy 20-35&nbsp;minut.</p></div></details>
+          <details class="faq__item"><summary>Jaki sprzęt jest potrzebny?</summary><div class="faq__answer"><p>Mata, czasem guma oporowa albo piłka. Przed każdym treningiem widzisz listę sprzętu.</p></div></details>
+          <details class="faq__item"><summary>Czy dam radę, jeśli nie mam formy?</summary><div class="faq__answer"><p>Tak. Level Stęp zaczyna od podstaw, a&nbsp;każde ćwiczenie ma wersję łatwiejszą.</p></div></details>
+          <details class="faq__item"><summary>Czy mogę ćwiczyć w&nbsp;stajni?</summary><div class="faq__answer"><p>Tak, zwłaszcza rozgrzewkę przed jazdą. Wystarczy telefon i&nbsp;kawałek miejsca obok boksu.</p></div></details>
+          <details class="faq__item"><summary>Czy to działa na telefonie?</summary><div class="faq__answer"><p>Tak, Akademia powstaje przede wszystkim z&nbsp;myślą o&nbsp;telefonie. Film działa w&nbsp;pionie i&nbsp;w&nbsp;poziomie, a&nbsp;ekran nie gaśnie w&nbsp;trakcie treningu.</p></div></details>
+          <details class="faq__item"><summary>Co to jest Próba Mocy?</summary><div class="faq__answer"><p>Krótki test na koniec levelu. Pokazuje, że możesz przejść wyżej. Za zaliczenie dostajesz rozetę, a&nbsp;jeśli się nie uda, po tygodniu treningu podchodzisz jeszcze raz.</p></div></details>
+          <details class="faq__item"><summary>Mam kontuzję albo jestem w&nbsp;ciąży. Czy mogę ćwiczyć?</summary><div class="faq__answer"><p>Najpierw porozmawiaj z&nbsp;lekarzem lub fizjoterapeutą. Ćwiczenia w&nbsp;Akademii nie zastępują leczenia ani rehabilitacji.</p></div></details>
+          <details class="faq__item"><summary>Czy mogę kupić dostęp w&nbsp;prezencie?</summary><div class="faq__answer"><p>Tak, każdy program i&nbsp;karnet kupisz jako voucher prezentowy.</p></div></details>
         </div>
       </div>
     </section>
 
     <!-- 11. Zachęta na koniec -->
-    <section class="cta-band" aria-labelledby="cta-tytul">
-      <svg class="cta-band__ring" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><path d="M300.00 32.00A15.03 15.03 0 0 1 330.01 33.69A15.03 15.03 0 0 1 359.64 38.72A15.03 15.03 0 0 1 388.51 47.04A15.03 15.03 0 0 1 416.28 58.54A15.03 15.03 0 0 1 442.58 73.08A15.03 15.03 0 0 1 467.10 90.47A15.03 15.03 0 0 1 489.50 110.50A15.03 15.03 0 0 1 509.53 132.90A15.03 15.03 0 0 1 526.92 157.42A15.03 15.03 0 0 1 541.46 183.72A15.03 15.03 0 0 1 552.96 211.49A15.03 15.03 0 0 1 561.28 240.36A15.03 15.03 0 0 1 566.31 269.99A15.03 15.03 0 0 1 568.00 300.00A15.03 15.03 0 0 1 566.31 330.01A15.03 15.03 0 0 1 561.28 359.64A15.03 15.03 0 0 1 552.96 388.51A15.03 15.03 0 0 1 541.46 416.28A15.03 15.03 0 0 1 526.92 442.58A15.03 15.03 0 0 1 509.53 467.10A15.03 15.03 0 0 1 489.50 489.50A15.03 15.03 0 0 1 467.10 509.53A15.03 15.03 0 0 1 442.58 526.92A15.03 15.03 0 0 1 416.28 541.46A15.03 15.03 0 0 1 388.51 552.96A15.03 15.03 0 0 1 359.64 561.28A15.03 15.03 0 0 1 330.01 566.31A15.03 15.03 0 0 1 300.00 568.00A15.03 15.03 0 0 1 269.99 566.31A15.03 15.03 0 0 1 240.36 561.28A15.03 15.03 0 0 1 211.49 552.96A15.03 15.03 0 0 1 183.72 541.46A15.03 15.03 0 0 1 157.42 526.92A15.03 15.03 0 0 1 132.90 509.53A15.03 15.03 0 0 1 110.50 489.50A15.03 15.03 0 0 1 90.47 467.10A15.03 15.03 0 0 1 73.08 442.58A15.03 15.03 0 0 1 58.54 416.28A15.03 15.03 0 0 1 47.04 388.51A15.03 15.03 0 0 1 38.72 359.64A15.03 15.03 0 0 1 33.69 330.01A15.03 15.03 0 0 1 32.00 300.00A15.03 15.03 0 0 1 33.69 269.99A15.03 15.03 0 0 1 38.72 240.36A15.03 15.03 0 0 1 47.04 211.49A15.03 15.03 0 0 1 58.54 183.72A15.03 15.03 0 0 1 73.08 157.42A15.03 15.03 0 0 1 90.47 132.90A15.03 15.03 0 0 1 110.50 110.50A15.03 15.03 0 0 1 132.90 90.47A15.03 15.03 0 0 1 157.42 73.08A15.03 15.03 0 0 1 183.72 58.54A15.03 15.03 0 0 1 211.49 47.04A15.03 15.03 0 0 1 240.36 38.72A15.03 15.03 0 0 1 269.99 33.69A15.03 15.03 0 0 1 300.00 32.00Z" fill="none" stroke="#C9AE7C" stroke-width="1.4"/><circle cx="300" cy="300" r="214" fill="none" stroke="#C9AE7C" stroke-width="1"/><path d="M300.00 68.00L300.00 38.00M325.98 69.46L329.33 39.65M351.62 73.82L358.30 44.57M376.62 81.02L386.53 52.70M400.66 90.98L413.68 63.95M423.43 103.56L439.39 78.16M444.65 118.62L463.35 95.16M464.05 135.95L485.26 114.74M481.38 155.35L504.84 136.65M496.44 176.57L521.84 160.61M509.02 199.34L536.05 186.32M518.98 223.38L547.30 213.47M526.18 248.38L555.43 241.70M530.54 274.02L560.35 270.67M532.00 300.00L562.00 300.00M530.54 325.98L560.35 329.33M526.18 351.62L555.43 358.30M518.98 376.62L547.30 386.53M509.02 400.66L536.05 413.68M496.44 423.43L521.84 439.39M481.38 444.65L504.84 463.35M464.05 464.05L485.26 485.26M444.65 481.38L463.35 504.84M423.43 496.44L439.39 521.84M400.66 509.02L413.68 536.05M376.62 518.98L386.53 547.30M351.62 526.18L358.30 555.43M325.98 530.54L329.33 560.35M300.00 532.00L300.00 562.00M274.02 530.54L270.67 560.35M248.38 526.18L241.70 555.43M223.38 518.98L213.47 547.30M199.34 509.02L186.32 536.05M176.57 496.44L160.61 521.84M155.35 481.38L136.65 504.84M135.95 464.05L114.74 485.26M118.62 444.65L95.16 463.35M103.56 423.43L78.16 439.39M90.98 400.66L63.95 413.68M81.02 376.62L52.70 386.53M73.82 351.62L44.57 358.30M69.46 325.98L39.65 329.33M68.00 300.00L38.00 300.00M69.46 274.02L39.65 270.67M73.82 248.38L44.57 241.70M81.02 223.38L52.70 213.47M90.98 199.34L63.95 186.32M103.56 176.57L78.16 160.61M118.62 155.35L95.16 136.65M135.95 135.95L114.74 114.74M155.35 118.62L136.65 95.16M176.57 103.56L160.61 78.16M199.34 90.98L186.32 63.95M223.38 81.02L213.47 52.70M248.38 73.82L241.70 44.57M274.02 69.46L270.67 39.65" stroke="#C9AE7C" stroke-width="1"/></svg>
-      <div class="container cta-band__inner">
-        <h2 class="h2" id="cta-tytul">Twój koń poczuje różnicę</h2>
-        <p>Zacznij od darmowej rozgrzewki, zanim następnym razem wsiądziesz w&nbsp;siodło.</p>
-        <a class="btn btn--light" href="#rozgrzewka">Odbierz rozgrzewkę</a>
+    <section class="band band--rose cta" aria-labelledby="cta-tytul">
+      <div class="wrap cta__inner">
+        <h2 class="cta__title" id="cta-tytul">Twój koń poczuje różnicę</h2>
+        <div class="cta__side">
+          <p>Zacznij od darmowej rozgrzewki, zanim następnym razem wsiądziesz w&nbsp;siodło.</p>
+          <a class="btn btn--dark" href="#rozgrzewka"><svg class="ico ico--fill"><use href="#i-play"/></svg>Odbierz rozgrzewkę</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a class="logo" href="#top" aria-label="Akademia Mocy Jeździeckich, początek strony">
-            <svg class="logo__mark" viewBox="0 0 40 48" aria-hidden="true" focusable="false"><path d="M15 27L20.2 29L17.6 46L14.8 42.4L11.6 45.2Z" fill="#DDA7A5"/><path d="M25 27L19.8 29L22.4 46L25.2 42.4L28.4 45.2Z" fill="#DDA7A5"/><path d="M20.00 2.50A2.69 2.69 0 0 1 25.30 3.43A2.69 2.69 0 0 1 29.96 6.13A2.69 2.69 0 0 1 33.42 10.25A2.69 2.69 0 0 1 35.26 15.31A2.69 2.69 0 0 1 35.26 20.69A2.69 2.69 0 0 1 33.42 25.75A2.69 2.69 0 0 1 29.96 29.87A2.69 2.69 0 0 1 25.30 32.57A2.69 2.69 0 0 1 20.00 33.50A2.69 2.69 0 0 1 14.70 32.57A2.69 2.69 0 0 1 10.04 29.87A2.69 2.69 0 0 1 6.58 25.75A2.69 2.69 0 0 1 4.74 20.69A2.69 2.69 0 0 1 4.74 15.31A2.69 2.69 0 0 1 6.58 10.25A2.69 2.69 0 0 1 10.04 6.13A2.69 2.69 0 0 1 14.70 3.43A2.69 2.69 0 0 1 20.00 2.50Z" fill="#DDA7A5"/><path d="M22.57 6.79A2.56 2.56 0 0 1 27.18 9.01A2.56 2.56 0 0 1 30.36 13.02A2.56 2.56 0 0 1 31.50 18.01A2.56 2.56 0 0 1 30.36 23.00A2.56 2.56 0 0 1 27.16 27.00A2.56 2.56 0 0 1 22.55 29.21A2.56 2.56 0 0 1 17.43 29.21A2.56 2.56 0 0 1 12.82 26.99A2.56 2.56 0 0 1 9.64 22.98A2.56 2.56 0 0 1 8.50 17.99A2.56 2.56 0 0 1 9.64 13.00A2.56 2.56 0 0 1 12.84 9.00A2.56 2.56 0 0 1 17.45 6.79A2.56 2.56 0 0 1 22.57 6.79Z" fill="#F3D6D2"/><circle cx="20" cy="18" r="8.2" fill="#FFFDFB" stroke="#C9AE7C" stroke-width="1.3"/></svg>
-            <span class="logo__text"><span class="logo__name">Akademia Mocy</span><span class="logo__sub">Jeździeckich</span></span>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#top" aria-label="Akademia Mocy Jeździeckich, początek strony">
+            <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20.00 3.50A3.67 3.67 0 0 1 27.16 5.13A3.67 3.67 0 0 1 32.90 9.71A3.67 3.67 0 0 1 36.09 16.33A3.67 3.67 0 0 1 36.09 23.67A3.67 3.67 0 0 1 32.90 30.29A3.67 3.67 0 0 1 27.16 34.87A3.67 3.67 0 0 1 20.00 36.50A3.67 3.67 0 0 1 12.84 34.87A3.67 3.67 0 0 1 7.10 30.29A3.67 3.67 0 0 1 3.91 23.67A3.67 3.67 0 0 1 3.91 16.33A3.67 3.67 0 0 1 7.10 9.71A3.67 3.67 0 0 1 12.84 5.13A3.67 3.67 0 0 1 20.00 3.50Z" fill="#E07D98"/><circle cx="20" cy="20" r="8.6" fill="#FFF9F8"/><circle cx="20" cy="20" r="3.2" fill="#2F2323"/></svg>
+            <span class="brand__text"><span class="brand__name">Akademia Mocy</span><span class="brand__sub">Jeździeckich</span></span>
           </a>
           <p>Treningi dla jeźdźców, które czuć w&nbsp;siodle.</p>
           <div class="social">
@@ -471,8 +442,8 @@
             <a href="#" aria-label="Facebook" data-demo-soon="Link do Facebooka dodamy przed startem."><svg class="ico"><use href="#i-facebook"/></svg></a>
           </div>
         </div>
-        <nav class="footer-col" aria-label="Akademia">
-          <h3 class="footer-col__title">Akademia</h3>
+        <nav class="footer__col" aria-label="Akademia">
+          <h3>Akademia</h3>
           <ul>
             <li><a href="#programy">Programy</a></li>
             <li><a href="#jak-to-dziala">Jak to działa</a></li>
@@ -480,8 +451,8 @@
             <li><a href="#faq">Pytania i&nbsp;odpowiedzi</a></li>
           </ul>
         </nav>
-        <nav class="footer-col" aria-label="Informacje">
-          <h3 class="footer-col__title">Informacje</h3>
+        <nav class="footer__col" aria-label="Informacje">
+          <h3>Informacje</h3>
           <ul>
             <li><a href="#" data-demo-soon>Regulamin</a></li>
             <li><a href="#" data-demo-soon>Polityka prywatności</a></li>
@@ -489,23 +460,25 @@
             <li><a href="#" data-demo-soon>Kontakt</a></li>
           </ul>
         </nav>
-        <div class="footer-col">
-          <h3 class="footer-col__title">Siostrzana marka</h3>
+        <div class="footer__col">
+          <h3>Siostrzana marka</h3>
           <p><a class="link" href="https://gotsforhorses.pl" target="_blank" rel="noopener">GOT’S for Horses</a></p>
-          <p class="footer-small">Naturalne smaczki dla koni od tej samej twórczyni.</p>
+          <p class="footer__small">Naturalne smaczki dla koni od tej samej twórczyni.</p>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© <span data-rok>2026</span> Akademia Mocy Jeździeckich</p>
-        <p>Wersja demonstracyjna. Treści i&nbsp;ceny są przykładowe.</p>
+      <p class="footer__word" aria-hidden="true">Akademia Mocy</p>
+      <div class="footer__bottom">
+        <p>© <span data-rok>2026</span> Akademia Mocy Jeździeckich. Wersja demonstracyjna, treści i&nbsp;ceny są przykładowe.</p>
+        <p class="fontswitch">Kroje: <button type="button" data-fonty-set="a" aria-pressed="true">A</button><button type="button" data-fonty-set="b" aria-pressed="false">B</button></p>
       </div>
     </div>
   </footer>
 
-  <!-- Demo: przełącznik krojów nagłówków (do akceptacji z Justyną, potem do usunięcia) -->
-  <button class="font-switch" type="button" data-font-switch aria-pressed="false" title="Demo: zmień krój nagłówków. A to Fraunces, B to Bodoni Moda.">
-    <span>Nagłówki</span><strong data-font-label>A</strong>
-  </button>
+  <!-- Telefon: przycisk rozgrzewki zawsze pod kciukiem -->
+  <div class="dock" data-dock>
+    <span class="dock__text"><strong>Darmowa rozgrzewka</strong><span>7&nbsp;minut, bez sprzętu</span></span>
+    <a class="btn btn--dark btn--sm" href="#rozgrzewka">Odbierz</a>
+  </div>
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
   <script src="data/programs.js"></script>

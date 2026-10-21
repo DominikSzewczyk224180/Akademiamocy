@@ -1,0 +1,148 @@
+<!--
+tytul: Trening A, Gimnastyka dla jeźdźców | Akademia Mocy Jeździeckich
+og_tytul: Pełny trening w Akademii Mocy Jeździeckich
+opis: Odtwarzacz treningu: pion i poziom, licznik, następne ćwiczenie i ekran, który nie gaśnie.
+uklad: aplikacja
+css: trening.css
+body_klasa: strona-trening
+-->
+  <main id="tresc" class="trn" data-trn>
+
+    <!-- 1. Ekran startowy -->
+    <section class="trn-start" data-ekran="start" aria-labelledby="trn-tytul">
+      <header class="trn-bar">
+        <a class="trn-iconbtn" href="program-gimnastyka.html" data-t-wroc aria-label="Wróć do programu"><svg class="ico"><use href="#i-prev"/></svg></a>
+        <p class="trn-bar__title" data-t-naglowek>Gimnastyka dla jeźdźców, Stęp</p>
+        <span class="trn-bar__spacer" aria-hidden="true"></span>
+      </header>
+      <div class="trn-start__grid">
+        <figure class="trn-start__poster">
+          <img src="assets/wideo/marsz.jpg" alt="" width="1280" height="720" data-t-poster>
+          <span class="trn-chip" data-t-chip>Wersja demo</span>
+        </figure>
+        <div class="trn-start__copy">
+          <h1 class="trn-start__title" id="trn-tytul" data-t-nazwa>Trening A</h1>
+          <p class="trn-start__meta" data-t-meta></p>
+          <p class="trn-start__desc" data-t-opis></p>
+          <ol class="trn-plan" data-t-plan aria-label="Plan treningu"></ol>
+          <ul class="trn-checks">
+            <li data-t-wake-info><svg class="ico"><use href="#i-zarowka"/></svg><span>Ekran nie zgaśnie w trakcie treningu</span></li>
+            <li><svg class="ico"><use href="#i-obrot"/></svg><span>Obróć telefon poziomo, żeby widzieć cały ruch. Trening leci dalej.</span></li>
+            <li><svg class="ico"><use href="#i-dzwiek"/></svg><span>Sygnał przed zmianą ćwiczenia. Na iPhonie wyłącz wyciszenie.</span></li>
+          </ul>
+          <div class="trn-sound" role="group" aria-label="Dźwięk w trakcie treningu">
+            <button type="button" class="trn-sound__opt" data-t-dzwiek="sygnaly" aria-pressed="true">Sygnały</button>
+            <button type="button" class="trn-sound__opt" data-t-dzwiek="glos" aria-pressed="false">Sygnały i głos</button>
+            <button type="button" class="trn-sound__opt" data-t-dzwiek="cisza" aria-pressed="false">Bez dźwięku</button>
+          </div>
+          <div class="trn-resume" data-t-resume hidden>
+            <p>Masz niedokończony trening. Ostatnio: <strong data-t-resume-nazwa></strong></p>
+            <button class="btn btn--dark btn--block" type="button" data-t-kontynuuj><svg class="ico ico--fill"><use href="#i-play"/></svg>Kontynuuj</button>
+            <button class="linkbtn" type="button" data-t-od-nowa>Zacznij od nowa</button>
+          </div>
+          <button class="btn btn--dark btn--block trn-startbtn" type="button" data-t-start><svg class="ico ico--fill"><use href="#i-play"/></svg>Zaczynamy</button>
+          <p class="trn-start__fine" data-t-test hidden>Tryb testowy: krótkie czasy, cały trening trwa około 2 minut.</p>
+          <noscript><p class="trn-start__fine">Odtwarzacz treningu potrzebuje włączonego JavaScriptu.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Trening -->
+    <section class="trn-play" data-ekran="trening" hidden aria-label="Trening w toku">
+      <div class="trn-stage" data-stage>
+
+        <div class="trn-top" data-ui>
+          <button class="trn-iconbtn" type="button" data-t-zakoncz aria-label="Zakończ trening"><svg class="ico"><use href="#i-x"/></svg></button>
+          <p class="trn-top__count" data-t-licznik>Ćwiczenie 1 z 7</p>
+          <button class="trn-wake" type="button" data-t-wake><svg class="ico"><use href="#i-zarowka"/></svg><span data-t-wake-txt>Ekran nie zgaśnie</span></button>
+        </div>
+
+        <div class="trn-media" data-media>
+          <video class="trn-video is-on" muted playsinline webkit-playsinline loop preload="auto" disablepictureinpicture disableremoteplayback x-webkit-airplay="deny" aria-hidden="true" tabindex="-1"></video>
+          <video class="trn-video" muted playsinline webkit-playsinline loop preload="auto" disablepictureinpicture disableremoteplayback x-webkit-airplay="deny" aria-hidden="true" tabindex="-1"></video>
+          <div class="trn-bars" data-t-paski aria-hidden="true"></div>
+          <div class="trn-scrim" aria-hidden="true"></div>
+          <div class="trn-phase" data-t-faza hidden>
+            <p class="trn-phase__label" data-t-faza-nazwa>Przygotuj się</p>
+            <p class="trn-phase__count" data-t-faza-czas>5</p>
+          </div>
+          <button class="trn-tap" type="button" data-t-tap aria-label="Pokaż sterowanie" tabindex="-1"></button>
+          <button class="trn-veil" type="button" data-t-veil hidden><svg class="ico ico--fill"><use href="#i-play"/></svg>Dotknij, aby włączyć film</button>
+        </div>
+
+        <div class="trn-panel">
+          <div class="trn-info">
+            <p class="trn-block" data-t-blok>Rozgrzewka</p>
+            <h2 class="trn-name" data-t-cw>Marsz w miejscu</h2>
+            <p class="trn-side" data-t-strona hidden>Lewa strona</p>
+            <p class="trn-cue" data-t-wskazowka></p>
+          </div>
+          <div class="trn-clock">
+            <p class="trn-timer" data-t-czas>1:00</p>
+            <p class="trn-timer-note" data-t-czas-opis>zostało</p>
+            <div class="trn-meter" aria-hidden="true"><i data-t-pasek></i></div>
+            <button class="btn btn--dark trn-done" type="button" data-t-gotowe hidden>Gotowe, dalej</button>
+          </div>
+          <p class="trn-mistake" data-t-blad></p>
+          <div class="trn-next" data-t-nastepne>
+            <img src="assets/wideo/koci-grzbiet.jpg" alt="" width="1280" height="720" data-t-nastepne-img>
+            <span class="trn-next__txt"><span>Następne</span><strong data-t-nastepne-nazwa>Koci grzbiet</strong><span data-t-nastepne-info></span></span>
+          </div>
+          <div class="trn-controls" data-ui>
+            <button class="trn-ctrl" type="button" data-t-wstecz aria-label="Poprzednie ćwiczenie"><svg class="ico"><use href="#i-prev"/></svg></button>
+            <button class="trn-ctrl trn-ctrl--main" type="button" data-t-play aria-label="Wstrzymaj"><svg class="ico" data-t-play-ico><use href="#i-pause"/></svg></button>
+            <button class="trn-ctrl" type="button" data-t-dalej aria-label="Następne ćwiczenie"><svg class="ico"><use href="#i-next"/></svg></button>
+          </div>
+          <div class="trn-tools" data-ui>
+            <button class="trn-tool" type="button" data-t-poziom><svg class="ico"><use href="#i-obrot"/></svg><span data-t-poziom-txt>Poziom</span></button>
+            <button class="trn-tool" type="button" data-t-dzwiek-btn aria-pressed="true"><svg class="ico" data-t-dzwiek-ico><use href="#i-dzwiek"/></svg><span data-t-dzwiek-txt>Dźwięk</span></button>
+            <button class="trn-tool" type="button" data-t-diag-btn hidden><span>Diagnostyka</span></button>
+            <span class="trn-total" data-t-zostalo></span>
+          </div>
+        </div>
+      </div>
+
+      <p class="visually-hidden" aria-live="polite" data-t-ogloszenie></p>
+      <div class="trn-pause" data-t-pauza hidden role="dialog" aria-modal="true" aria-labelledby="trn-pauza-tytul">
+        <div class="trn-pause__card">
+          <p class="trn-pause__title" id="trn-pauza-tytul">Pauza</p>
+          <p class="trn-pause__why" data-t-pauza-why>Odpocznij chwilę. Trening czeka.</p>
+          <button class="btn btn--pink btn--block" type="button" data-t-wznow><svg class="ico ico--fill"><use href="#i-play"/></svg>Wznów</button>
+          <button class="btn btn--light btn--block" type="button" data-t-koniec-teraz>Zakończ trening</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Koniec -->
+    <section class="trn-end" data-ekran="koniec" hidden aria-labelledby="trn-koniec-tytul">
+      <div class="trn-end__card">
+        <span class="badge badge--rose trn-end__badge" aria-hidden="true">brawo!</span>
+        <h2 class="trn-end__title" id="trn-koniec-tytul" tabindex="-1">Trening zaliczony</h2>
+        <p class="trn-end__sum" data-t-podsumowanie></p>
+        <div class="trn-feel" role="group" aria-labelledby="trn-feel-tytul">
+          <p class="trn-feel__title" id="trn-feel-tytul">Jak było?</p>
+          <div class="trn-feel__opts">
+            <button type="button" data-t-ocena="lekko" aria-pressed="false">Za lekko</button>
+            <button type="button" data-t-ocena="ok" aria-pressed="false">W sam raz</button>
+            <button type="button" data-t-ocena="ciezko" aria-pressed="false">Za ciężko</button>
+          </div>
+          <p class="trn-feel__msg" data-t-ocena-msg aria-live="polite" hidden></p>
+        </div>
+        <a class="btn btn--dark btn--block" href="program-gimnastyka.html" data-t-wroc-koniec>Wróć do programu</a>
+        <button class="btn btn--light btn--block" type="button" data-t-powtorz><svg class="ico"><use href="#i-powtorz"/></svg>Powtórz trening</button>
+      </div>
+    </section>
+
+    <!-- Diagnostyka do testów na telefonach (?diag=1) -->
+    <aside class="trn-diag" data-t-diag hidden aria-labelledby="trn-diag-tytul">
+      <div class="trn-diag__head">
+        <p class="trn-diag__title" id="trn-diag-tytul">Diagnostyka</p>
+        <button class="trn-iconbtn" type="button" data-t-diag-zamknij aria-label="Zamknij diagnostykę"><svg class="ico"><use href="#i-x"/></svg></button>
+      </div>
+      <dl class="trn-diag__list" data-t-diag-lista></dl>
+      <p class="trn-diag__sub">Zdarzenia</p>
+      <ol class="trn-diag__log" data-t-diag-log></ol>
+      <button class="btn btn--dark btn--block" type="button" data-t-diag-kopiuj>Kopiuj raport</button>
+      <textarea class="trn-diag__out" data-t-diag-out readonly hidden aria-label="Raport diagnostyczny"></textarea>
+    </aside>
+  </main>

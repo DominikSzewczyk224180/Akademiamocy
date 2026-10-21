@@ -2,7 +2,7 @@
 Akademia Mocy Jeździeckich: budowanie stron demo.
 
 Wspólne części (head, menu, stopka) są w _zrodla/czesci, treść stron w _zrodla/strony,
-a dane programów w data/programs.js. Skrypt składa z nich gotowe pliki .html w katalogu repo.
+a dane programów w data/programs.js i data/treningi.js. Skrypt składa z nich gotowe pliki .html w katalogu repo.
 
 Użycie (z katalogu repo):  python3 _zrodla/buduj.py
 Wymaga tylko Pythona 3, bez dodatkowych bibliotek.
@@ -18,12 +18,13 @@ CZESCI = ZRODLA / "czesci"
 STRONY = ZRODLA / "strony"
 
 
-def wczytaj_dane():
-    tekst = (REPO / "data" / "programs.js").read_text(encoding="utf-8")
+def wczytaj_dane(plik="programs.js"):
+    tekst = (REPO / "data" / plik).read_text(encoding="utf-8")
     return json.loads(tekst[tekst.index("{"): tekst.rindex("}") + 1])
 
 
 DANE = wczytaj_dane()
+TRENINGI = wczytaj_dane("treningi.js")
 LEVELE = {l["id"]: l for l in DANE["levele"]}
 
 
@@ -115,6 +116,14 @@ def program_placeholdery(p):
             '          </li>' % (l["id"], "" if l["dostepny"] else " level--soon", l["id"], l["numer"], t(opis["czas"]), t(l["nazwa"]), t(opis["opis"])))
 
     inne = [karta_programu(x) for x in DANE["programy"] if x["id"] != p["id"]]
+    pelne = [tr for tr in TRENINGI["treningi"] if tr["program"] == p["id"]]
+    if pelne:
+        pelny = ('          <p class="training__full"><a class="btn btn--dark" href="trening.html?t=%s"><svg class="ico ico--fill"><use href="#i-play"/></svg>Włącz pełny trening</a>'
+                 '<span>%s, wersja demo</span></p>' % (pelne[0]["id"], t(pelne[0]["nazwa"])))
+    else:
+        pierwszy = TRENINGI["treningi"][0]
+        pelny = ('          <p class="training__full"><a class="btn btn--light" href="trening.html?t=%s"><svg class="ico ico--fill"><use href="#i-play"/></svg>Zobacz pełny trening</a>'
+                 '<span>W demo na przykładzie Gimnastyki</span></p>' % pierwszy["id"])
     band_trening = {"pink": "sage", "sage": "pink", "butter": "sage"}[p["kolor"]]
 
     return {
@@ -143,6 +152,7 @@ def program_placeholdery(p):
         "p.faq": "\n".join('          <details class="faq__item"><summary>%s</summary><div class="faq__answer"><p>%s</p></div></details>'
                            % (t(f["q"]), t(f["a"])) for f in p["faq"]),
         "p.inne": "\n".join(inne),
+        "p.pelny_trening": pelny,
     }
 
 
@@ -208,8 +218,14 @@ def zloz(meta, tresc, dodatkowe=None):
         "stopka_programy": stopka_programy(),
         "programy_karty": "\n".join(karta_programu(p) for p in DANE["programy"]),
     }
+    css = meta.get("css", "").strip()
+    zmienne["dodatkowe_css"] = ('\n  <link rel="stylesheet" href="css/%s">' % css) if css else ""
     zmienne.update(dodatkowe or {})
-    dokument = "\n".join([czesc("head.html"), czesc("ikony.html"), czesc("naglowek.html"), tresc.rstrip("\n"), czesc("stopka.html"), czesc("koniec.html")]) + "\n"
+    if meta.get("uklad", "").strip() == "aplikacja":
+        kawalki = [czesc("head.html"), czesc("ikony.html"), tresc.rstrip("\n"), czesc("koniec-aplikacja.html")]
+    else:
+        kawalki = [czesc("head.html"), czesc("ikony.html"), czesc("naglowek.html"), tresc.rstrip("\n"), czesc("stopka.html"), czesc("koniec.html")]
+    dokument = "\n".join(kawalki) + "\n"
     dokument = wstaw_czesci(dokument)
     for k, v in zmienne.items():
         dokument = dokument.replace("{{%s}}" % k, v)

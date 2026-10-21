@@ -1,0 +1,16 @@
+{
+  "name": "Akademia Mocy Jeździeckich",
+  "short_name": "Akademia Mocy",
+  "description": "Krótkie treningi dla jeźdźców na telefonie.",
+  "lang": "pl",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FFF9F8",
+  "theme_color": "#FFF9F8",
+  "icons": [
+    { "src": "assets/ikona-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/ikona-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/ikona-maskowalna-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

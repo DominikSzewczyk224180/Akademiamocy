@@ -2349,3 +2349,10 @@ button.menu__item {
   text-underline-offset: 0.25em;
 }
 .linkbtn:hover { color: var(--rose-ink); }
+
+
+/* ==========================================================================
+   13. Etap 3: wejście do pełnego treningu
+   ========================================================================== */
+.training__full { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; margin-top: 1.75rem; }
+.training__full span { font-size: var(--fs-sm); color: var(--cocoa-2); }

@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cennik | Akademia Mocy Jeździeckich</title>
+  <meta name="description" content="Programy i karnety Akademii Mocy Jeździeckich. Płacisz raz, bez abonamentu. Pierwszy trening każdego programu za darmo.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#FFF9F8">
+  <meta name="color-scheme" content="light">
+
+  <!-- Podgląd linku w WhatsAppie i Messengerze. Jeśli repo ma inną nazwę niż AkademiaMocy, popraw adres obrazka. -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:title" content="Cennik Akademii Mocy Jeździeckich">
+  <meta property="og:description" content="Programy i karnety Akademii Mocy Jeździeckich. Płacisz raz, bez abonamentu. Pierwszy trening każdego programu za darmo.">
+  <meta property="og:image" content="https://dominikszewczyk224180.github.io/AkademiaMocy/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/instrument-sans-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    /* Demo: drugi wariant krojów pod ?fonty=b. Wybór zapamiętuje przeglądarka. */
+    (function () {
+      var v = null;
+      try { v = new URLSearchParams(location.search).get('fonty'); } catch (e) {}
+      try {
+        if (v) { localStorage.setItem('akademia-fonty', v.toLowerCase()); }
+        else { v = localStorage.getItem('akademia-fonty'); }
+      } catch (e) {}
+      if (v && v.toLowerCase() === 'b') { document.documentElement.setAttribute('data-fonty', 'b'); }
+    })();
+  </script>
+</head>
+<body class="strona-cennik">
+  <a class="skip" href="#tresc">Przejdź do treści</a>
+  <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5.5 12.5l4 4L18.5 7.5"/></symbol>
+    <symbol id="i-zegar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-kalendarz" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-dom" viewBox="0 0 24 24"><path d="M3.5 11.2L12 4.5l8.5 6.7"/><path d="M6 9.6v10h12v-10"/><path d="M10 19.6v-5h4v5"/></symbol>
+    <symbol id="i-telefon" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></symbol>
+    <symbol id="i-obrot" viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="13" rx="2"/><path d="M3.8 14.5a8.6 8.6 0 0 0 15.6 4"/><path d="M20 15.2l-.6 3.3-3.3-.8"/></symbol>
+    <symbol id="i-zarowka" viewBox="0 0 24 24"><path d="M9.5 18h5M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.4 10.9c.6.4.9 1.1.9 1.8v.3h5v-.3c0-.7.3-1.4.9-1.8A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-prezent" viewBox="0 0 24 24"><rect x="3.5" y="9" width="17" height="11.5" rx="2"/><path d="M3.5 13.5h17M12 9v11.5"/><path d="M12 9C10.4 6 6.8 5.4 6.8 7.6 6.8 9 9.4 9 12 9zm0 0c1.6-3 5.2-3.6 5.2-1.4C17.2 9 14.6 9 12 9z"/></symbol>
+    <symbol id="i-podkowa" viewBox="0 0 24 24"><path d="M5.6 4C3.4 7 3.1 11.2 4.6 14.6 6 17.9 8.8 20.4 12 20.4s6-2.5 7.4-5.8C20.9 11.2 20.6 7 18.4 4"/><path d="M9 4.6c-1.3 2.3-1.5 5.4-.6 8.1.8 2.2 2.1 3.8 3.6 3.8s2.8-1.6 3.6-3.8c.9-2.7.7-5.8-.6-8.1"/><path d="M5.6 4H9M15 4h3.4"/></symbol>
+    <symbol id="i-slonce" viewBox="0 0 24 24"><path d="M3.5 17.5h17"/><path d="M7.4 17.5a4.6 4.6 0 0 1 9.2 0"/><path d="M12 8.6V7M6.5 11.3l-1.1-1.1M17.5 11.3l1.1-1.1M4.6 15.2H3.4M20.6 15.2h-1.2"/></symbol>
+    <symbol id="i-wstazka" viewBox="0 0 24 24"><path d="M12 10.6C9.8 7.6 5.4 6.2 4.4 8.4c-1 2.3 2 4.6 7.6 2.2z"/><path d="M12 10.6c2.2-3 6.6-4.4 7.6-2.2 1 2.3-2 4.6-7.6 2.2z"/><circle cx="12" cy="10.8" r="1.6"/><path d="M11 12.2l-2.6 6.6 2-.7.8 2M13 12.2l2.6 6.6-2-.7-.8 2"/></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6.5 9.5l5.5 5.5 5.5-5.5"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6.5v11M15 6.5v11"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.8v12.4a.8.8 0 0 0 1.2.7l9.6-6.2a.8.8 0 0 0 0-1.4L9.2 5.1A.8.8 0 0 0 8 5.8z"/></symbol>
+    <symbol id="i-szukaj" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="i-tarcza" viewBox="0 0 24 24"><path d="M12 3.5l7 2.8v5.2c0 4.3-2.9 7.6-7 9-4.1-1.4-7-4.7-7-9V6.3z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-serce" viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.4A3.9 3.9 0 0 1 12 7.9a3.9 3.9 0 0 1 7 2.2c0 5.1-7 9.4-7 9.4z"/></symbol>
+    <symbol id="i-wideo" viewBox="0 0 24 24"><rect x="3" y="6.5" width="12" height="11" rx="2.5"/><path d="M15 10.5l5.5-3v9l-5.5-3"/></symbol>
+    <symbol id="i-rozmowa" viewBox="0 0 24 24"><path d="M5 5.5h14a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 3.5V16.5H5A1.5 1.5 0 0 1 3.5 15V7A1.5 1.5 0 0 1 5 5.5z"/></symbol>
+    <symbol id="i-stajnia" viewBox="0 0 24 24"><path d="M3.5 10.5L12 4.5l8.5 6"/><path d="M5.5 9.5v10h13v-10"/><path d="M9.5 19.5v-6h5v6M9.5 13.5l5 6M14.5 13.5l-5 6"/></symbol>
+    <symbol id="i-bilet" viewBox="0 0 24 24"><path d="M4 7.5h16v3a1.5 1.5 0 0 0 0 3v3H4v-3a1.5 1.5 0 0 0 0-3z"/><path d="M14.5 8v1.5M14.5 11.25v1.5M14.5 14.5V16"/></symbol>
+    <symbol id="i-karta" viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="12" rx="2"/><path d="M3.5 10h17M7 14.5h3"/></symbol>
+    <symbol id="i-lista" viewBox="0 0 24 24"><rect x="5.5" y="4.5" width="13" height="16" rx="2"/><path d="M9.5 3.5h5v2h-5zM8.5 10h7M8.5 13.5h7M8.5 17h4"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.2 6.8h.01" stroke-width="2.4"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14.2 20.5v-7h2.5l.4-3h-2.9V8.7c0-.9.3-1.5 1.5-1.5h1.5V4.6c-.3 0-1.2-.1-2.2-.1-2.2 0-3.8 1.4-3.8 3.9v2.1H8.7v3h2.5v7"/></symbol>
+  </svg>
+  <!-- Menu: pływająca kapsuła. Różowa pigułka pokazuje aktywną stronę albo sekcję. -->
+  <header class="topbar" data-header>
+    <div class="topbar__bar">
+      <a class="brand" href="index.html" aria-label="Akademia Mocy Jeździeckich, strona główna">
+        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20.00 3.50A3.67 3.67 0 0 1 27.16 5.13A3.67 3.67 0 0 1 32.90 9.71A3.67 3.67 0 0 1 36.09 16.33A3.67 3.67 0 0 1 36.09 23.67A3.67 3.67 0 0 1 32.90 30.29A3.67 3.67 0 0 1 27.16 34.87A3.67 3.67 0 0 1 20.00 36.50A3.67 3.67 0 0 1 12.84 34.87A3.67 3.67 0 0 1 7.10 30.29A3.67 3.67 0 0 1 3.91 23.67A3.67 3.67 0 0 1 3.91 16.33A3.67 3.67 0 0 1 7.10 9.71A3.67 3.67 0 0 1 12.84 5.13A3.67 3.67 0 0 1 20.00 3.50Z" fill="#E07D98"/><circle cx="20" cy="20" r="8.6" fill="#FFF9F8"/><circle cx="20" cy="20" r="3.2" fill="#2F2323"/></svg>
+        <span class="brand__text"><span class="brand__name">Akademia Mocy</span><span class="brand__sub">Jeździeckich</span></span>
+      </a>
+      <nav class="menu" id="menu" aria-label="Główna">
+        <div class="menu__links" data-menu-links>
+          <span class="menu__pill" aria-hidden="true" data-menu-pill></span>
+          <div class="menu__drop" data-drop>
+            <button class="menu__item menu__drop-btn" type="button" aria-expanded="false" aria-controls="menu-programy" data-nav="programy" data-spy="programy" data-drop-btn>Programy<svg class="ico menu__chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+            <div class="menu__flyout" id="menu-programy" data-drop-panel>
+              <a class="fly fly--pink" href="program-ogolny.html"><span class="fly__icon"><svg class="ico" aria-hidden="true"><use href="#i-podkowa"/></svg></span><span class="fly__text"><strong>Ogólny program dla jeźdźców</strong><span>Siła i&nbsp;równowaga na cały sezon, 25&#8288;-&#8288;35&nbsp;min</span></span></a>
+              <a class="fly fly--sage" href="program-gimnastyka.html"><span class="fly__icon"><svg class="ico" aria-hidden="true"><use href="#i-wstazka"/></svg></span><span class="fly__text"><strong>Gimnastyka dla jeźdźców</strong><span>Ruch bez blokad i&nbsp;symetryczny dosiad, 20&#8288;-&#8288;30&nbsp;min</span></span></a>
+              <a class="fly fly--butter" href="program-ranne-moce.html"><span class="fly__icon"><svg class="ico" aria-hidden="true"><use href="#i-slonce"/></svg></span><span class="fly__text"><strong>Ranne Moce Jeździeckie</strong><span>10&nbsp;minut każdego ranka, 10&#8288;-&#8288;15&nbsp;min</span></span></a>
+              <a class="fly fly--plain" href="lista.html"><span class="fly__text"><strong>Nie wiesz, który wybrać?</strong><span>Odpowiedz na kilka pytań, dobierzemy program</span></span></a>
+            </div>
+          </div>
+          <a class="menu__item" href="index.html#jak-to-dziala" data-nav="jak" data-spy="jak-to-dziala">Jak to działa</a>
+          <a class="menu__item" href="cennik.html" data-nav="cennik" aria-current="page">Cennik</a>
+          <a class="menu__item" href="o-akademii.html" data-nav="o-akademii">O&nbsp;Akademii</a>
+          <a class="menu__item" href="faq.html" data-nav="faq">Pytania</a>
+        </div>
+        <div class="menu__actions">
+          <a class="menu__login" href="#" data-demo-soon="Logowanie do strefy kursantki pojawi się w kolejnym etapie demo.">Zaloguj</a>
+          <a class="btn btn--dark btn--sm" href="lista.html">Darmowa rozgrzewka</a>
+        </div>
+        <a class="menu__promo" href="lista.html">
+          <span class="badge badge--rose" aria-hidden="true">7&nbsp;min</span>
+          <span><strong>Rozgrzewka przed jazdą</strong><span>Za darmo, bez sprzętu, przy boksie</span></span>
+        </a>
+      </nav>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn>
+        <span class="menu-btn__label">Menu</span>
+        <span class="menu-btn__icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+<main id="tresc">
+
+    <section class="page-hero" aria-labelledby="cennik-tytul">
+      <div class="wrap page-hero__grid">
+        <div>
+          <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Akademia</a><span aria-hidden="true">/</span><span aria-current="page">Cennik</span></nav>
+          <h1 class="page-title" id="cennik-tytul"><span class="page-title__l1">Cennik</span><span class="page-title__l2">Płacisz raz, bez abonamentu</span></h1>
+          <p class="page-lead">Wybierasz jeden program albo karnet na wszystkie. Płacisz BLIK-iem, szybkim przelewem, kartą, Google Pay albo Apple Pay.</p>
+        </div>
+        <span class="badge badge--rose page-hero__badge" aria-hidden="true">1. trening<br>za darmo</span>
+      </div>
+    </section>
+
+    <section class="band band--pink" aria-label="Oferta">
+      <div class="wrap">
+        <div class="prices">
+          <article class="price">
+            <h3 class="price__name">Program</h3>
+            <p class="price__value"><span class="price__amount">179</span><span class="price__currency">zł</span></p>
+            <p class="price__note">jednorazowo, jeden program do wyboru</p>
+            <ul class="price__list">
+              <li><svg class="ico"><use href="#i-check"/></svg>Level Stęp i&nbsp;Kłus</li>
+              <li><svg class="ico"><use href="#i-check"/></svg>Próby Mocy i&nbsp;rozety</li>
+              <li><svg class="ico"><use href="#i-check"/></svg>Dostęp na 12&nbsp;miesięcy</li>
+            </ul>
+            <a class="btn btn--light btn--block" href="#" data-demo-soon="W demo zakup jest wyłączony. Ten przycisk poprowadzi do koszyka.">Wybieram program</a>
+          </article>
+          <article class="price">
+            <h3 class="price__name">Karnet 3&nbsp;miesiące</h3>
+            <p class="price__value"><span class="price__amount">229</span><span class="price__currency">zł</span></p>
+            <p class="price__note">jednorazowo, wszystkie programy</p>
+            <ul class="price__list">
+              <li><svg class="ico"><use href="#i-check"/></svg>Wszystkie 3&nbsp;programy</li>
+              <li><svg class="ico"><use href="#i-check"/></svg>Próby Mocy i&nbsp;rozety</li>
+              <li><svg class="ico"><use href="#i-check"/></svg>Dostęp na 3&nbsp;miesiące</li>
+            </ul>
+            <a class="btn btn--light btn--block" href="#" data-demo-soon="W demo zakup jest wyłączony. Ten przycisk poprowadzi do koszyka.">Wybieram karnet</a>
+          </article>
+          <article class="price price--featured">
+            <p class="price__badge">Najlepsza wartość</p>
+            <h3 class="price__name">Karnet 12&nbsp;miesięcy</h3>
+            <p class="price__value"><span class="price__amount">499</span><span class="price__currency">zł</span></p>
+            <p class="price__note">około 42&nbsp;zł miesięcznie, płatne raz</p>
+            <ul class="price__list">
+              <li><svg class="ico"><use href="#i-check"/></svg>Wszystkie 3&nbsp;programy</li>
+              <li><svg class="ico"><use href="#i-check"/></svg>Nowe treningi przez cały rok</li>
+              <li><svg class="ico"><use href="#i-check"/></svg>Próby Mocy i&nbsp;rozety</li>
+              <li><svg class="ico"><use href="#i-check"/></svg>Dostęp na 12&nbsp;miesięcy</li>
+            </ul>
+            <a class="btn btn--pink btn--block" href="#" data-demo-soon="W demo zakup jest wyłączony. Ten przycisk poprowadzi do koszyka.">Wybieram karnet roczny</a>
+          </article>
+        </div>
+        <p class="note"><svg class="ico"><use href="#i-prezent"/></svg>Ceny w&nbsp;demo są przykładowe. Pierwszy trening każdego programu sprawdzisz za darmo.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="porownanie-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
+          <h2 class="h2" id="porownanie-tytul">Co jest w&nbsp;cenie</h2>
+          <p class="lead">Karnet roczny wychodzi najtaniej w&nbsp;przeliczeniu na miesiąc i&nbsp;daje dostęp do nowych treningów.</p>
+        </header>
+        <div class="compare" role="region" aria-labelledby="porownanie-tytul" tabindex="0">
+          <table class="compare__table">
+            <caption class="visually-hidden">Porównanie programu i&nbsp;karnetów</caption>
+            <thead>
+              <tr><th scope="col"><span class="visually-hidden">Co zawiera</span></th><th scope="col">Program</th><th scope="col">Karnet 3&nbsp;miesiące</th><th scope="col" class="is-featured">Karnet 12&nbsp;miesięcy</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Cena</th><td>179&nbsp;zł</td><td>229&nbsp;zł</td><td class="is-featured">499&nbsp;zł</td></tr>
+              <tr><th scope="row">Programy</th><td>1 do wyboru</td><td>wszystkie 3</td><td class="is-featured">wszystkie 3</td></tr>
+              <tr><th scope="row">Dostęp</th><td>12&nbsp;miesięcy</td><td>3&nbsp;miesiące</td><td class="is-featured">12&nbsp;miesięcy</td></tr>
+              <tr><th scope="row">Level Stęp i&nbsp;Kłus</th><td><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td><td><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td><td class="is-featured"><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td></tr>
+              <tr><th scope="row">Próby Mocy i&nbsp;rozety</th><td><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td><td><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td><td class="is-featured"><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td></tr>
+              <tr><th scope="row">Nowe treningi i&nbsp;Galop po premierze</th><td class="is-no">nie</td><td class="is-no">nie</td><td class="is-featured"><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td></tr>
+              <tr><th scope="row">Wychodzi miesięcznie</th><td>ok. 15&nbsp;zł</td><td>ok. 76&nbsp;zł</td><td class="is-featured">ok. 42&nbsp;zł</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight-top" id="dodatki" aria-labelledby="dodatki-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
+          <h2 class="h2" id="dodatki-tytul">Dodatki</h2>
+          <p class="lead">Dla osób, które chcą więcej kontaktu z&nbsp;Justyną.</p>
+        </header>
+        <div class="extras">
+          <article class="extra extra--pink">
+            <span class="extra__icon"><svg class="ico"><use href="#i-wideo"/></svg></span>
+            <h3 class="h3">Weryfikacja Próby z&nbsp;Justyną</h3>
+            <p>Wysyłasz nagranie z&nbsp;Próby Mocy, a&nbsp;Justyna odpisuje w&nbsp;2&#8288;-&#8288;3&nbsp;dni z&nbsp;uwagami do techniki.</p>
+            <p class="extra__price">59&nbsp;zł za Próbę</p>
+          </article>
+          <article class="extra extra--sage">
+            <span class="extra__icon"><svg class="ico"><use href="#i-rozmowa"/></svg></span>
+            <h3 class="h3">Konsultacja 1:1 online</h3>
+            <p>Rozmowa wideo o&nbsp;Twojej jeździe i&nbsp;plan treningów dopasowany do Ciebie.</p>
+            <p class="extra__price">cena do ustalenia</p>
+          </article>
+          <article class="extra extra--butter">
+            <span class="extra__icon"><svg class="ico"><use href="#i-stajnia"/></svg></span>
+            <h3 class="h3">Trening w&nbsp;stajni</h3>
+            <p>Spotkanie na żywo z&nbsp;Justyną. Kursantki i&nbsp;kursanci Akademii mają pierwszeństwo przy zapisach.</p>
+            <p class="extra__price">zapisy w&nbsp;GOT’S for Horses</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight-top" id="vouchery" aria-labelledby="voucher-tytul">
+      <div class="wrap">
+        <div class="voucher">
+          <div class="voucher__copy">
+            <h2 class="h2" id="voucher-tytul">Prezent dla jeźdźca</h2>
+            <p class="lead">Każdy program i&nbsp;karnet kupisz jako voucher. Na święta, urodziny albo na zakończenie sezonu.</p>
+            <ol class="voucher__steps">
+              <li><span class="voucher__num">1</span><span><strong>Wybierasz</strong> program albo karnet</span></li>
+              <li><span class="voucher__num">2</span><span><strong>Płacisz</strong> jak za zwykły zakup</span></li>
+              <li><span class="voucher__num">3</span><span><strong>Dostajesz PDF</strong> z&nbsp;kodem do wydruku albo wysłania</span></li>
+            </ol>
+            <a class="btn btn--dark" href="#" data-demo-soon="W demo zakup vouchera jest wyłączony.">Kup voucher</a>
+          </div>
+          <div class="voucher__card" aria-hidden="true">
+            <div class="vcard">
+              <div class="vcard__top"><svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20.00 3.50A3.67 3.67 0 0 1 27.16 5.13A3.67 3.67 0 0 1 32.90 9.71A3.67 3.67 0 0 1 36.09 16.33A3.67 3.67 0 0 1 36.09 23.67A3.67 3.67 0 0 1 32.90 30.29A3.67 3.67 0 0 1 27.16 34.87A3.67 3.67 0 0 1 20.00 36.50A3.67 3.67 0 0 1 12.84 34.87A3.67 3.67 0 0 1 7.10 30.29A3.67 3.67 0 0 1 3.91 23.67A3.67 3.67 0 0 1 3.91 16.33A3.67 3.67 0 0 1 7.10 9.71A3.67 3.67 0 0 1 12.84 5.13A3.67 3.67 0 0 1 20.00 3.50Z" fill="#E07D98"/><circle cx="20" cy="20" r="8.6" fill="#FFF9F8"/><circle cx="20" cy="20" r="3.2" fill="#2F2323"/></svg><span>Akademia Mocy Jeździeckich</span></div>
+              <p class="vcard__label">Voucher prezentowy</p>
+              <p class="vcard__name">Karnet 12&nbsp;miesięcy</p>
+              <p class="vcard__code">Kod: AMJ 2026 ROZETA</p>
+            </div>
+            <span class="badge badge--rose vcard__badge">dla<br>Ciebie</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight-top" aria-labelledby="platnosci-tytul">
+      <div class="wrap faq-grid">
+        <header class="faq-grid__head">
+          <h2 class="h2" id="platnosci-tytul">Płatności i&nbsp;dostęp</h2>
+          <p class="lead">Płatności obsługuje Przelewy24. Dostęp dostajesz od razu po zakupie.</p>
+          <ul class="pay" aria-label="Metody płatności">
+            <li>BLIK</li>
+            <li>Szybki przelew</li>
+            <li>Karta</li>
+            <li>Google Pay</li>
+            <li>Apple Pay</li>
+          </ul>
+        </header>
+        <div class="faq">
+          <details class="faq__item"><summary>Czy to abonament?</summary><div class="faq__answer"><p>Nie. Płacisz raz, a&nbsp;dostęp trwa tyle, ile wybierzesz: 3 albo 12&nbsp;miesięcy. Nic nie odnawia się samo.</p></div></details>
+          <details class="faq__item"><summary>Czy mogę sprawdzić Akademię przed zakupem?</summary><div class="faq__answer"><p>Tak. Pierwszy trening każdego programu jest za darmo, a&nbsp;rozgrzewkę przed jazdą dostajesz po zapisie na listę chętnych.</p></div></details>
+          <details class="faq__item"><summary>Co po zakończeniu dostępu?</summary><div class="faq__answer"><p>Możesz go przedłużyć. Twoje postępy i&nbsp;rozety zostają na koncie.</p></div></details>
+          <details class="faq__item"><summary>Jak działa voucher?</summary><div class="faq__answer"><p>Kupujesz dostęp jako prezent i&nbsp;dostajesz PDF z&nbsp;kodem. Osoba obdarowana aktywuje go wtedy, kiedy chce zacząć.</p></div></details>
+          <details class="faq__item"><summary>Czy dostanę dokument zakupu?</summary><div class="faq__answer"><p>Tak, przyjdzie mailem razem z&nbsp;dostępem. Szczegóły zwrotów i&nbsp;reklamacji opisze regulamin.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--rose cta" aria-labelledby="cta-tytul">
+      <div class="wrap cta__inner">
+        <h2 class="cta__title" id="cta-tytul">Nie wiesz, co wybrać?</h2>
+        <div class="cta__side">
+          <p>Odpowiedz na kilka pytań, a&nbsp;dobierzemy program na start. Rozgrzewkę przed jazdą dostaniesz od razu.</p>
+          <a class="btn btn--dark" href="lista.html"><svg class="ico ico--fill"><use href="#i-play"/></svg>Dobierz program</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="index.html" aria-label="Akademia Mocy Jeździeckich, strona główna">
+            <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20.00 3.50A3.67 3.67 0 0 1 27.16 5.13A3.67 3.67 0 0 1 32.90 9.71A3.67 3.67 0 0 1 36.09 16.33A3.67 3.67 0 0 1 36.09 23.67A3.67 3.67 0 0 1 32.90 30.29A3.67 3.67 0 0 1 27.16 34.87A3.67 3.67 0 0 1 20.00 36.50A3.67 3.67 0 0 1 12.84 34.87A3.67 3.67 0 0 1 7.10 30.29A3.67 3.67 0 0 1 3.91 23.67A3.67 3.67 0 0 1 3.91 16.33A3.67 3.67 0 0 1 7.10 9.71A3.67 3.67 0 0 1 12.84 5.13A3.67 3.67 0 0 1 20.00 3.50Z" fill="#E07D98"/><circle cx="20" cy="20" r="8.6" fill="#FFF9F8"/><circle cx="20" cy="20" r="3.2" fill="#2F2323"/></svg>
+            <span class="brand__text"><span class="brand__name">Akademia Mocy</span><span class="brand__sub">Jeździeckich</span></span>
+          </a>
+          <p>Treningi dla jeźdźców, które czuć w&nbsp;siodle.</p>
+          <div class="social">
+            <a href="#" aria-label="Instagram" data-demo-soon="Link do Instagrama dodamy przed startem."><svg class="ico"><use href="#i-instagram"/></svg></a>
+            <a href="#" aria-label="Facebook" data-demo-soon="Link do Facebooka dodamy przed startem."><svg class="ico"><use href="#i-facebook"/></svg></a>
+          </div>
+        </div>
+        <nav class="footer__col" aria-label="Programy">
+          <h3>Programy</h3>
+          <ul>
+            <li><a href="program-ogolny.html">Ogólny program</a></li>
+            <li><a href="program-gimnastyka.html">Gimnastyka</a></li>
+            <li><a href="program-ranne-moce.html">Ranne Moce</a></li>
+          </ul>
+        </nav>
+        <nav class="footer__col" aria-label="Akademia">
+          <h3>Akademia</h3>
+          <ul>
+            <li><a href="index.html#jak-to-dziala">Jak to działa</a></li>
+            <li><a href="cennik.html">Cennik i&nbsp;vouchery</a></li>
+            <li><a href="o-akademii.html">O&nbsp;Akademii</a></li>
+            <li><a href="faq.html">Pytania i&nbsp;odpowiedzi</a></li>
+            <li><a href="lista.html">Lista chętnych</a></li>
+          </ul>
+        </nav>
+        <nav class="footer__col" aria-label="Informacje">
+          <h3>Informacje</h3>
+          <ul>
+            <li><a href="#" data-demo-soon>Regulamin</a></li>
+            <li><a href="#" data-demo-soon>Polityka prywatności</a></li>
+            <li><a href="#" data-demo-soon>Zastrzeżenie zdrowotne</a></li>
+            <li><a href="#" data-demo-soon>Kontakt</a></li>
+            <li><a class="link" href="https://gotsforhorses.pl" target="_blank" rel="noopener">GOT’S for Horses</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer__word" aria-hidden="true">Akademia Mocy</p>
+      <div class="footer__bottom">
+        <p>© <span data-rok>2026</span> Akademia Mocy Jeździeckich. Wersja demonstracyjna, treści i&nbsp;ceny są przykładowe.</p>
+        <p class="fontswitch">Kroje: <button type="button" data-fonty-set="a" aria-pressed="true">A</button><button type="button" data-fonty-set="b" aria-pressed="false">B</button></p>
+      </div>
+    </div>
+  </footer>
+  <!-- Telefon: przycisk rozgrzewki zawsze pod kciukiem -->
+  <div class="dock" data-dock>
+    <span class="dock__text"><strong>Darmowa rozgrzewka</strong><span>7&nbsp;minut, bez sprzętu</span></span>
+    <a class="btn btn--dark btn--sm" href="lista.html">Odbierz</a>
+  </div>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+  <script src="data/programs.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+          <div class="training__demo">
+            <div class="stage">
+              <div class="device" data-device data-trening="{{odtwarzacz_program}}">
+                <div class="device__screen">
+                  <div class="player" data-player role="group" aria-label="Działający podgląd odtwarzacza treningu">
+                    <div class="player__video" data-p-video>
+                      <img src="assets/img/kadr-mata.svg" alt="" width="360" height="640">
+                      <span class="player__block" data-p-block>Mobilność, blok 2 z 4</span>
+                    </div>
+                    <div class="player__hud">
+                      <p class="player__meta" data-p-meta>Trening A</p>
+                      <p class="player__name" data-p-name>Koci grzbiet</p>
+                      <p class="player__timer" data-p-timer aria-live="off">0:35</p>
+                      <p class="player__cue" data-p-cue>Ruch z miednicy, spokojny oddech</p>
+                      <p class="player__next" data-p-next>Następne ćwiczenie</p>
+                      <div class="player__progress" data-p-progress aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+                      <div class="player__controls">
+                        <button class="ctrl" type="button" data-p-prev aria-label="Poprzednie ćwiczenie"><svg class="ico"><use href="#i-prev"/></svg></button>
+                        <button class="ctrl ctrl--main" type="button" data-p-play aria-label="Wstrzymaj" aria-pressed="true"><svg class="ico" data-p-icon><use href="#i-pause"/></svg></button>
+                        <button class="ctrl" type="button" data-p-next-btn aria-label="Następne ćwiczenie"><svg class="ico"><use href="#i-next"/></svg></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="seg" role="group" aria-label="Orientacja telefonu">
+              <span class="seg__thumb" aria-hidden="true"></span>
+              <button type="button" class="seg__btn" data-orient="pion" aria-pressed="true">Pion</button>
+              <button type="button" class="seg__btn" data-orient="poziom" aria-pressed="false">Poziom</button>
+            </div>
+            <p class="training__hint">Obróć telefon i zobacz, jak zmienia się ekran. Trening leci dalej.</p>
+          </div>

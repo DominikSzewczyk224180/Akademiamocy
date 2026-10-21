@@ -1,0 +1,144 @@
+<!--
+tytul: Lista chętnych i darmowa rozgrzewka | Akademia Mocy Jeździeckich
+og_tytul: Zapisz się na start Akademii Mocy Jeździeckich
+opis: Zapisz się na listę chętnych, odbierz darmową rozgrzewkę przed jazdą i dowiedz się, który program pasuje do Ciebie.
+aktywny:
+body_klasa: strona-lista
+-->
+  <main id="tresc">
+
+    <section class="page-hero page-hero--signup" aria-labelledby="lista-tytul">
+      <div class="wrap signup">
+        <div class="signup__copy">
+          <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Akademia</a><span aria-hidden="true">/</span><span aria-current="page">Lista chętnych</span></nav>
+          <h1 class="page-title" id="lista-tytul"><span class="page-title__l1">Zapisz się na start Akademii</span><span class="page-title__l2">i odbierz rozgrzewkę od razu</span></h1>
+          <p class="page-lead">Odpowiedz na kilka pytań, a dobierzemy program na start. Zajmie to mniej niż minutę.</p>
+          <ul class="check-list check-list--big">
+            <li><svg class="ico"><use href="#i-check"/></svg>Rozgrzewka przed jazdą od razu po zapisie</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Pierwszy trening każdego programu za darmo</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Cena założycielska na start Akademii</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Informacja o premierze, bez spamu</li>
+          </ul>
+        </div>
+
+        <div class="signup__card">
+          <form class="wizard" data-wizard novalidate>
+            <div class="wizard__top">
+              <div class="wizard__progress" aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
+              <p class="wizard__label" data-wizard-label aria-live="polite">Krok 1 z 3: Twoja jazda</p>
+              <p class="wizard__chosen" data-wizard-chosen hidden></p>
+            </div>
+
+            <div class="wizard__step" data-step="1">
+              <fieldset class="q" data-required>
+                <legend>Jak często jeździsz?</legend>
+                <div class="opts">
+                  <label class="opt"><input type="radio" name="czestotliwosc" value="rzadko"><span>Raz w tygodniu albo rzadziej</span></label>
+                  <label class="opt"><input type="radio" name="czestotliwosc" value="srednio"><span>2-3 razy w tygodniu</span></label>
+                  <label class="opt"><input type="radio" name="czestotliwosc" value="czesto"><span>4 razy i więcej</span></label>
+                </div>
+                <p class="field__error" hidden>Wybierz jedną odpowiedź.</p>
+              </fieldset>
+              <fieldset class="q" data-required>
+                <legend>Jak jeździsz?</legend>
+                <div class="opts">
+                  <label class="opt"><input type="radio" name="styl" value="rekreacja"><span>Rekreacyjnie</span></label>
+                  <label class="opt"><input type="radio" name="styl" value="amator"><span>Amatorsko startuję</span></label>
+                  <label class="opt"><input type="radio" name="styl" value="sport"><span>Startuję regularnie</span></label>
+                </div>
+                <p class="field__error" hidden>Wybierz jedną odpowiedź.</p>
+              </fieldset>
+              <fieldset class="q">
+                <legend>Dyscyplina <span class="q__hint">(opcjonalnie, możesz kilka)</span></legend>
+                <div class="opts">
+                  <label class="opt"><input type="checkbox" name="dyscyplina" value="skoki"><span>Skoki</span></label>
+                  <label class="opt"><input type="checkbox" name="dyscyplina" value="ujezdzenie"><span>Ujeżdżenie</span></label>
+                  <label class="opt"><input type="checkbox" name="dyscyplina" value="wkkw"><span>WKKW</span></label>
+                  <label class="opt"><input type="checkbox" name="dyscyplina" value="teren"><span>Teren i rekreacja</span></label>
+                  <label class="opt"><input type="checkbox" name="dyscyplina" value="inna"><span>Inna</span></label>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="wizard__step" data-step="2" hidden>
+              <fieldset class="q" data-required>
+                <legend>Co chcesz poprawić? <span class="q__hint">(możesz kilka)</span></legend>
+                <div class="opts">
+                  <label class="opt"><input type="checkbox" name="cel" value="lydka"><span>Stabilną łydkę i półsiad</span></label>
+                  <label class="opt"><input type="checkbox" name="cel" value="symetria"><span>Symetrię dosiadu</span></label>
+                  <label class="opt"><input type="checkbox" name="cel" value="biodra"><span>Ruchomość bioder</span></label>
+                  <label class="opt"><input type="checkbox" name="cel" value="kondycja"><span>Kondycję</span></label>
+                  <label class="opt"><input type="checkbox" name="cel" value="plecy"><span>Komfort pleców</span></label>
+                  <label class="opt"><input type="checkbox" name="cel" value="core"><span>Równowagę i tułów</span></label>
+                </div>
+                <p class="field__error" hidden>Wybierz co najmniej jedną odpowiedź.</p>
+              </fieldset>
+              <fieldset class="q" data-required>
+                <legend>Ile czasu masz na trening?</legend>
+                <div class="opts">
+                  <label class="opt"><input type="radio" name="czas" value="krotko"><span>10-15 minut</span></label>
+                  <label class="opt"><input type="radio" name="czas" value="srednio"><span>20-30 minut</span></label>
+                  <label class="opt"><input type="radio" name="czas" value="dlugo"><span>Ponad 30 minut</span></label>
+                </div>
+                <p class="field__error" hidden>Wybierz jedną odpowiedź.</p>
+              </fieldset>
+            </div>
+
+            <div class="wizard__step" data-step="3" hidden>
+              <div class="field">
+                <label class="field__label" for="w-imie">Imię</label>
+                <input class="input" id="w-imie" name="imie" type="text" autocomplete="given-name" placeholder="Twoje imię" aria-describedby="w-imie-blad" required>
+                <p class="field__error" id="w-imie-blad" hidden>Wpisz imię.</p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="w-email">E-mail</label>
+                <input class="input" id="w-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="imie@przyklad.pl" aria-describedby="w-email-blad" required>
+                <p class="field__error" id="w-email-blad" hidden>Wpisz poprawny adres e-mail.</p>
+              </div>
+              <div class="field">
+                <label class="check" for="w-zgoda">
+                  <input id="w-zgoda" name="zgoda" type="checkbox" aria-describedby="w-zgoda-blad" required>
+                  <span>Chcę dostawać wiadomości od Akademii Mocy Jeździeckich. Mogę wypisać się w każdej chwili. <a class="link" href="#" data-demo-soon="Polityka prywatności powstanie w kolejnym etapie.">Polityka prywatności</a></span>
+                </label>
+                <p class="field__error" id="w-zgoda-blad" hidden>Zaznacz zgodę, żebyśmy mogli wysłać rozgrzewkę.</p>
+              </div>
+            </div>
+
+            <div class="wizard__nav">
+              <button type="button" class="btn btn--light" data-wizard-back hidden>Wstecz</button>
+              <button type="submit" class="btn btn--dark" data-wizard-next>Dalej</button>
+            </div>
+            <p class="form__fine">Zero spamu. Wypiszesz się jednym kliknięciem.</p>
+          </form>
+
+          <div class="wizard-result" data-wizard-result tabindex="-1" hidden>
+            <span class="badge badge--rose" aria-hidden="true">gotowe</span>
+            <h2 class="h3 wizard-result__title" data-r-title>Jesteś na liście</h2>
+            <p class="wizard-result__mail" data-r-mail>Rozgrzewka przed jazdą już leci na Twój e-mail. W wersji demo nic nie wysyłamy.</p>
+            <a class="rec" href="index.html#programy" data-r-card>
+              <span class="rec__label">Twój program na start</span>
+              <strong class="rec__name" data-r-name>Gimnastyka dla jeźdźców</strong>
+              <span class="rec__level" data-r-level>Level Stęp</span>
+              <span class="rec__why" data-r-why></span>
+              <span class="rec__more">Zobacz program</span>
+            </a>
+            <button type="button" class="linkbtn" data-wizard-restart>Zmień odpowiedzi</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight-top" aria-labelledby="dalej-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
+          <h2 class="h2" id="dalej-tytul">Co dalej</h2>
+          <p class="lead">Trzy kroki od zapisu do pierwszego treningu.</p>
+        </header>
+        <ol class="process process--three">
+          <li class="process__step"><span class="process__num">1</span><h3 class="h3">Zapisujesz się</h3><p>Odpowiadasz na kilka pytań i zostawiasz e-mail.</p></li>
+          <li class="process__step"><span class="process__num">2</span><h3 class="h3">Dostajesz rozgrzewkę</h3><p>7 minut przed jazdą, bez sprzętu, do zrobienia przy boksie.</p></li>
+          <li class="process__step"><span class="process__num">3</span><h3 class="h3">Startujesz w Akademii</h3><p>Przed premierą dostaniesz cenę założycielską i pierwszy trening programu za darmo.</p></li>
+        </ol>
+      </div>
+    </section>
+  </main>

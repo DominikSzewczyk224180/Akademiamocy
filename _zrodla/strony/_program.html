@@ -1,0 +1,143 @@
+<!--
+szablon: program
+Ten plik buduje 3 strony: program-ogolny.html, program-gimnastyka.html i program-ranne-moce.html.
+Treść bierze się z data/programs.js. Znaczniki {{p.*}} wypełnia _zrodla/buduj.py.
+-->
+  <main id="tresc">
+
+    <!-- 1. Hero programu w jego kolorze -->
+    <section class="band band--{{p.kolor_band}} prog-hero" aria-labelledby="prog-tytul">
+      <div class="wrap prog-hero__grid">
+        <div class="prog-hero__text">
+          <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Akademia</a><span aria-hidden="true">/</span><a href="index.html#programy">Programy</a><span aria-hidden="true">/</span><span aria-current="page">{{p.krotka}}</span></nav>
+          <h1 class="page-title" id="prog-tytul"><span class="page-title__l1">{{p.nazwa}}</span><span class="page-title__l2">{{p.haslo}}</span></h1>
+          <p class="page-lead">{{p.opis}}</p>
+          <ul class="hero__facts hero__facts--white">
+            <li><svg class="ico"><use href="#i-zegar"/></svg>{{p.czas}}</li>
+            <li><svg class="ico"><use href="#i-kalendarz"/></svg>{{p.czestotliwosc}}</li>
+            <li><svg class="ico"><use href="#i-dom"/></svg>W domu albo w stajni</li>
+          </ul>
+          <div class="hero__actions">
+            <a class="btn btn--dark" href="lista.html?program={{p.id}}"><svg class="ico ico--fill"><use href="#i-play"/></svg>Zacznij od darmowego treningu</a>
+            <a class="btn btn--light" href="cennik.html">Zobacz cennik</a>
+          </div>
+        </div>
+        <div class="prog-hero__visual">
+          <div class="ticket">
+            <div class="ticket__head">
+              <svg class="prog__icon" aria-hidden="true"><use href="#{{p.ikona}}"/></svg>
+              <span><strong>{{p.trening_opis}}</strong><span>{{p.trening_info}}</span></span>
+            </div>
+            <div class="ticket__bar" aria-hidden="true"><i style="--b: var(--blk-1); --g: 5"></i><i style="--b: var(--blk-2); --g: 6"></i><i style="--b: var(--blk-3); --g: 12"></i><i style="--b: var(--blk-4); --g: 5"></i></div>
+            <ol class="ticket__list">
+{{p.bilet_lista}}
+            </ol>
+            <p class="ticket__more">{{p.bilet_wiecej}}</p>
+          </div>
+          <span class="badge badge--butter ticket__badge" aria-hidden="true">Próba<br>Mocy</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Dla kogo, efekty i sprzęt -->
+    <section class="section" aria-labelledby="dla-kogo-tytul">
+      <div class="wrap fit">
+        <div class="fit__col">
+          <h2 class="h2" id="dla-kogo-tytul">Dla kogo</h2>
+          <ul class="check-list check-list--big">
+{{p.dla_kogo}}
+          </ul>
+          <h3 class="fit__sub">Czego potrzebujesz</h3>
+          <ul class="tags">
+{{p.sprzet}}
+          </ul>
+        </div>
+        <div class="fit__col">
+          <h2 class="h2">Co poczujesz w siodle</h2>
+          <ul class="fixes fixes--stack">
+{{p.efekty}}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Levele i Próby Mocy -->
+    <section class="section section--tight-top" aria-labelledby="levele-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
+          <h2 class="h2" id="levele-tytul">Levele i Próby Mocy</h2>
+          <p class="lead">Każdy level kończy Próba Mocy. Zaliczasz ją i przechodzisz dalej z rozetą.</p>
+        </header>
+        <ol class="levels">
+{{p.levele}}
+        </ol>
+      </div>
+    </section>
+
+    <!-- 4. Przykładowy trening i działający odtwarzacz -->
+    <section class="band band--{{p.band_trening}}" id="trening" aria-labelledby="trening-tytul">
+      <div class="wrap training">
+        <div class="training__copy">
+          <h2 class="h2" id="trening-tytul">Przykładowy trening</h2>
+          <p class="lead">Tak wygląda jeden dzień w programie: cztery bloki, krótkie ćwiczenia i licznik na ekranie. Włącz podgląd i sprawdź, jak to działa.</p>
+          <div class="session">
+{{p.bloki}}
+          </div>
+        </div>
+{{> odtwarzacz.html}}
+      </div>
+    </section>
+
+    <!-- 5. Próba Mocy w tym programie -->
+    <section class="band band--dark" aria-labelledby="proba-tytul">
+      <div class="wrap proba-prog">
+        <div class="proba-prog__copy">
+          <h2 class="h2" id="proba-tytul">Próba Mocy w tym programie</h2>
+          <p class="lead">Na koniec levelu Stęp sprawdzasz się w kilku ćwiczeniach. Zaliczasz i wchodzisz w Kłus z rozetą. Nie wyszło? Tydzień celowanego treningu i podchodzisz jeszcze raz.</p>
+          <ul class="chips chips--left">
+{{p.proba}}
+          </ul>
+          <p class="proba-prog__extra">Chcesz opinii z zewnątrz? Wyślij nagranie z Próby, a Justyna odpisze w 2-3 dni. <a class="link link--light" href="cennik.html#dodatki">Weryfikacja Próby</a></p>
+        </div>
+        <div class="proba-prog__ros" aria-hidden="true">{{> grafiki/rozeta-step-mala.svg}}{{> grafiki/rozeta-klus-mala.svg}}</div>
+      </div>
+    </section>
+
+    <!-- 6. Pytania o program -->
+    <section class="section" aria-labelledby="prog-faq-tytul">
+      <div class="wrap faq-grid">
+        <header class="faq-grid__head">
+          <h2 class="h2" id="prog-faq-tytul">Pytania o program</h2>
+          <p class="lead">Najczęstsze pytania o {{p.krotka_dopelniacz}}.</p>
+          <p><a class="link" href="faq.html">Wszystkie pytania i odpowiedzi</a></p>
+        </header>
+        <div class="faq">
+{{p.faq}}
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Inne programy -->
+    <section class="section section--tight-top" aria-labelledby="inne-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
+          <h2 class="h2" id="inne-tytul">Inne programy</h2>
+          <p class="lead">W karnecie masz wszystkie trzy. Najlepiej łączą się na zmianę, w różne dni.</p>
+        </header>
+        <div class="progs progs--two">
+{{p.inne}}
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Zachęta -->
+    <section class="band band--rose cta" aria-labelledby="cta-tytul">
+      <div class="wrap cta__inner">
+        <h2 class="cta__title" id="cta-tytul">Zacznij od darmowego treningu</h2>
+        <div class="cta__side">
+          <p>Zapisz się, odbierz rozgrzewkę przed jazdą i sprawdź pierwszy trening programu za darmo.</p>
+          <a class="btn btn--dark" href="lista.html?program={{p.id}}"><svg class="ico ico--fill"><use href="#i-play"/></svg>Zapisz się</a>
+        </div>
+      </div>
+    </section>
+  </main>

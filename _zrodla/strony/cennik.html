@@ -1,0 +1,141 @@
+<!--
+tytul: Cennik | Akademia Mocy Jeździeckich
+og_tytul: Cennik Akademii Mocy Jeździeckich
+opis: Programy i karnety Akademii Mocy Jeździeckich. Płacisz raz, bez abonamentu. Pierwszy trening każdego programu za darmo.
+aktywny: cennik
+body_klasa: strona-cennik
+-->
+  <main id="tresc">
+
+    <section class="page-hero" aria-labelledby="cennik-tytul">
+      <div class="wrap page-hero__grid">
+        <div>
+          <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Akademia</a><span aria-hidden="true">/</span><span aria-current="page">Cennik</span></nav>
+          <h1 class="page-title" id="cennik-tytul"><span class="page-title__l1">Cennik</span><span class="page-title__l2">Płacisz raz, bez abonamentu</span></h1>
+          <p class="page-lead">Wybierasz jeden program albo karnet na wszystkie. Płacisz BLIK-iem, szybkim przelewem, kartą, Google Pay albo Apple Pay.</p>
+        </div>
+        <span class="badge badge--rose page-hero__badge" aria-hidden="true">1. trening<br>za darmo</span>
+      </div>
+    </section>
+
+    <section class="band band--pink" aria-label="Oferta">
+      <div class="wrap">
+{{> cennik-karty.html}}
+        <p class="note"><svg class="ico"><use href="#i-prezent"/></svg>Ceny w demo są przykładowe. Pierwszy trening każdego programu sprawdzisz za darmo.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="porownanie-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
+          <h2 class="h2" id="porownanie-tytul">Co jest w cenie</h2>
+          <p class="lead">Karnet roczny wychodzi najtaniej w przeliczeniu na miesiąc i daje dostęp do nowych treningów.</p>
+        </header>
+        <div class="compare" role="region" aria-labelledby="porownanie-tytul" tabindex="0">
+          <table class="compare__table">
+            <caption class="visually-hidden">Porównanie programu i karnetów</caption>
+            <thead>
+              <tr><th scope="col"><span class="visually-hidden">Co zawiera</span></th><th scope="col">Program</th><th scope="col">Karnet 3 miesiące</th><th scope="col" class="is-featured">Karnet 12 miesięcy</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Cena</th><td>179 zł</td><td>229 zł</td><td class="is-featured">499 zł</td></tr>
+              <tr><th scope="row">Programy</th><td>1 do wyboru</td><td>wszystkie 3</td><td class="is-featured">wszystkie 3</td></tr>
+              <tr><th scope="row">Dostęp</th><td>12 miesięcy</td><td>3 miesiące</td><td class="is-featured">12 miesięcy</td></tr>
+              <tr><th scope="row">Level Stęp i Kłus</th><td><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td><td><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td><td class="is-featured"><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td></tr>
+              <tr><th scope="row">Próby Mocy i rozety</th><td><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td><td><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td><td class="is-featured"><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td></tr>
+              <tr><th scope="row">Nowe treningi i Galop po premierze</th><td class="is-no">nie</td><td class="is-no">nie</td><td class="is-featured"><svg class="ico ico--ok" role="img" aria-label="tak"><use href="#i-check"/></svg></td></tr>
+              <tr><th scope="row">Wychodzi miesięcznie</th><td>ok. 15 zł</td><td>ok. 76 zł</td><td class="is-featured">ok. 42 zł</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight-top" id="dodatki" aria-labelledby="dodatki-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
+          <h2 class="h2" id="dodatki-tytul">Dodatki</h2>
+          <p class="lead">Dla osób, które chcą więcej kontaktu z Justyną.</p>
+        </header>
+        <div class="extras">
+          <article class="extra extra--pink">
+            <span class="extra__icon"><svg class="ico"><use href="#i-wideo"/></svg></span>
+            <h3 class="h3">Weryfikacja Próby z Justyną</h3>
+            <p>Wysyłasz nagranie z Próby Mocy, a Justyna odpisuje w 2-3 dni z uwagami do techniki.</p>
+            <p class="extra__price">59 zł za Próbę</p>
+          </article>
+          <article class="extra extra--sage">
+            <span class="extra__icon"><svg class="ico"><use href="#i-rozmowa"/></svg></span>
+            <h3 class="h3">Konsultacja 1:1 online</h3>
+            <p>Rozmowa wideo o Twojej jeździe i plan treningów dopasowany do Ciebie.</p>
+            <p class="extra__price">cena do ustalenia</p>
+          </article>
+          <article class="extra extra--butter">
+            <span class="extra__icon"><svg class="ico"><use href="#i-stajnia"/></svg></span>
+            <h3 class="h3">Trening w stajni</h3>
+            <p>Spotkanie na żywo z Justyną. Kursantki i kursanci Akademii mają pierwszeństwo przy zapisach.</p>
+            <p class="extra__price">zapisy w GOT’S for Horses</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight-top" id="vouchery" aria-labelledby="voucher-tytul">
+      <div class="wrap">
+        <div class="voucher">
+          <div class="voucher__copy">
+            <h2 class="h2" id="voucher-tytul">Prezent dla jeźdźca</h2>
+            <p class="lead">Każdy program i karnet kupisz jako voucher. Na święta, urodziny albo na zakończenie sezonu.</p>
+            <ol class="voucher__steps">
+              <li><span class="voucher__num">1</span><span><strong>Wybierasz</strong> program albo karnet</span></li>
+              <li><span class="voucher__num">2</span><span><strong>Płacisz</strong> jak za zwykły zakup</span></li>
+              <li><span class="voucher__num">3</span><span><strong>Dostajesz PDF</strong> z kodem do wydruku albo wysłania</span></li>
+            </ol>
+            <a class="btn btn--dark" href="#" data-demo-soon="W demo zakup vouchera jest wyłączony.">Kup voucher</a>
+          </div>
+          <div class="voucher__card" aria-hidden="true">
+            <div class="vcard">
+              <div class="vcard__top">{{> grafiki/znak.svg}}<span>Akademia Mocy Jeździeckich</span></div>
+              <p class="vcard__label">Voucher prezentowy</p>
+              <p class="vcard__name">Karnet 12 miesięcy</p>
+              <p class="vcard__code">Kod: AMJ 2026 ROZETA</p>
+            </div>
+            <span class="badge badge--rose vcard__badge">dla<br>Ciebie</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight-top" aria-labelledby="platnosci-tytul">
+      <div class="wrap faq-grid">
+        <header class="faq-grid__head">
+          <h2 class="h2" id="platnosci-tytul">Płatności i dostęp</h2>
+          <p class="lead">Płatności obsługuje Przelewy24. Dostęp dostajesz od razu po zakupie.</p>
+          <ul class="pay" aria-label="Metody płatności">
+            <li>BLIK</li>
+            <li>Szybki przelew</li>
+            <li>Karta</li>
+            <li>Google Pay</li>
+            <li>Apple Pay</li>
+          </ul>
+        </header>
+        <div class="faq">
+          <details class="faq__item"><summary>Czy to abonament?</summary><div class="faq__answer"><p>Nie. Płacisz raz, a dostęp trwa tyle, ile wybierzesz: 3 albo 12 miesięcy. Nic nie odnawia się samo.</p></div></details>
+          <details class="faq__item"><summary>Czy mogę sprawdzić Akademię przed zakupem?</summary><div class="faq__answer"><p>Tak. Pierwszy trening każdego programu jest za darmo, a rozgrzewkę przed jazdą dostajesz po zapisie na listę chętnych.</p></div></details>
+          <details class="faq__item"><summary>Co po zakończeniu dostępu?</summary><div class="faq__answer"><p>Możesz go przedłużyć. Twoje postępy i rozety zostają na koncie.</p></div></details>
+          <details class="faq__item"><summary>Jak działa voucher?</summary><div class="faq__answer"><p>Kupujesz dostęp jako prezent i dostajesz PDF z kodem. Osoba obdarowana aktywuje go wtedy, kiedy chce zacząć.</p></div></details>
+          <details class="faq__item"><summary>Czy dostanę dokument zakupu?</summary><div class="faq__answer"><p>Tak, przyjdzie mailem razem z dostępem. Szczegóły zwrotów i reklamacji opisze regulamin.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--rose cta" aria-labelledby="cta-tytul">
+      <div class="wrap cta__inner">
+        <h2 class="cta__title" id="cta-tytul">Nie wiesz, co wybrać?</h2>
+        <div class="cta__side">
+          <p>Odpowiedz na kilka pytań, a dobierzemy program na start. Rozgrzewkę przed jazdą dostaniesz od razu.</p>
+          <a class="btn btn--dark" href="lista.html"><svg class="ico ico--fill"><use href="#i-play"/></svg>Dobierz program</a>
+        </div>
+      </div>
+    </section>
+  </main>

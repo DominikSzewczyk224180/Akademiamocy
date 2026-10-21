@@ -1,0 +1,36 @@
+  <!-- Menu: pływająca kapsuła. Różowa pigułka pokazuje aktywną stronę albo sekcję. -->
+  <header class="topbar" data-header>
+    <div class="topbar__bar">
+      <a class="brand" href="index.html" aria-label="Akademia Mocy Jeździeckich, strona główna">
+        {{> grafiki/znak.svg}}
+        <span class="brand__text"><span class="brand__name">Akademia Mocy</span><span class="brand__sub">Jeździeckich</span></span>
+      </a>
+      <nav class="menu" id="menu" aria-label="Główna">
+        <div class="menu__links" data-menu-links>
+          <span class="menu__pill" aria-hidden="true" data-menu-pill></span>
+          <div class="menu__drop" data-drop>
+            <button class="menu__item menu__drop-btn" type="button" aria-expanded="false" aria-controls="menu-programy" data-nav="programy" data-spy="programy" data-drop-btn>Programy<svg class="ico menu__chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+            <div class="menu__flyout" id="menu-programy" data-drop-panel>
+{{flyout}}
+            </div>
+          </div>
+          <a class="menu__item" href="index.html#jak-to-dziala" data-nav="jak" data-spy="jak-to-dziala">Jak to działa</a>
+          <a class="menu__item" href="cennik.html" data-nav="cennik">Cennik</a>
+          <a class="menu__item" href="o-akademii.html" data-nav="o-akademii">O Akademii</a>
+          <a class="menu__item" href="faq.html" data-nav="faq">Pytania</a>
+        </div>
+        <div class="menu__actions">
+          <a class="menu__login" href="#" data-demo-soon="Logowanie do strefy kursantki pojawi się w kolejnym etapie demo.">Zaloguj</a>
+          <a class="btn btn--dark btn--sm" href="lista.html">Darmowa rozgrzewka</a>
+        </div>
+        <a class="menu__promo" href="lista.html">
+          <span class="badge badge--rose" aria-hidden="true">7 min</span>
+          <span><strong>Rozgrzewka przed jazdą</strong><span>Za darmo, bez sprzętu, przy boksie</span></span>
+        </a>
+      </nav>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn>
+        <span class="menu-btn__label">Menu</span>
+        <span class="menu-btn__icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>

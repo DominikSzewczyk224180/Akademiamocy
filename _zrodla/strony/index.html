@@ -1,0 +1,268 @@
+<!--
+tytul: Akademia Mocy Jeździeckich | Treningi dla jeźdźców na telefonie
+og_tytul: Akademia Mocy Jeździeckich
+opis: Krótkie treningi dla jeźdźców: rozgrzewka, mobilność, siła i rozciąganie. Ćwiczysz 20 minut w domu, różnicę czujesz w siodle.
+aktywny:
+odtwarzacz_program: gimnastyka
+body_klasa: strona-glowna
+-->
+  <main id="tresc">
+
+    <!-- 1. Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-tytul">
+      <div class="wrap hero__grid">
+        <div class="hero__text">
+          <h1 class="hero__title" id="hero-tytul">
+            <span class="hero__l1">Ćwiczysz 20 minut w domu<span class="ipill ipill--pink" aria-hidden="true"><svg class="ico"><use href="#i-dom"/></svg></span></span>
+            <span class="hero__l2">Różnicę czujesz w siodle<span class="ipill ipill--sage" aria-hidden="true"><svg class="ico"><use href="#i-podkowa"/></svg></span></span>
+          </h1>
+          <p class="hero__lead">Krótkie treningi dla jeźdźców, krok po kroku na telefonie. Rozgrzewka, mobilność, siła i rozciąganie, a efekt widać w dosiadzie: stabilniejsza łydka, prostsze plecy, lżejsze ręce.</p>
+          <div class="hero__actions">
+            <a class="btn btn--dark" href="lista.html"><svg class="ico ico--fill"><use href="#i-play"/></svg>Odbierz darmową rozgrzewkę</a>
+            <a class="btn btn--light" href="#programy">Zobacz programy</a>
+          </div>
+          <ul class="hero__facts">
+            <li><svg class="ico"><use href="#i-zegar"/></svg>10-30 minut</li>
+            <li><svg class="ico"><use href="#i-dom"/></svg>W domu, bez siłowni</li>
+            <li><svg class="ico"><use href="#i-telefon"/></svg>W pionie i w poziomie</li>
+          </ul>
+        </div>
+
+        <div class="hero__visual">
+          <figure class="story story--mata">
+            <div class="story__bars" aria-hidden="true"><i class="is-done"></i><i class="is-run"></i><i></i></div>
+            <div class="story__top" aria-hidden="true">{{> grafiki/znak.svg}}<span>Akademia Mocy</span><em>Mobilność</em></div>
+            <img src="assets/img/kadr-mata.svg" width="360" height="640" alt="Kadr z ćwiczenia na macie. Tu będzie krótki film z treningu.">
+            <figcaption class="story__cap"><strong>Na macie</strong><span>Mostek biodrowy, 0:35</span></figcaption>
+          </figure>
+          <figure class="story story--siodlo">
+            <div class="story__bars" aria-hidden="true"><i class="is-done"></i><i class="is-done"></i><i class="is-run"></i></div>
+            <div class="story__top" aria-hidden="true">{{> grafiki/znak.svg}}<span>Akademia Mocy</span><em>W siodle</em></div>
+            <img src="assets/img/kadr-siodlo.svg" width="360" height="640" alt="Kadr z ujeżdżalni. Tu będzie ten sam ruch pokazany w siodle.">
+            <figcaption class="story__cap"><strong>W siodle</strong><span>Stabilna łydka w półsiadzie</span></figcaption>
+          </figure>
+          <span class="badge badge--butter hero__same" aria-hidden="true">ten sam<br>ruch</span>
+        </div>
+      </div>
+      <p class="wrap hero__brand">Od twórczyni <a class="link" href="https://gotsforhorses.pl" target="_blank" rel="noopener">GOT’S for Horses</a>, naturalnych smaczków dla koni.</p>
+    </section>
+
+    <!-- 2. Co poczujesz w siodle -->
+    <section class="section" id="w-siodle" aria-labelledby="w-siodle-tytul">
+      <div class="wrap feel">
+        <header class="feel__head">
+          <h2 class="h2" id="w-siodle-tytul">Co poczujesz w siodle</h2>
+          <p class="lead">Każde ćwiczenie ma jeden cel: lepszą jazdę. Zaczynamy od tego, co jeźdźcy mówią najczęściej.</p>
+          <p class="feel__horse">A Twój koń dostaje jeźdźca, który mu nie przeszkadza.</p>
+        </header>
+        <ul class="fixes">
+          <li class="fix"><span class="fix__was">„Ucieka mi łydka”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Stabilna łydka, także w półsiadzie</span></li>
+          <li class="fix"><span class="fix__was">„Zapadam się na jedną stronę”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Prosty, symetryczny dosiad</span></li>
+          <li class="fix"><span class="fix__was">„Mam sztywne biodra”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Biodra, które miękko idą za ruchem konia</span></li>
+          <li class="fix"><span class="fix__was">„Brakuje mi tchu w kłusie”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Kondycja na cały trening i parkur</span></li>
+          <li class="fix"><span class="fix__was">„Bolą mnie plecy po jeździe”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Silny tułów i spokojniejsze plecy</span></li>
+          <li class="fix"><span class="fix__was">„Trzymam się wodzy”</span><span class="fix__now"><svg class="ico"><use href="#i-check"/></svg>Lekkie ręce, bo tułów sam się stabilizuje</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Jak to działa: plan parkuru -->
+    <section class="band band--pink" id="jak-to-dziala" aria-labelledby="jak-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
+          <h2 class="h2" id="jak-tytul">Jak to działa</h2>
+          <p class="lead">Jak na parkurze: przeszkoda po przeszkodzie, w swoim tempie.</p>
+        </header>
+        <div class="course-wrap">{{> grafiki/parkur.svg}}</div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__mark" aria-hidden="true">{{> grafiki/przeszkoda.svg}}<b>1</b></span>
+            <h3 class="h3">Wybierz program</h3>
+            <p>Odpowiadasz na kilka pytań o swoją jazdę i dostajesz program oraz level na start.</p>
+          </li>
+          <li class="step">
+            <span class="step__mark" aria-hidden="true">{{> grafiki/przeszkoda.svg}}<b>2</b></span>
+            <h3 class="h3">Trenuj 10-30 minut</h3>
+            <p>Na telefonie, w domu albo w stajni. Każdy trening ma rozgrzewkę, mobilność, część główną i rozciąganie.</p>
+          </li>
+          <li class="step">
+            <span class="step__mark" aria-hidden="true">{{> grafiki/przeszkoda.svg}}<b>3</b></span>
+            <h3 class="h3">Zalicz Próbę Mocy</h3>
+            <p>Krótki test na koniec levelu. Zaliczasz, odbierasz rozetę i wchodzisz poziom wyżej.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 4. Programy -->
+    <section class="section" id="programy" aria-labelledby="programy-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
+          <h2 class="h2" id="programy-tytul">Trzy programy, jeden&nbsp;cel: lepszy dosiad</h2>
+          <p class="lead">Każdy program ma co najmniej dwa levele. Zaczynasz od Stępu, a po Próbie Mocy wchodzisz w Kłus.</p>
+        </header>
+        <div class="progs">
+{{programy_karty}}
+        </div>
+        <p class="note"><svg class="ico"><use href="#i-prezent"/></svg>Pierwszy trening każdego programu jest za darmo. <a class="link" href="lista.html">Nie wiesz, który wybrać? Dobierzemy go za Ciebie</a></p>
+      </div>
+    </section>
+
+    <!-- 5. Każdy trening w czterech blokach -->
+    <section class="band band--sage" id="trening" aria-labelledby="trening-tytul">
+      <div class="wrap training">
+        <div class="training__copy">
+          <h2 class="h2" id="trening-tytul">Każdy trening w czterech blokach</h2>
+          <p class="lead">Zawsze ta sama kolejność, więc od drugiego razu wiesz, czego się spodziewać. Telefon prowadzi przez każde ćwiczenie: pokazuje ruch, liczy czas i zapowiada, co dalej.</p>
+          <ol class="blocks">
+            <li class="blocks__item" style="--grow: 5; --b: var(--blk-1)"><span class="blocks__bar"></span><span class="blocks__name">Rozgrzewka</span><span class="blocks__time">3-5 min</span></li>
+            <li class="blocks__item" style="--grow: 6; --b: var(--blk-2)"><span class="blocks__bar"></span><span class="blocks__name">Mobilność</span><span class="blocks__time">5-8 min</span></li>
+            <li class="blocks__item" style="--grow: 12; --b: var(--blk-3)"><span class="blocks__bar"></span><span class="blocks__name">Część główna</span><span class="blocks__time">10-20 min</span></li>
+            <li class="blocks__item" style="--grow: 5; --b: var(--blk-4)"><span class="blocks__bar"></span><span class="blocks__name">Rozciąganie</span><span class="blocks__time">3-5 min</span></li>
+          </ol>
+          <ul class="features">
+            <li><svg class="ico"><use href="#i-obrot"/></svg><span>Działa w pionie i w poziomie, obrót nie przerywa treningu</span></li>
+            <li><svg class="ico"><use href="#i-zarowka"/></svg><span>Ekran nie gaśnie w trakcie ćwiczeń</span></li>
+            <li><svg class="ico"><use href="#i-zegar"/></svg><span>Duży licznik, czytelny nawet z maty</span></li>
+          </ul>
+        </div>
+{{> odtwarzacz.html}}
+      </div>
+    </section>
+
+    <!-- 6. Próba Mocy i rozety -->
+    <section class="band band--dark" id="proba-mocy" aria-labelledby="proba-tytul">
+      <div class="wrap proba">
+        <header class="section-head section-head--center">
+          <h2 class="h2" id="proba-tytul">Próba Mocy i rozety</h2>
+          <p class="lead">Na koniec każdego levelu czeka krótki test: kilka ćwiczeń, które pokazują, że ciało jest gotowe na więcej. Zaliczasz i odbierasz rozetę. Nie wyszło? Tydzień celowanego treningu i podchodzisz jeszcze raz.</p>
+        </header>
+        <ul class="rosettes">
+          <li class="rosette-card">{{> grafiki/rozeta-step.svg}}<span>Level 1</span></li>
+          <li class="rosette-card">{{> grafiki/rozeta-klus.svg}}<span>Level 2</span></li>
+          <li class="rosette-card rosette-card--soon">{{> grafiki/rozeta-galop.svg}}<span>Level 3, wkrótce</span></li>
+        </ul>
+        <div class="proba__tests">
+          <p>Przykładowe testy</p>
+          <ul class="chips">
+            <li>Półsiad przy ścianie</li>
+            <li>Deska</li>
+            <li>Stanie na jednej nodze</li>
+            <li>Mostek jednonóż</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Darmowa rozgrzewka -->
+    <section class="section" id="rozgrzewka" aria-labelledby="rozgrzewka-tytul">
+      <div class="wrap">
+        <div class="lead-panel">
+          <span class="badge badge--rose lead-panel__badge" aria-hidden="true">7 min</span>
+          <div class="lead-panel__copy">
+            <h2 class="h2" id="rozgrzewka-tytul">Darmowa rozgrzewka przed jazdą</h2>
+            <p class="lead">Bez sprzętu, do zrobienia obok boksu. Zostaw e-mail, a wyślemy Ci ją od razu.</p>
+            <ul class="check-list">
+              <li><svg class="ico"><use href="#i-check"/></svg>Rozgrzewa biodra, plecy i kostki</li>
+              <li><svg class="ico"><use href="#i-check"/></svg>Działa na telefonie, także w stajni</li>
+              <li><svg class="ico"><use href="#i-check"/></svg>Na start dostajesz też pierwszy trening z każdego programu</li>
+            </ul>
+            <p class="lead-panel__more"><a class="link" href="lista.html">Wolisz dobrać program do siebie? Wypełnij krótki formularz</a></p>
+          </div>
+          <div class="lead-panel__form">
+            <form class="form" data-lead-form novalidate>
+              <div class="field">
+                <label class="field__label" for="lead-email">Twój e-mail</label>
+                <input class="input" id="lead-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="imie@przyklad.pl" aria-describedby="lead-email-blad" required>
+                <p class="field__error" id="lead-email-blad" hidden>Wpisz poprawny adres e-mail.</p>
+              </div>
+              <div class="field">
+                <label class="check" for="lead-zgoda">
+                  <input id="lead-zgoda" name="zgoda" type="checkbox" aria-describedby="lead-zgoda-blad" required>
+                  <span>Chcę dostawać wiadomości od Akademii Mocy Jeździeckich. Mogę wypisać się w każdej chwili. <a class="link" href="#" data-demo-soon="Polityka prywatności powstanie w kolejnym etapie.">Polityka prywatności</a></span>
+                </label>
+                <p class="field__error" id="lead-zgoda-blad" hidden>Zaznacz zgodę, żebyśmy mogli wysłać rozgrzewkę.</p>
+              </div>
+              <button class="btn btn--dark btn--block" type="submit">Wyślij mi rozgrzewkę</button>
+              <p class="form__fine">Zero spamu. Wypiszesz się jednym kliknięciem.</p>
+            </form>
+            <div class="form form--success" data-lead-success tabindex="-1" hidden>
+              <span class="badge badge--rose" aria-hidden="true">gotowe</span>
+              <p class="h3">Rozgrzewka już leci</p>
+              <p>Sprawdź skrzynkę za kilka minut. W wersji demo nic nie wysyłamy, ale tak będzie wyglądać potwierdzenie.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. O nas -->
+    <section class="section section--tight-top" id="o-nas" aria-labelledby="o-nas-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
+          <h2 class="h2" id="o-nas-tytul">Kto stoi za Akademią</h2>
+          <p class="lead">Programy powstają w duecie: jeździecka codzienność i fizjoterapia. <a class="link" href="o-akademii.html">Poznaj Akademię</a></p>
+        </header>
+        <div class="people">
+          <article class="person">
+            <figure class="person__photo person__photo--pink"><span class="person__initial" aria-hidden="true">J</span><figcaption>Tu zdjęcie Justyny</figcaption></figure>
+            <div class="person__text">
+              <h3 class="h3">Justyna Burzyńska-Ellis</h3>
+              <p class="person__role">Pomysłodawczyni Akademii, twórczyni GOT’S for Horses</p>
+              <p>Właścicielka konia, która wie, ile czasu pochłania stajnia. Dlatego treningi są krótkie, konkretne i do zrobienia w domu albo przy boksie.</p>
+            </div>
+          </article>
+          <article class="person">
+            <figure class="person__photo person__photo--sage"><span class="person__initial" aria-hidden="true">F</span><figcaption>Tu zdjęcie</figcaption></figure>
+            <div class="person__text">
+              <h3 class="h3">Imię i nazwisko</h3>
+              <p class="person__role">Fizjoterapia</p>
+              <p>Czuwa nad tym, żeby każde ćwiczenie było bezpieczne dla kręgosłupa i stawów, i dobiera wersje łatwiejsze oraz trudniejsze.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Cennik -->
+    <section class="band band--pink" id="cennik" aria-labelledby="cennik-tytul">
+      <div class="wrap">
+        <header class="section-head section-head--row">
+          <h2 class="h2" id="cennik-tytul">Cennik</h2>
+          <p class="lead">Płacisz raz, bez abonamentu. BLIK, przelew albo karta.</p>
+        </header>
+{{> cennik-karty.html}}
+        <p class="note"><svg class="ico"><use href="#i-prezent"/></svg>Każdy program i karnet kupisz też jako voucher prezentowy. <a class="link" href="cennik.html">Pełny cennik, porównanie i vouchery</a></p>
+      </div>
+    </section>
+
+    <!-- 10. Pytania i odpowiedzi -->
+    <section class="section" id="faq" aria-labelledby="faq-tytul">
+      <div class="wrap faq-grid">
+        <header class="faq-grid__head">
+          <h2 class="h2" id="faq-tytul">Pytania i odpowiedzi</h2>
+          <p class="lead">Nie ma tu Twojego pytania? Napisz do nas, odpowiadamy po ludzku.</p>
+          <p><a class="link" href="faq.html">Wszystkie pytania i odpowiedzi</a></p>
+        </header>
+        <div class="faq">
+          <details class="faq__item"><summary>Ile czasu potrzebuję?</summary><div class="faq__answer"><p>Od 10 do 30 minut, zależnie od programu. Ranne Moce trwają 10-15 minut, pozostałe programy 20-35 minut.</p></div></details>
+          <details class="faq__item"><summary>Jaki sprzęt jest potrzebny?</summary><div class="faq__answer"><p>Mata, czasem guma oporowa albo piłka. Przed każdym treningiem widzisz listę sprzętu.</p></div></details>
+          <details class="faq__item"><summary>Czy dam radę, jeśli nie mam formy?</summary><div class="faq__answer"><p>Tak. Level Stęp zaczyna od podstaw, a każde ćwiczenie ma wersję łatwiejszą.</p></div></details>
+          <details class="faq__item"><summary>Czy mogę ćwiczyć w stajni?</summary><div class="faq__answer"><p>Tak, zwłaszcza rozgrzewkę przed jazdą. Wystarczy telefon i kawałek miejsca obok boksu.</p></div></details>
+          <details class="faq__item"><summary>Czy to działa na telefonie?</summary><div class="faq__answer"><p>Tak, Akademia powstaje przede wszystkim z myślą o telefonie. Film działa w pionie i w poziomie, a ekran nie gaśnie w trakcie treningu.</p></div></details>
+          <details class="faq__item"><summary>Co to jest Próba Mocy?</summary><div class="faq__answer"><p>Krótki test na koniec levelu. Pokazuje, że możesz przejść wyżej. Za zaliczenie dostajesz rozetę, a jeśli się nie uda, po tygodniu treningu podchodzisz jeszcze raz.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Zachęta na koniec -->
+    <section class="band band--rose cta" aria-labelledby="cta-tytul">
+      <div class="wrap cta__inner">
+        <h2 class="cta__title" id="cta-tytul">Twój koń poczuje różnicę</h2>
+        <div class="cta__side">
+          <p>Zacznij od darmowej rozgrzewki, zanim następnym razem wsiądziesz w siodło.</p>
+          <a class="btn btn--dark" href="lista.html"><svg class="ico ico--fill"><use href="#i-play"/></svg>Odbierz rozgrzewkę</a>
+        </div>
+      </div>
+    </section>
+  </main>

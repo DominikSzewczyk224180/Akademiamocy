@@ -1,0 +1,73 @@
+<!--
+tytul: Panel | Strefa kursantki | Akademia Mocy Jeździeckich
+og_tytul: Strefa kursantki Akademii Mocy Jeździeckich
+opis: Panel kursantki: kontynuuj trening, cel tygodnia, seria, parkur i rozety.
+uklad: strefa
+aktywny: panel
+css: strefa.css
+body_klasa: strefa-strona strona-panel
+-->
+  <main id="tresc" class="sz" data-strona="panel">
+
+    <!-- 1. Powitanie i kontynuacja treningu -->
+    <section class="band sz-hero" data-p-pas aria-labelledby="p-tytul">
+      <div class="wrap sz-hero__grid">
+        <div class="sz-hero__copy">
+          <p class="sz-kicker" data-p-data></p>
+          <h1 class="sz-title" id="p-tytul" data-p-powitanie>Dzień dobry</h1>
+          <p class="sz-lead" data-p-gdzie></p>
+        </div>
+        <article class="sz-next" data-p-nastepny aria-labelledby="p-nastepny-tytul"></article>
+      </div>
+    </section>
+
+    <!-- 2. Tydzień, seria, Próba -->
+    <section class="sz-section" aria-label="Ten tydzień">
+      <div class="wrap sz-trio">
+        <div class="sz-week" data-p-tydzien></div>
+        <div class="sz-streak" data-p-seria></div>
+        <div class="sz-probabox" data-p-proba></div>
+      </div>
+    </section>
+
+    <!-- 3. Parkur w skrócie -->
+    <section class="sz-section" aria-labelledby="p-parkur-tytul">
+      <div class="wrap">
+        <header class="sz-head-row">
+          <h2 class="sz-h2" id="p-parkur-tytul">Twój parkur</h2>
+          <a class="link" href="mapa.html">Otwórz mapę parkuru</a>
+        </header>
+        <div class="sz-strip" data-p-parkur></div>
+      </div>
+    </section>
+
+    <!-- 4. Rozety i ostatnie treningi -->
+    <section class="sz-section" aria-label="Rozety i historia">
+      <div class="wrap sz-duo">
+        <div>
+          <h2 class="sz-h2">Rozety</h2>
+          <ul class="sz-shelf" data-p-rozety></ul>
+        </div>
+        <div>
+          <header class="sz-head-row">
+            <h2 class="sz-h2">Ostatnie treningi</h2>
+            <a class="link" href="postepy.html">Wszystkie postępy</a>
+          </header>
+          <ol class="sz-history" data-p-historia></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Wskazówka od Justyny -->
+    <section class="sz-section sz-section--last" aria-labelledby="p-tip-tytul">
+      <div class="wrap">
+        <div class="sz-tip">
+          <span class="badge badge--butter sz-tip__badge" aria-hidden="true">od<br>Justyny</span>
+          <div>
+            <h2 class="sz-h3" id="p-tip-tytul">Wskazówka tygodnia</h2>
+            <p data-p-wskazowka>Przed jazdą zrób 7 minut rozgrzewki obok boksu. Koń dostaje wtedy jeźdźca, który od pierwszego kroku siedzi miękko.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

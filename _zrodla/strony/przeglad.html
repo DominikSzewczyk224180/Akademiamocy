@@ -1,0 +1,39 @@
+<!--
+tytul: Przegląd treningu | Strefa kursantki | Akademia Mocy Jeździeckich
+og_tytul: Przegląd treningu w Akademii Mocy Jeździeckich
+opis: Przegląd treningu: 4 bloki z czasem, lista ćwiczeń, sprzęt i przycisk Zacznij trening.
+uklad: strefa
+aktywny: mapa
+css: strefa.css
+body_klasa: strefa-strona strona-przeglad
+-->
+  <main id="tresc" class="sz" data-strona="przeglad">
+    <section class="sz-section sz-section--first" aria-labelledby="t-tytul">
+      <div class="wrap sz-overview">
+        <div class="sz-overview__head">
+          <nav class="crumbs" aria-label="Okruszki"><a href="mapa.html">Parkur</a><span aria-hidden="true">/</span><span aria-current="page" data-t-okruszek>Przeszkoda</span></nav>
+          <p class="sz-kicker" data-t-kicker></p>
+          <h1 class="sz-title" id="t-tytul" data-t-nazwa>Trening</h1>
+          <p class="sz-lead" data-t-opis></p>
+          <div class="sz-chips" data-t-meta></div>
+          <div class="sz-overview__actions" data-t-akcje></div>
+          <div class="sz-done" data-t-zrobione hidden></div>
+        </div>
+        <figure class="sz-overview__poster" data-t-poster></figure>
+      </div>
+    </section>
+
+    <section class="sz-section" aria-labelledby="t-bloki-tytul">
+      <div class="wrap">
+        <header class="sz-head-row">
+          <h2 class="sz-h2" id="t-bloki-tytul">Co jest w treningu</h2>
+          <p class="sz-muted" data-t-bloki-info></p>
+        </header>
+        <div class="sz-blocks" data-t-bloki></div>
+      </div>
+    </section>
+
+    <section class="sz-section sz-section--last" aria-label="Sąsiednie przeszkody">
+      <div class="wrap sz-pager" data-t-nawigacja></div>
+    </section>
+  </main>

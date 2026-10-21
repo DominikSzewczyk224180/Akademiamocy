@@ -1,14 +1,14 @@
 /*
-  Akademia Mocy Jeździeckich: pełne treningi do odtwarzacza (etap 3).
+  Akademia Mocy Jeździeckich: treningi, biblioteka ćwiczeń i parkury (etap 3 i 4).
   Zapis zgodny z JSON, bo czyta go też _zrodla/buduj.py.
 
-  Klip: "mp4" to plik w repo (demo). W produkcji dopisujemy "hls" z Bunny Stream,
-  np. "https://vz-xxxx.b-cdn.net/<id>/playlist.m3u8". Odtwarzacz sam wybierze HLS, gdy jest podany.
+  Biblioteka ("cwiczenia"): każde ćwiczenie istnieje raz. Trening odwołuje się do niego przez "cw"
+  i dodaje parametry: "czas" w sekundach albo "powtorzenia" (z orientacyjnym "czasOk"), "strony": true.
+  Klip: "mp4" w repo (demo). W produkcji dopisujemy "hls" z Bunny Stream.
   "lustro": true pozwala pokazać drugą stronę ćwiczenia przez odbicie klipu.
-
-  Ćwiczenie: "czas" w sekundach albo "powtorzenia" (wtedy "czasOk" to orientacyjny czas).
-  "strony": true robi dwie części: lewa i prawa strona, z krótką zmianą pomiędzy.
   Blok: "rundy" powtarza ćwiczenia bloku, "przerwa" jest po każdym ćwiczeniu, "przerwaRundy" między rundami.
+  Parkur ("kursy"): level jako 12 przeszkód (treningi A, B, C na zmianę), na końcu Próba Mocy.
+  "progProby": jaka część przeszkód musi być zaliczona, żeby odblokować Próbę (1 = wszystkie, 0.8 = 80%).
 */
 window.AKADEMIA_TRENINGI = {
   "klipy": {
@@ -17,6 +17,14 @@ window.AKADEMIA_TRENINGI = {
     "mostek": { "mp4": "assets/wideo/mostek.mp4", "poster": "assets/wideo/mostek.jpg", "lustro": true },
     "ptak-pies": { "mp4": "assets/wideo/ptak-pies.mp4", "poster": "assets/wideo/ptak-pies.jpg", "lustro": true },
     "pozycja-dziecka": { "mp4": "assets/wideo/pozycja-dziecka.mp4", "poster": "assets/wideo/pozycja-dziecka.jpg", "lustro": true }
+  },
+
+  "cwiczenia": {
+    "marsz": { "klip": "marsz", "nazwa": "Marsz w miejscu", "wskazowka": "Kolana wysoko, ramiona pracują swobodnie", "blad": "Nie garb się, patrz przed siebie", "wSiodle": "rozgrzane biodra i rytm przed wejściem na konia" },
+    "koci-grzbiet": { "klip": "koci-grzbiet", "nazwa": "Koci grzbiet", "wskazowka": "Ruch z miednicy, wydech przy zaokrąglaniu", "blad": "Nie zapadaj się w barkach", "wSiodle": "kręgosłup, który miękko idzie za ruchem konia" },
+    "mostek": { "klip": "mostek", "nazwa": "Mostek biodrowy", "wskazowka": "Biodra wysoko, żebra w dół", "blad": "Nie wyginaj lędźwi, pracują pośladki", "wSiodle": "stabilna miednica w siadzie i w półsiadzie" },
+    "ptak-pies": { "klip": "ptak-pies", "nazwa": "Ptak-pies", "wskazowka": "Ręka i noga w jednej linii z plecami", "blad": "Miednica nie rotuje, brzuch napięty", "wSiodle": "spokojny tułów i niezależna praca rąk i łydek" },
+    "pozycja-dziecka": { "klip": "pozycja-dziecka", "nazwa": "Pozycja dziecka", "wskazowka": "Długi wydech, plecy rosną szeroko", "blad": "Nie spinaj ramion", "wSiodle": "rozluźnione plecy po jeździe" }
   },
 
   "treningi": [
@@ -31,35 +39,119 @@ window.AKADEMIA_TRENINGI = {
       "przygotowanie": 5,
       "zmianaStrony": 5,
       "bloki": [
-        {
-          "nazwa": "Rozgrzewka",
-          "cwiczenia": [
-            { "klip": "marsz", "nazwa": "Marsz w miejscu", "czas": 60, "wskazowka": "Kolana wysoko, ramiona pracują swobodnie", "blad": "Nie garb się, patrz przed siebie" }
-          ]
-        },
-        {
-          "nazwa": "Mobilność",
-          "cwiczenia": [
-            { "klip": "koci-grzbiet", "nazwa": "Koci grzbiet", "powtorzenia": 8, "czasOk": 48, "wskazowka": "Ruch z miednicy, wydech przy zaokrąglaniu", "blad": "Nie zapadaj się w barkach" }
-          ]
-        },
-        {
-          "nazwa": "Część główna",
-          "rundy": 2,
-          "przerwa": 15,
-          "przerwaRundy": 25,
-          "cwiczenia": [
-            { "klip": "mostek", "nazwa": "Mostek biodrowy", "czas": 40, "wskazowka": "Biodra wysoko, żebra w dół", "blad": "Nie wyginaj lędźwi, pracują pośladki" },
-            { "klip": "ptak-pies", "nazwa": "Ptak-pies", "czas": 30, "strony": true, "wskazowka": "Ręka i noga w jednej linii z plecami", "blad": "Miednica nie rotuje, brzuch napięty" }
-          ]
-        },
-        {
-          "nazwa": "Rozciąganie",
-          "cwiczenia": [
-            { "klip": "pozycja-dziecka", "nazwa": "Pozycja dziecka", "czas": 45, "wskazowka": "Długi wydech, plecy rosną szeroko", "blad": "Nie spinaj ramion" }
-          ]
-        }
+        { "nazwa": "Rozgrzewka", "cwiczenia": [ { "cw": "marsz", "czas": 60 } ] },
+        { "nazwa": "Mobilność", "cwiczenia": [ { "cw": "koci-grzbiet", "powtorzenia": 8, "czasOk": 48 } ] },
+        { "nazwa": "Część główna", "rundy": 2, "przerwa": 15, "przerwaRundy": 25, "cwiczenia": [ { "cw": "mostek", "czas": 40 }, { "cw": "ptak-pies", "czas": 30, "strony": true } ] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [ { "cw": "pozycja-dziecka", "czas": 45 } ] }
       ]
+    },
+    {
+      "id": "gimnastyka-step-b",
+      "program": "gimnastyka",
+      "level": "step",
+      "nazwa": "Trening B",
+      "naglowek": "Gimnastyka dla jeźdźców, Stęp",
+      "opis": "Wariant B: więcej pracy tułowia, ptak-pies na początku części głównej.",
+      "sprzet": ["Mata"],
+      "przygotowanie": 5,
+      "zmianaStrony": 5,
+      "bloki": [
+        { "nazwa": "Rozgrzewka", "cwiczenia": [ { "cw": "marsz", "czas": 45 } ] },
+        { "nazwa": "Mobilność", "cwiczenia": [ { "cw": "koci-grzbiet", "powtorzenia": 10, "czasOk": 55 } ] },
+        { "nazwa": "Część główna", "rundy": 2, "przerwa": 15, "przerwaRundy": 25, "cwiczenia": [ { "cw": "ptak-pies", "czas": 30, "strony": true }, { "cw": "mostek", "czas": 45 } ] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [ { "cw": "pozycja-dziecka", "czas": 60 } ] }
+      ]
+    },
+    {
+      "id": "gimnastyka-step-c",
+      "program": "gimnastyka",
+      "level": "step",
+      "nazwa": "Trening C",
+      "naglowek": "Gimnastyka dla jeźdźców, Stęp",
+      "opis": "Wariant C: krótszy, trzy rundy mostka i dłuższe rozciąganie.",
+      "sprzet": ["Mata"],
+      "przygotowanie": 5,
+      "zmianaStrony": 5,
+      "bloki": [
+        { "nazwa": "Rozgrzewka", "cwiczenia": [ { "cw": "marsz", "czas": 60 } ] },
+        { "nazwa": "Mobilność", "cwiczenia": [ { "cw": "koci-grzbiet", "powtorzenia": 6, "czasOk": 36 }, { "cw": "pozycja-dziecka", "czas": 30 } ] },
+        { "nazwa": "Część główna", "rundy": 3, "przerwaRundy": 20, "cwiczenia": [ { "cw": "mostek", "czas": 35 } ] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [ { "cw": "pozycja-dziecka", "czas": 60 } ] }
+      ]
+    },
+    {
+      "id": "gimnastyka-klus-a",
+      "program": "gimnastyka",
+      "level": "klus",
+      "nazwa": "Trening A",
+      "naglowek": "Gimnastyka dla jeźdźców, Kłus",
+      "opis": "Kłus: trzy rundy części głównej, dłuższe ćwiczenia i krótsze przerwy.",
+      "sprzet": ["Mata"],
+      "przygotowanie": 5,
+      "zmianaStrony": 4,
+      "bloki": [
+        { "nazwa": "Rozgrzewka", "cwiczenia": [ { "cw": "marsz", "czas": 75 } ] },
+        { "nazwa": "Mobilność", "cwiczenia": [ { "cw": "koci-grzbiet", "powtorzenia": 12, "czasOk": 60 } ] },
+        { "nazwa": "Część główna", "rundy": 3, "przerwa": 10, "przerwaRundy": 20, "cwiczenia": [ { "cw": "mostek", "czas": 50 }, { "cw": "ptak-pies", "czas": 40, "strony": true } ] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [ { "cw": "pozycja-dziecka", "czas": 60 } ] }
+      ]
+    },
+    {
+      "id": "gimnastyka-klus-b",
+      "program": "gimnastyka",
+      "level": "klus",
+      "nazwa": "Trening B",
+      "naglowek": "Gimnastyka dla jeźdźców, Kłus",
+      "opis": "Kłus, wariant B: ptak-pies dłużej na stronę, mostek na koniec rundy.",
+      "sprzet": ["Mata"],
+      "przygotowanie": 5,
+      "zmianaStrony": 4,
+      "bloki": [
+        { "nazwa": "Rozgrzewka", "cwiczenia": [ { "cw": "marsz", "czas": 60 } ] },
+        { "nazwa": "Mobilność", "cwiczenia": [ { "cw": "koci-grzbiet", "powtorzenia": 12, "czasOk": 60 } ] },
+        { "nazwa": "Część główna", "rundy": 3, "przerwa": 10, "przerwaRundy": 20, "cwiczenia": [ { "cw": "ptak-pies", "czas": 45, "strony": true }, { "cw": "mostek", "czas": 50 } ] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [ { "cw": "pozycja-dziecka", "czas": 60 } ] }
+      ]
+    },
+    {
+      "id": "gimnastyka-klus-c",
+      "program": "gimnastyka",
+      "level": "klus",
+      "nazwa": "Trening C",
+      "naglowek": "Gimnastyka dla jeźdźców, Kłus",
+      "opis": "Kłus, wariant C: cztery rundy mostka bez przerw między ćwiczeniami.",
+      "sprzet": ["Mata"],
+      "przygotowanie": 5,
+      "zmianaStrony": 4,
+      "bloki": [
+        { "nazwa": "Rozgrzewka", "cwiczenia": [ { "cw": "marsz", "czas": 75 } ] },
+        { "nazwa": "Mobilność", "cwiczenia": [ { "cw": "koci-grzbiet", "powtorzenia": 10, "czasOk": 50 }, { "cw": "pozycja-dziecka", "czas": 30 } ] },
+        { "nazwa": "Część główna", "rundy": 4, "przerwaRundy": 15, "cwiczenia": [ { "cw": "mostek", "czas": 45 } ] },
+        { "nazwa": "Rozciąganie", "cwiczenia": [ { "cw": "pozycja-dziecka", "czas": 75 } ] }
+      ]
+    }
+  ],
+
+  "kursy": [
+    {
+      "id": "gimnastyka-step",
+      "program": "gimnastyka",
+      "level": "step",
+      "nazwa": "Parkur Stęp",
+      "progProby": 1,
+      "proba": "gimnastyka-step",
+      "nastepny": "gimnastyka-klus",
+      "przeszkody": ["gimnastyka-step-a", "gimnastyka-step-b", "gimnastyka-step-c", "gimnastyka-step-a", "gimnastyka-step-b", "gimnastyka-step-c", "gimnastyka-step-a", "gimnastyka-step-b", "gimnastyka-step-c", "gimnastyka-step-a", "gimnastyka-step-b", "gimnastyka-step-c"]
+    },
+    {
+      "id": "gimnastyka-klus",
+      "program": "gimnastyka",
+      "level": "klus",
+      "nazwa": "Parkur Kłus",
+      "progProby": 1,
+      "proba": "",
+      "nastepny": "",
+      "przeszkody": ["gimnastyka-klus-a", "gimnastyka-klus-b", "gimnastyka-klus-c", "gimnastyka-klus-a", "gimnastyka-klus-b", "gimnastyka-klus-c", "gimnastyka-klus-a", "gimnastyka-klus-b", "gimnastyka-klus-c", "gimnastyka-klus-a", "gimnastyka-klus-b", "gimnastyka-klus-c"]
     }
   ]
 };

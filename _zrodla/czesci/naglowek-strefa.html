@@ -1,0 +1,29 @@
+  <!-- Strefa kursantki: kapsuła z menu strefy. Na telefonie menu jest w dolnym pasku zakładek. -->
+  <header class="topbar topbar--strefa" data-header>
+    <div class="topbar__bar">
+      <a class="brand" href="panel.html" aria-label="Akademia Mocy Jeździeckich, panel kursantki">
+        {{> grafiki/znak.svg}}
+        <span class="brand__text"><span class="brand__name">Akademia Mocy</span><span class="brand__sub">Strefa kursantki</span></span>
+      </a>
+      <nav class="sz-nav" aria-label="Strefa kursantki">
+        <a class="sz-nav__item" href="panel.html" data-nav="panel">Panel</a>
+        <a class="sz-nav__item" href="mapa.html" data-nav="mapa">Parkur</a>
+        <a class="sz-nav__item" href="proba.html" data-nav="proba">Próba Mocy</a>
+        <a class="sz-nav__item" href="postepy.html" data-nav="postepy">Postępy</a>
+      </nav>
+      <div class="sz-user">
+        <button class="sz-avatar" type="button" aria-expanded="false" aria-controls="sz-menu" data-sz-avatar>
+          <span class="sz-avatar__circle" data-sz-inicjal aria-hidden="true">K</span>
+          <span class="sz-avatar__name" data-sz-imie>Kasia</span>
+          <svg class="ico sz-avatar__chev" aria-hidden="true"><use href="#i-chev"/></svg>
+        </button>
+        <div class="sz-menu" id="sz-menu" data-sz-menu hidden>
+          <p class="sz-menu__who"><strong data-sz-imie>Kasia</strong><span data-sz-program>Gimnastyka dla jeźdźców</span></p>
+          <a href="index.html">Strona Akademii</a>
+          <a href="faq.html">Pytania i pomoc</a>
+          <a href="#" data-demo-soon="Konto, zakupy i ustawienia pojawią się w etapie 5.">Konto i ustawienia</a>
+          <button type="button" data-sz-wyloguj><svg class="ico" aria-hidden="true"><use href="#i-wyloguj"/></svg>Wyloguj</button>
+        </div>
+      </div>
+    </div>
+  </header>

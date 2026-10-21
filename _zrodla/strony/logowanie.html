@@ -1,0 +1,39 @@
+<!--
+tytul: Logowanie | Akademia Mocy Jeździeckich
+og_tytul: Logowanie do strefy kursantki
+opis: Zaloguj się do strefy kursantki Akademii Mocy Jeździeckich.
+aktywny:
+skrypty: strefa
+css: strefa.css
+body_klasa: strona-logowanie
+-->
+  <main id="tresc" data-strona="logowanie">
+    <section class="page-hero" aria-labelledby="l-tytul">
+      <div class="wrap login">
+        <div class="login__copy">
+          <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Akademia</a><span aria-hidden="true">/</span><span aria-current="page">Logowanie</span></nav>
+          <h1 class="page-title" id="l-tytul"><span class="page-title__l1">Strefa kursantki</span><span class="page-title__l2">Twój parkur czeka</span></h1>
+          <p class="page-lead">Po zalogowaniu widzisz swój plan, mapę parkuru, Próby Mocy i postępy. Bez hasła: wyślemy Ci link do logowania.</p>
+        </div>
+        <div class="login__card" data-l-karta>
+          <form class="login__form" data-l-form novalidate>
+            <div class="field">
+              <label class="field__label" for="l-email">E-mail</label>
+              <input class="input" id="l-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="imie@przyklad.pl" aria-describedby="l-email-blad" required>
+              <p class="field__error" id="l-email-blad" hidden>Wpisz poprawny adres e-mail.</p>
+            </div>
+            <button class="btn btn--dark btn--block" type="submit">Wyślij link do logowania</button>
+          </form>
+          <div class="login__sent" data-l-wyslane hidden>
+            <span class="badge badge--rose" aria-hidden="true">mail</span>
+            <p class="h3">Sprawdź skrzynkę</p>
+            <p>Wysłaliśmy link na <strong data-l-adres></strong>. W demo nic nie wysyłamy, więc możesz otworzyć go tutaj.</p>
+            <a class="btn btn--dark btn--block" href="panel.html" data-l-wejdz>Otwórz link z maila</a>
+          </div>
+          <div class="login__or"><span>albo</span></div>
+          <a class="btn btn--light btn--block" href="panel.html" data-l-demo>Wejdź jako kursantka demo</a>
+          <p class="form__fine">Demo: dane kursantki zapisują się tylko w tej przeglądarce.</p>
+        </div>
+      </div>
+    </section>
+  </main>

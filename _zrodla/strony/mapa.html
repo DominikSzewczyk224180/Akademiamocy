@@ -1,0 +1,42 @@
+<!--
+tytul: Parkur | Strefa kursantki | Akademia Mocy Jeździeckich
+og_tytul: Mapa parkuru w Akademii Mocy Jeździeckich
+opis: Level jako parkur: każdy trening to przeszkoda, a Próba Mocy to ostatnia, z rozetą.
+uklad: strefa
+aktywny: mapa
+css: strefa.css
+body_klasa: strefa-strona strona-mapa
+-->
+  <main id="tresc" class="sz" data-strona="mapa">
+    <section class="sz-section sz-section--first" aria-labelledby="m-tytul">
+      <div class="wrap">
+        <div class="sz-maphead">
+          <div>
+            <p class="sz-kicker" data-m-program>Gimnastyka dla jeźdźców</p>
+            <h1 class="sz-title" id="m-tytul">Parkur</h1>
+          </div>
+          <div class="sz-tabs-level" role="group" aria-label="Level" data-m-levele></div>
+        </div>
+        <div class="sz-mapbar" data-m-pasek></div>
+      </div>
+    </section>
+
+    <section class="sz-section sz-section--tight" aria-label="Mapa parkuru">
+      <div class="wrap">
+        <div class="sz-map" data-m-mapa></div>
+        <ul class="sz-legend" aria-label="Legenda">
+          <li><span class="sz-legend__dot sz-legend__dot--done" aria-hidden="true"></span>Zaliczona</li>
+          <li><span class="sz-legend__dot sz-legend__dot--now" aria-hidden="true"></span>Tu jesteś</li>
+          <li><span class="sz-legend__dot" aria-hidden="true"></span>Przed Tobą</li>
+          <li><span class="sz-legend__rozeta" aria-hidden="true"></span>Próba Mocy</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sz-section sz-section--last" aria-labelledby="m-lista-tytul">
+      <div class="wrap">
+        <h2 class="sz-h2" id="m-lista-tytul">Przeszkody po kolei</h2>
+        <ol class="sz-list" data-m-lista></ol>
+      </div>
+    </section>
+  </main>

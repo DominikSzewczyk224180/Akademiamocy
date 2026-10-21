@@ -1,0 +1,30 @@
+<!--
+tytul: Certyfikat Próby Mocy | Akademia Mocy Jeździeckich
+og_tytul: Certyfikat Próby Mocy
+opis: Certyfikat zaliczenia Próby Mocy w Akademii Mocy Jeździeckich.
+uklad: druk
+css: strefa.css
+body_klasa: strona-certyfikat
+-->
+  <main id="tresc" class="cert-page" data-strona="certyfikat">
+    <div class="cert-tools">
+      <a class="btn btn--light btn--sm" href="postepy.html">Wróć do postępów</a>
+      <button class="btn btn--dark btn--sm" type="button" data-c-drukuj><svg class="ico"><use href="#i-certyfikat"/></svg>Zapisz jako PDF</button>
+    </div>
+    <article class="cert" data-c-certyfikat aria-label="Certyfikat">
+      <div class="cert__frame">
+        <div class="cert__brand">{{> grafiki/znak.svg}}<span>Akademia Mocy Jeździeckich</span></div>
+        <p class="cert__kicker">Certyfikat</p>
+        <h1 class="cert__title">Próba Mocy zaliczona</h1>
+        <div class="cert__ros" data-c-rozeta></div>
+        <p class="cert__name" data-c-imie>Kasia</p>
+        <p class="cert__what" data-c-co>Gimnastyka dla jeźdźców, Level Stęp</p>
+        <p class="cert__date" data-c-data></p>
+        <div class="cert__sign">
+          <p><span class="cert__line" aria-hidden="true"></span>Justyna Burzyńska-Ellis</p>
+          <p><span class="cert__line" aria-hidden="true"></span>Fizjoterapia</p>
+        </div>
+        <p class="cert__fine">Wersja demonstracyjna. Podpisy i dane do uzupełnienia przed startem.</p>
+      </div>
+    </article>
+  </main>

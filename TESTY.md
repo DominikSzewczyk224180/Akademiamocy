@@ -1,4 +1,4 @@
-# Testy odtwarzacza na telefonach (etap 3)
+# Testy na telefonach (etapy 3 i 4)
 
 Odtwarzacz przeszedł 31 testów automatycznych na emulowanym iPhonie, Androidzie i komputerze (lista na końcu). Emulacja nie zastąpi prawdziwego telefonu, więc ta lista prowadzi przez test na iPhonie i Androidzie. Całość zajmuje około 15 minut na jeden telefon.
 
@@ -87,3 +87,21 @@ Emulacja iPhone 13 (bez pełnego ekranu), Pixel 5 i komputer 1440 px:
 - ćwiczenie na powtórzenia, kontynuacja po przeładowaniu strony
 - zablokowane autoodtwarzanie (jak w trybie niskiego zużycia energii) i przycisk „Dotknij, aby włączyć film”
 - brak błędów JavaScript i brakujących plików
+
+# Strefa kursantki (etap 4)
+
+Link: `https://dominikszewczyk224180.github.io/AkademiaMocy/logowanie.html`. Całość zajmuje około 10 minut. Odtwarzacz w strefie można przyspieszyć, dopisując `&test=1` do adresu treningu.
+
+| Nr | Co zrobić | Co powinno się stać |
+|---|---|---|
+| S1 | Otwórz `panel.html` bez logowania | Strona przenosi do logowania. „Wejdź jako kursantka demo” wraca do panelu |
+| S2 | Panel | Karta „trening na dziś” z przeszkodą 11, cel tygodnia, seria, Próba Mocy zablokowana na 2 przeszkody |
+| S3 | Parkur: dotknij przeszkody albo „Kontynuuj” | Otwiera się trening przeszkody 11. Po zaliczeniu mapa ma ptaszek na 11, a „Tu jesteś” stoi na 12 |
+| S4 | Zalicz przeszkodę 12 | Ekran końcowy mówi, że Próba Mocy jest odblokowana, i prowadzi do Próby |
+| S5 | Próba: 4 testy ze stoperem albo wpisanym wynikiem | Po zaliczeniu wszystkich testów jest rozeta Stęp, Kłus się otwiera, certyfikat ma imię i datę |
+| S6 | Panel demo, „Próba niezaliczona” | Panel i Próba pokazują tydzień celowany i datę drugiego podejścia |
+| S7 | Postępy | Liczby, kalendarz, cel tygodnia, wyniki Prób i rozety zgadzają się z historią |
+| S8 | Certyfikat, „Zapisz jako PDF” | Otwiera się drukowanie, na podglądzie jest sam certyfikat bez menu |
+| S9 | Dolny pasek na telefonie | Panel, Parkur, Próba i Postępy przełączają się bez przewijania w bok, pasek nie zasłania treści |
+
+Co sprawdziły testy automatyczne strefy: przekierowanie do logowania, logowanie demo, zaliczenie przeszkód 11 i 12 w odtwarzaczu z zapisem, odblokowanie i zaliczenie Próby, rozeta, certyfikat, odblokowanie Kłusa, scenariusz niezaliczonej Próby, układ na iPhonie bez przewijania w bok, brak błędów JavaScript i brakujących plików. Wszystkie 7 stron strefy działa na 1440 i 390 px.

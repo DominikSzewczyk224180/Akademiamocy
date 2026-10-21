@@ -219,10 +219,17 @@ def zloz(meta, tresc, dodatkowe=None):
         "programy_karty": "\n".join(karta_programu(p) for p in DANE["programy"]),
     }
     css = meta.get("css", "").strip()
-    zmienne["dodatkowe_css"] = ('\n  <link rel="stylesheet" href="css/%s">' % css) if css else ""
+    zmienne["dodatkowe_css"] = "".join('\n  <link rel="stylesheet" href="css/%s">' % c.strip() for c in css.split(",") if c.strip())
+    skrypty = meta.get("skrypty", "").strip()
+    zmienne["dodatkowe_skrypty"] = ("".join('\n  <script src="%s"></script>' % x for x in ("data/treningi.js", "data/proby.js", "js/kursantka.js", "js/strefa.js"))) if skrypty == "strefa" else ""
     zmienne.update(dodatkowe or {})
-    if meta.get("uklad", "").strip() == "aplikacja":
+    uklad = meta.get("uklad", "").strip()
+    if uklad == "aplikacja":
         kawalki = [czesc("head.html"), czesc("ikony.html"), tresc.rstrip("\n"), czesc("koniec-aplikacja.html")]
+    elif uklad == "strefa":
+        kawalki = [czesc("head.html"), czesc("ikony.html"), czesc("naglowek-strefa.html"), tresc.rstrip("\n"), czesc("stopka-strefa.html")]
+    elif uklad == "druk":
+        kawalki = [czesc("head.html"), czesc("ikony.html"), tresc.rstrip("\n"), czesc("stopka-druk.html")]
     else:
         kawalki = [czesc("head.html"), czesc("ikony.html"), czesc("naglowek.html"), tresc.rstrip("\n"), czesc("stopka.html"), czesc("koniec.html")]
     dokument = "\n".join(kawalki) + "\n"
@@ -231,7 +238,8 @@ def zloz(meta, tresc, dodatkowe=None):
         dokument = dokument.replace("{{%s}}" % k, v)
     aktywny = meta.get("aktywny", "").strip()
     if aktywny:
-        dokument = dokument.replace('data-nav="%s"' % aktywny, 'data-nav="%s" aria-current="page"' % aktywny, 1)
+        ile = -1 if uklad == "strefa" else 1
+        dokument = dokument.replace('data-nav="%s"' % aktywny, 'data-nav="%s" aria-current="page"' % aktywny, ile)
     reszta = re.findall(r"\{\{[^}]+\}\}", dokument)
     if reszta:
         raise RuntimeError("Niewypełnione znaczniki: %s" % sorted(set(reszta)))

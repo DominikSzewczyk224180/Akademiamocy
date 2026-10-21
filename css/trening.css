@@ -568,6 +568,17 @@
 }
 .trn-end__title:focus { outline: none; }
 .trn-end__sum { color: var(--cocoa-2); }
+.trn-end__unlock {
+  display: grid;
+  gap: 0.2rem;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: var(--r-m);
+  background: #EEF3EB;
+  color: var(--sage-ink);
+}
+.trn-end__unlock strong { color: var(--cocoa); }
+.trn-end__unlock .link { justify-self: center; margin-top: 0.3rem; }
 .trn-feel { display: grid; gap: 0.6rem; width: 100%; margin: 0.5rem 0; }
 .trn-feel__title { font-weight: 650; }
 .trn-feel__opts { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.4rem; }

@@ -1,0 +1,60 @@
+<!--
+tytul: Postępy | Strefa kursantki | Akademia Mocy Jeździeckich
+og_tytul: Postępy w Akademii Mocy Jeździeckich
+opis: Postępy: kalendarz treningów, cel tygodnia, wyniki Prób Mocy, rozety i certyfikaty.
+uklad: strefa
+aktywny: postepy
+css: strefa.css
+body_klasa: strefa-strona strona-postepy
+-->
+  <main id="tresc" class="sz" data-strona="postepy">
+    <section class="sz-section sz-section--first" aria-labelledby="s-tytul">
+      <div class="wrap">
+        <p class="sz-kicker" data-s-od></p>
+        <h1 class="sz-title" id="s-tytul">Postępy</h1>
+        <dl class="sz-stats" data-s-liczby></dl>
+      </div>
+    </section>
+
+    <section class="sz-section" aria-labelledby="s-kal-tytul">
+      <div class="wrap sz-duo sz-duo--wide">
+        <div>
+          <header class="sz-head-row">
+            <h2 class="sz-h2" id="s-kal-tytul">Kalendarz treningów</h2>
+            <p class="sz-muted">ostatnie 12 tygodni</p>
+          </header>
+          <div class="sz-cal" data-s-kalendarz></div>
+        </div>
+        <div>
+          <header class="sz-head-row">
+            <h2 class="sz-h2">Cel tygodnia</h2>
+            <p class="sz-muted" data-s-cel-info></p>
+          </header>
+          <div class="sz-bars" data-s-tygodnie></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sz-section" aria-labelledby="s-proby-tytul">
+      <div class="wrap">
+        <header class="sz-head-row">
+          <h2 class="sz-h2" id="s-proby-tytul">Wyniki Prób Mocy</h2>
+          <a class="link" href="proba.html">Próba Mocy</a>
+        </header>
+        <div data-s-proby></div>
+      </div>
+    </section>
+
+    <section class="sz-section sz-section--last" aria-label="Rozety, certyfikaty i samopoczucie">
+      <div class="wrap sz-duo">
+        <div>
+          <h2 class="sz-h2">Rozety i certyfikaty</h2>
+          <ul class="sz-shelf sz-shelf--certs" data-s-rozety></ul>
+        </div>
+        <div>
+          <h2 class="sz-h2">Jak było po treningach</h2>
+          <div class="sz-feel" data-s-oceny></div>
+        </div>
+      </div>
+    </section>
+  </main>

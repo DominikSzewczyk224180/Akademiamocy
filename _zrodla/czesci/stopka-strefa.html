@@ -1,0 +1,49 @@
+  <footer class="sz-footer">
+    <div class="wrap sz-footer__inner">
+      <p>Akademia Mocy Jeździeckich. Wersja demonstracyjna: postęp zapisuje się tylko w tej przeglądarce.</p>
+      <p class="sz-footer__links"><a href="index.html">Strona Akademii</a><a href="faq.html">Pytania i pomoc</a><button type="button" class="linkbtn" data-sz-demo-btn>Panel demo</button></p>
+    </div>
+  </footer>
+
+  <!-- Telefon: zakładki strefy pod kciukiem -->
+  <nav class="sz-tabs" aria-label="Strefa kursantki, zakładki">
+    <a href="panel.html" data-nav="panel"><svg class="ico" aria-hidden="true"><use href="#i-panel"/></svg><span>Panel</span></a>
+    <a href="mapa.html" data-nav="mapa"><svg class="ico" aria-hidden="true"><use href="#i-parkur"/></svg><span>Parkur</span></a>
+    <a href="proba.html" data-nav="proba"><svg class="ico" aria-hidden="true"><use href="#i-rozeta"/></svg><span>Próba</span></a>
+    <a href="postepy.html" data-nav="postepy"><svg class="ico" aria-hidden="true"><use href="#i-postep"/></svg><span>Postępy</span></a>
+  </nav>
+
+  <!-- Demo: szybka zmiana stanu, żeby pokazać wszystkie ekrany bez robienia 12 treningów -->
+  <div class="sz-demo" data-sz-demo hidden role="dialog" aria-modal="false" aria-labelledby="sz-demo-tytul">
+    <div class="sz-demo__head">
+      <p class="sz-demo__title" id="sz-demo-tytul">Panel demo</p>
+      <button class="sz-iconbtn" type="button" data-sz-demo-zamknij aria-label="Zamknij panel demo"><svg class="ico"><use href="#i-x"/></svg></button>
+    </div>
+    <p class="sz-demo__lead">Zmień stan kursantki, żeby zobaczyć inne ekrany. Dane są tylko w tej przeglądarce.</p>
+    <div class="sz-demo__grid">
+      <button type="button" data-sz-scenariusz="przyklad"><strong>Dane przykładowe</strong><span>10 z 12 przeszkód, seria 3 tygodnie</span></button>
+      <button type="button" data-sz-scenariusz="nastepna"><strong>Zalicz następny trening</strong><span>jakby trening był zrobiony dziś</span></button>
+      <button type="button" data-sz-scenariusz="gotowa"><strong>Gotowa do Próby</strong><span>cały parkur Stęp przejechany</span></button>
+      <button type="button" data-sz-scenariusz="niezaliczona"><strong>Próba niezaliczona</strong><span>tydzień treningu celowanego</span></button>
+      <button type="button" data-sz-scenariusz="po-probie"><strong>Po Próbie</strong><span>rozeta Stęp, parkur Kłus</span></button>
+      <button type="button" data-sz-scenariusz="nowa"><strong>Nowe konto</strong><span>start od pierwszej przeszkody</span></button>
+    </div>
+  </div>
+
+  <template id="tpl-rozeta-step">{{> grafiki/rozeta-step.svg}}</template>
+  <template id="tpl-rozeta-klus">{{> grafiki/rozeta-klus.svg}}</template>
+  <template id="tpl-rozeta-galop">{{> grafiki/rozeta-galop.svg}}</template>
+  <template id="tpl-rozeta-step-mala">{{> grafiki/rozeta-step-mala.svg}}</template>
+  <template id="tpl-rozeta-klus-mala">{{> grafiki/rozeta-klus-mala.svg}}</template>
+  <template id="tpl-rozeta-galop-mala">{{> grafiki/rozeta-galop-mala.svg}}</template>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+  <script src="data/programs.js"></script>
+  <script src="data/treningi.js"></script>
+  <script src="data/proby.js"></script>
+  <script src="js/kursantka.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/strefa.js"></script>
+</body>
+</html>

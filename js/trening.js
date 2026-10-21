@@ -22,7 +22,19 @@
   var TEST = params.has('test');
   var DIAG = params.has('diag');
   var TEMPO = Math.max(1, Math.min(20, Number(params.get('tempo')) || 1));
+  /* Biblioteka ćwiczeń: trening odwołuje się do ćwiczenia przez "cw" */
+  (TR.treningi || []).forEach(function (t) {
+    t.bloki.forEach(function (b) {
+      b.cwiczenia = b.cwiczenia.map(function (c) {
+        return c.cw && TR.cwiczenia && TR.cwiczenia[c.cw] && !c.nazwa ? Object.assign({}, TR.cwiczenia[c.cw], c) : c;
+      });
+    });
+  });
   var trening = TR.treningi.filter(function (t) { return t.id === params.get('t'); })[0] || TR.treningi[0];
+  /* Strefa kursantki: trening uruchomiony z parkuru zalicza przeszkodę */
+  var STREFA = { kurs: params.get('kurs') || '', przeszkoda: Number(params.get('przeszkoda')) || 0 };
+  var AK = window.AkademiaKursantka || null;
+  var Z_PARKURU = !!(AK && STREFA.kurs && STREFA.przeszkoda);
   if (!trening) { return; }
   var program = (DANE.programy || []).filter(function (p) { return p.id === trening.program; })[0] || null;
 
@@ -716,16 +728,41 @@
     var min = Math.max(1, Math.round(stan.aktywnyMs / 60000));
     var rundy = SEG.reduce(function (m, s) { return Math.max(m, s.rundy || 1); }, 1);
     var zrobione = Math.min(stan.zrobione, PRACA.length);
-    ustawTekst($('#trn-koniec-tytul'), przedwczesnie ? 'Trening zakończony' : 'Trening zaliczony');
+    var wpis = null;
+    if (!przedwczesnie && Z_PARKURU) {
+      wpis = AK.zapiszTrening({ kurs: STREFA.kurs, przeszkoda: STREFA.przeszkoda, trening: trening.id, minuty: min });
+      log('strefa: przeszkoda ' + STREFA.przeszkoda + (wpis && wpis.nowa ? ' zaliczona' : ' powtórzona'));
+    }
+    ustawTekst($('#trn-koniec-tytul'), przedwczesnie ? 'Trening przerwany' : 'Trening ukończony');
+    var odbl = $('[data-t-odblokowane]');
+    if (odbl) {
+      odbl.hidden = true;
+      if (wpis && wpis.nowa) {
+        odbl.hidden = false;
+        odbl.innerHTML = '';
+        var t1 = doc.createElement('strong');
+        t1.textContent = wpis.probaOdblokowana ? 'Próba Mocy odblokowana' : 'Przeszkoda ' + STREFA.przeszkoda + ' zaliczona';
+        var t2 = doc.createElement('span');
+        t2.textContent = wpis.probaOdblokowana ? 'Cały parkur przejechany. Czas na Próbę.' : (wpis.zostalo > 0 ? 'Do Próby Mocy: ' + wpis.zostalo + ' ' + odmiana(wpis.zostalo, 'przeszkoda', 'przeszkody', 'przeszkód') + '.' : '');
+        odbl.appendChild(t1); odbl.appendChild(t2);
+        if (wpis.probaOdblokowana) {
+          var a2 = doc.createElement('a');
+          a2.className = 'link';
+          a2.href = 'proba.html';
+          a2.textContent = 'Przejdź do Próby Mocy';
+          odbl.appendChild(a2);
+        }
+      }
+    }
     ustawTekst($('[data-t-podsumowanie]'), (przedwczesnie ? 'Zrobione: ' + zrobione + ' z ' + PRACA.length + ' części. ' : '') +
       'Czas: ' + min + ' min. ' + LICZBA_CW + ' ' + odmiana(LICZBA_CW, 'ćwiczenie', 'ćwiczenia', 'ćwiczeń') + ' w 4 blokach' +
       (rundy > 1 ? ', część główna ' + rundy + ' ' + odmiana(rundy, 'raz', 'razy', 'razy') : '') + '.');
     $('.trn-end__badge').textContent = przedwczesnie ? 'dobry start' : 'brawo!';
     pokazEkran('koniec');
-    if (!przedwczesnie) { dzwiek.koniec(); dzwiek.mow('Brawo, trening zaliczony.'); }
+    if (!przedwczesnie) { dzwiek.koniec(); dzwiek.mow('Brawo, trening ukończony.'); }
     var tytul = $('#trn-koniec-tytul');
     if (tytul) { tytul.focus({ preventScroll: true }); }
-    log(przedwczesnie ? 'koniec wcześniej' : 'trening zaliczony');
+    log(przedwczesnie ? 'koniec wcześniej' : 'trening ukończony');
   }
 
   /* Ekran startowy z danych */
@@ -735,7 +772,14 @@
     ustawTekst($('[data-t-nazwa]'), trening.nazwa);
     ustawTekst($('[data-t-opis]'), trening.opis || '');
     var wroc = program ? 'program-' + program.id + '.html' : 'index.html';
-    $$('[data-t-wroc], [data-t-wroc-koniec]').forEach(function (a) { a.setAttribute('href', wroc); });
+    if (Z_PARKURU) {
+      wroc = 'przeglad.html?kurs=' + encodeURIComponent(STREFA.kurs) + '&przeszkoda=' + STREFA.przeszkoda;
+      ustawTekst($('[data-t-naglowek]'), 'Przeszkoda ' + STREFA.przeszkoda + ', ' + naglowek);
+    }
+    $$('[data-t-wroc]').forEach(function (a) { a.setAttribute('href', wroc); });
+    var koniecLink = $('[data-t-wroc-koniec]');
+    koniecLink.setAttribute('href', Z_PARKURU ? 'mapa.html' : wroc);
+    ustawTekst(koniecLink, Z_PARKURU ? 'Wróć do parkuru' : 'Wróć do programu');
     var pierwszy = TR.klipy[SEG[0].klip] || {};
     if (pierwszy.poster) { $('[data-t-poster]').setAttribute('src', pierwszy.poster); }
     ustawTekst($('[data-t-chip]'), TEST ? 'Tryb testowy' : 'Wersja demo');
@@ -863,6 +907,7 @@
       var el = $('[data-t-ocena-msg]');
       el.textContent = msg;
       el.hidden = false;
+      if (Z_PARKURU && AK.ocenOstatni) { AK.ocenOstatni(w); }
       try {
         var hist = JSON.parse(localStorage.getItem('akademia-oceny') || '[]');
         hist.push({ trening: trening.id, ocena: w, kiedy: new Date().toISOString() });

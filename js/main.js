@@ -124,6 +124,11 @@
     szpiedzy.forEach(function (el) { spy.observe(doc.getElementById(el.getAttribute('data-spy'))); });
   }
 
+  /* Po zalogowaniu w demo link „Zaloguj” prowadzi do panelu kursantki */
+  $$('[data-login]').forEach(function (a) {
+    try { if (localStorage.getItem('akademia-kursantka')) { a.textContent = 'Panel'; a.setAttribute('href', 'panel.html'); } } catch (err) { /* tryb prywatny */ }
+  });
+
   /* 3. Linki do rzeczy, które dopiero powstaną */
   doc.addEventListener('click', function (e) {
     var el = e.target.closest('[data-demo-soon]');

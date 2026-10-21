@@ -1,6 +1,6 @@
-# Akademia Mocy Jeździeckich: demo, etap 3
+# Akademia Mocy Jeździeckich: demo, etap 4
 
-Część publiczna (etap 2) i pełny odtwarzacz treningu (etap 3): jeden trening na 5 klipach, pion i poziom, licznik, następne ćwiczenie, ekran, który nie gaśnie.
+Część publiczna (etap 2), pełny odtwarzacz treningu (etap 3) i strefa kursantki (etap 4): panel, mapa parkuru, przegląd treningu, Próba Mocy z rozetą, postępy i certyfikat.
 Wygląd, kroje i kolory są te same co w etapie 1. Testy na telefonach: `TESTY.md`.
 
 ## Strony
@@ -16,6 +16,13 @@ Wygląd, kroje i kolory są te same co w etapie 1. Testy na telefonach: `TESTY.m
 | `faq.html` | Wszystkie pytania z wyszukiwarką i kategoriami |
 | `lista.html` | Lista chętnych: 3 krótkie kroki i dobór programu na koniec |
 | `trening.html` | Odtwarzacz pełnego treningu (etap 3) |
+| `logowanie.html` | Wejście do strefy kursantki (w demo przycisk „Wejdź jako kursantka demo”) |
+| `panel.html` | Panel: trening na dziś, cel tygodnia, seria, stan Próby, parkur w skrócie, rozety, ostatnie treningi |
+| `mapa.html` | Mapa parkuru: przeszkody po kolei, „Tu jesteś”, Próba Mocy na mecie, zakładki Stęp, Kłus, Galop |
+| `przeglad.html` | Przegląd treningu przed startem: bloki, ćwiczenia z kadrami, w czym pomagają w siodle, częste błędy |
+| `proba.html` | Próba Mocy: testy ze stoperem, technika do odhaczenia, rozeta albo tydzień celowany |
+| `postepy.html` | Postępy: liczby, kalendarz treningów, cel tygodnia, wyniki Prób, rozety, „Jak było?” |
+| `certyfikat.html` | Certyfikat po zaliczonej Próbie, do zapisania jako PDF |
 
 ## Co nowego w etapie 2
 
@@ -66,6 +73,38 @@ Opis pól jest na początku `data/treningi.js`. W skrócie: trening ma bloki, bl
 
 `manifest.webmanifest` i ikony `assets/ikona-*.png` pozwalają dodać Akademię do ekranu głównego telefonu. Otwiera się wtedy bez paska przeglądarki.
 
+## Etap 4: strefa kursantki
+
+Wejście: „Zaloguj” w menu albo `logowanie.html`. Strony strefy bez logowania przenoszą do logowania i po nim wracają tam, gdzie była kursantka. W demo logowanie to przycisk, a stan konta (historia treningów, wyniki Prób, rozety) zapisuje się w przeglądarce. W produkcji te same dane przyjdą z Django, a strony zostaną bez zmian.
+
+- Panel: powitanie zależne od pory dnia, karta „trening na dziś” z kadrami ćwiczeń, cel tygodnia (3 treningi), seria tygodni z celem, stan Próby, pasek parkuru, półka z rozetami, ostatnie treningi z oceną i wskazówka tygodnia.
+- Mapa parkuru: każdy trening to przeszkoda (12 w levelu), na mecie Próba Mocy. Zaliczone mają ptaszek, następna świeci „Tu jesteś”. Pod mapą ta sama lista przeszkód po kolei (wygodna na telefonie i dla czytników ekranu). Kłus otwiera się po zaliczonej Próbie Stępu, Galop jest „wkrótce”.
+- Przegląd treningu: co jest w treningu, blok po bloku, w czym każde ćwiczenie pomaga w siodle i na co uważać. Strzałki prowadzą do poprzedniej i następnej przeszkody.
+- Odtwarzacz zapisuje zaliczenie przeszkody i ocenę „Jak było?”. Po ostatniej przeszkodzie od razu proponuje Próbę Mocy.
+- Próba Mocy: 4 testy (stoper z odliczaniem albo wpisany wynik z własnego stopera, na czas albo z wyborem odpowiedzi) i technika do odhaczenia. Zaliczone wszystkie testy dają rozetę, otwierają Kłus i certyfikat. Jeśli czegoś zabraknie, strefa układa tydzień celowany (3 krótkie treningi z ćwiczeniami na brakujące testy), a drugie podejście jest możliwe po 7 dniach. Mocne osoby mogą „podejść do Próby od razu”.
+- Postępy: liczba treningów i minut, seria, rozety, kalendarz ostatnich 12 tygodni, treningi w tygodniu na tle celu, wyniki kolejnych Prób, rozkład ocen po treningach.
+- Certyfikat: imię, program, level i data. „Zapisz jako PDF” otwiera drukowanie przeglądarki.
+
+### Panel demo
+
+Na dole każdej strony strefy jest „Panel demo”. Przełącza stan konta, żeby Justyna mogła zobaczyć każdy etap drogi kursantki bez trenowania 4 tygodni:
+
+| Stan | Co pokazuje |
+|---|---|
+| Dane przykładowe | 10 z 12 przeszkód, seria 3 tygodnie (stan na start) |
+| Zalicz następny trening | jakby kolejny trening był zrobiony dziś |
+| Gotowa do Próby | cały parkur Stęp przejechany |
+| Próba niezaliczona | tydzień treningu celowanego przed drugim podejściem |
+| Po Próbie | rozeta Stęp, certyfikat i parkur Kłus |
+| Nowe konto | start od pierwszej przeszkody |
+
+### Dane strefy
+
+- `js/kursantka.js`: stan kursantki i wszystkie wyliczenia (parkur, cel tygodnia, seria, stan Próby, rozety). Klucz w przeglądarce: `akademia-kursantka`.
+- `data/treningi.js`: oprócz treningów i klipów zawiera słownik ćwiczeń (`cwiczenia`) i parkury (`kursy`: kolejność treningów na przeszkodach).
+- `data/proby.js`: testy Prób Mocy, cele, kroki, technika i ćwiczenia na tydzień celowany. Progi są przykładowe: ustala je Justyna z fizjoterapią.
+- `js/strefa.js`: wszystkie ekrany strefy, mapa parkuru rysowana w SVG.
+
 ## Jak zmieniać strony
 
 Menu, stopka i head są wspólne dla wszystkich stron, więc trzymamy je w jednym miejscu, a gotowe pliki `.html` składa skrypt.
@@ -76,7 +115,8 @@ _zrodla/
   czesci/             wspólne kawałki: head, menu, stopka, odtwarzacz, karty cennika, ikony, grafiki SVG
   strony/             treść każdej strony; _program.html to szablon trzech stron programów
 data/programs.js      dane programów: opisy, levele, ćwiczenia, testy Próby, pytania
-data/treningi.js      pełne treningi do odtwarzacza i lista klipów
+data/treningi.js      pełne treningi, klipy, słownik ćwiczeń i parkury
+data/proby.js         testy Prób Mocy
 ```
 
 Po zmianie w `_zrodla` albo w `data/programs.js` uruchom z katalogu repo:
@@ -143,6 +183,6 @@ Demo działa też po dwukliku w `index.html` na dysku, bez serwera.
 
 1. Etap 1: strona główna
 2. Etap 2: strony programów, cennik, O Akademii, pytania, lista chętnych
-3. Etap 3: pełny odtwarzacz treningu (ta paczka). Do zrobienia na żywo: testy z `TESTY.md` na iPhonie i Androidzie
-4. Etap 4: strefa kursantki (panel, mapa parkuru, Próba Mocy, postępy)
+3. Etap 3: pełny odtwarzacz treningu
+4. Etap 4: strefa kursantki: panel, mapa parkuru, przegląd treningu, Próba Mocy z rozetą, postępy, certyfikat (ta paczka)
 5. Etap 5: zakup i konto (koszyk, udawana płatność BLIK, voucher)

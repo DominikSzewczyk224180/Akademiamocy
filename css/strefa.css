@@ -722,3 +722,14 @@
 }
 .sz-progtab[aria-pressed="true"] { background: var(--cocoa); color: var(--on-dark); box-shadow: none; }
 
+
+/* Konie w strefie: koń na mapie parkuru i nad bieżącą przeszkodą w panelu */
+.sz-kon-poz { pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .sz-kon { animation: kon-wjazd 1.3s cubic-bezier(0.2, 0.7, 0.2, 1) both 0.2s; }
+  .sz-kon__cialo { animation: kon-klus 0.42s ease-in-out 0.2s 4 alternate; }
+}
+@keyframes kon-wjazd { from { transform: translateX(var(--od, -60px)); opacity: 0; } 30% { opacity: 1; } to { transform: none; opacity: 1; } }
+@keyframes kon-klus { from { transform: translateY(0); } to { transform: translateY(-3px); } }
+.sz-strip__list.ma-konia { padding-top: 3.4rem; }
+.sz-strip__kon { position: absolute; left: 50%; bottom: calc(100% - 2px); width: 48px; height: auto; transform: translateX(-56%); pointer-events: none; }

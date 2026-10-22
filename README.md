@@ -129,6 +129,14 @@ Dane: `data/sklep.js` (produkty, ceny, kody, voucher demo). Konta i dostępy pro
 
 Do sprawdzenia z prawnikiem przed startem: treść zgody na natychmiastowy dostęp i utratę prawa odstąpienia, zasady zwrotu voucherów, dokument zakupu (paragon albo faktura).
 
+## Konie na stronie
+
+Pliki są w `assets/img/konie/`: koń w kresce (`kon.svg`), koń z jeźdźczynią (`kon-jezdziec.svg`), blada sylwetka do tła (`kon-sylwetka.svg`), znak z głową konia (`glowa-konia.svg`) i kafelek wzoru (`wzor-konie.svg`).
+
+Gdzie są użyte: kadr „W siodle” w hero i obrazek udostępniania (`assets/img/kadr-siodlo.svg`, `assets/og.png`), koń przy „Co poczujesz w siodle”, koń na starcie planu parkuru, wzór w pasie cennika (strona główna i cennik), sylwetka w zachęcie na końcu stron, znak przy GOT'S for Horses (O Akademii), koń z jeźdźczynią na mapie parkuru w strefie (wjeżdża do bieżącej przeszkody) i nad bieżącą przeszkodą w panelu. Ruch koni wyłącza się, gdy ktoś ma w systemie ograniczenie animacji.
+
+Podstawa sylwetki konia: rysunek „Horse” autorstwa Andreasa Preussa (marauder) z openclipart, udostępniony jako CC0 (bez ograniczeń praw autorskich), dostępny w zestawie danych scikit-image. Kreska, anatomia, grzywa, ogon, cieniowanie, jeźdźczyni, siodło i ogłowie to rysunek własny.
+
 ## Jak zmieniać strony
 
 Menu, stopka i head są wspólne dla wszystkich stron, więc trzymamy je w jednym miejscu, a gotowe pliki `.html` składa skrypt.

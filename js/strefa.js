@@ -262,6 +262,7 @@
     for (var n = 1; n <= p.liczba; n++) {
       var stan = p.wpisy[n] ? 'done' : (n === p.biezaca ? 'now' : 'next');
       var li = el('li', 'sz-strip__item is-' + stan);
+      if (stan === 'now') { li.appendChild(konik()); ol.classList.add('ma-konia'); }
       var a = el('a', 'sz-strip__link');
       a.href = linkPrzegladu(k, n);
       a.setAttribute('aria-label', 'Przeszkoda ' + n + (stan === 'done' ? ', zaliczona' : (stan === 'now' ? ', tu jesteś' : ', przed Tobą')));
@@ -270,6 +271,7 @@
       ol.appendChild(li);
     }
     var fin = el('li', 'sz-strip__item sz-strip__item--proba is-' + st.stan);
+    if (p.wszystkie) { fin.appendChild(konik()); ol.classList.add('ma-konia'); }
     var af = el('a', 'sz-strip__link');
     af.href = 'proba.html';
     af.setAttribute('aria-label', 'Próba Mocy, ' + ({ zablokowana: 'zablokowana', gotowa: 'gotowa', czeka: 'drugie podejście wkrótce', zaliczona: 'zaliczona', brak: 'wkrótce' }[st.stan] || ''));
@@ -377,6 +379,36 @@
       (stan === 'zaliczona' ? '<path d="M-6 0 L-1.5 4.5 L7 -4.5" fill="none" stroke="' + kolory[2] + '" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>' : '<circle r="4.5" fill="#2F2323"/>') +
       '</g>';
   }
+  /* Koń z jeźdźczynią stoi na prostym odcinku przed bieżącą przeszkodą (albo przed Próbą Mocy),
+     przodem w kierunku jazdy, i wjeżdża na miejsce. Punkty układu to [x, y, rząd, kierunek]. */
+  function konNaMapie(p, pkt, u) {
+    var idx = (!p.wszystkie && p.biezaca >= 1 && p.biezaca <= p.liczba) ? p.biezaca - 1 : pkt.length - 1;
+    var q = pkt[idx];
+    var prev = idx === 0 ? [u.start.x, u.start.y, 0, 1] : pkt[idx - 1];
+    var kier = q[3] || 1;
+    var odstep = (idx === pkt.length - 1 ? 44 : 26) * u.skala;        /* przerwa do numeru, „Tu jesteś” albo rozety */
+    var miejsce;
+    if (prev[2] === q[2]) {
+      miejsce = Math.abs(q[0] - prev[0]) - 22 * u.skala;              /* prosta od poprzedniej przeszkody */
+    } else {
+      var krawedz = prev[3] > 0 ? u.prawo : u.lewo;                    /* tu ścieżka wychodzi z zawrotu */
+      var banda = kier > 0 ? q[0] - 34 : (u.W - 34) - q[0];
+      miejsce = Math.min(Math.abs(q[0] - krawedz) + u.zawrot * 0.8, banda);
+    }
+    var w = Math.max(56 * u.skala, Math.min(120 * u.skala, miejsce - odstep));
+    var dyst = odstep + w / 2;
+    var h = w * 566 / 596;
+    var x = Math.round(q[0] - kier * dyst), y = Math.round(q[1] + 10 * u.skala);
+    return '<g class="sz-kon-poz" transform="translate(' + x + ' ' + y + ')" aria-hidden="true"><g class="sz-kon" style="--od:' + (-kier * 70) + 'px">' +
+      '<g transform="scale(' + kier + ' 1)"><g class="sz-kon__cialo"><image href="assets/img/konie/kon-jezdziec.svg" x="' + (-w / 2).toFixed(1) + '" y="' + (-h).toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h.toFixed(1) + '"/></g></g></g></g>';
+  }
+
+  function konik() {
+    var img = el('img', 'sz-strip__kon');
+    img.src = 'assets/img/konie/kon-jezdziec.svg'; img.alt = ''; img.width = 48; img.height = 46;
+    return img;
+  }
+
   function svgParkur(k, p, st, nazwaUkladu) {
     var u = uklad(nazwaUkladu, p.liczba + 1);
     var pkt = u.punkty;
@@ -429,6 +461,7 @@
     s += rozetaSvg(k.level, stanProby);
     s += '<text y="84" class="sz-map__label sz-map__label--proba" text-anchor="middle">Próba Mocy</text>';
     s += '</g></a>';
+    s += konNaMapie(p, pkt, u);
     s += '</svg>';
     return s;
   }

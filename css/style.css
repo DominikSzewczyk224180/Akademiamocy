@@ -2360,3 +2360,35 @@ button.menu__item {
 
 /* Etap 5: link do aktywacji vouchera w cenniku */
 .voucher__aktywuj { margin-left: 0.75rem; font-size: var(--fs-sm); }
+
+/* 14. Konie ------------------------------------------------------------------------------------------- */
+/* Koń przy „Co poczujesz w siodle” */
+.feel__kon { width: min(100%, 400px); height: auto; margin-top: clamp(0.25rem, 1.5vw, 1.25rem); }
+@media (max-width: 959px) { .feel__kon { width: min(80%, 340px); justify-self: center; } }
+/* Blada sylwetka konia wychodzi zza kadru w zachęcie na końcu stron */
+.cta { overflow: hidden; }
+.cta::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  bottom: -16%;
+  width: min(560px, 82vw);
+  aspect-ratio: 596 / 486;
+  background: url(../assets/img/konie/kon-sylwetka.svg) left bottom / contain no-repeat;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.cta__inner { z-index: 1; }
+/* Wzór z konikami, podkowami i rozetami w pasie cennika */
+.band--wzor {
+  background-image: linear-gradient(rgba(249, 220, 227, 0.52), rgba(249, 220, 227, 0.52)), url(../assets/img/konie/wzor-konie.svg);
+  background-size: auto, 200px 180px;
+}
+/* Znak z głową konia przy siostrzanej marce */
+.sister__kon { display: grid; place-items: center; aspect-ratio: 1; border-radius: 50%; background: var(--ballet); transform: rotate(-6deg); box-shadow: 0 12px 26px -16px rgba(47, 35, 35, 0.5); }
+.sister__kon img { width: 74%; height: auto; }
+/* Koń na planie parkuru: lekki kłus w miejscu */
+@media (prefers-reduced-motion: no-preference) {
+  .course__kon { animation: kon-klus 0.5s ease-in-out infinite alternate; }
+}
+@keyframes kon-klus { from { transform: translateY(0); } to { transform: translateY(-2.5px); } }

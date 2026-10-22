@@ -752,7 +752,7 @@
 
     /* Zamówienia */
     var zam = karta('Zamówienia', 'kkarta--zam');
-    var moje = wszystkieZamowienia().filter(function (z) { return z.status === 'oplacone' && (z.klient.email === s.email || (s.zamowienia || []).indexOf(z.nr) !== -1); })
+    var moje = wszystkieZamowienia().filter(function (z) { return z && z.status === 'oplacone' && ((z.klient && z.klient.email === s.email) || (s.zamowienia || []).indexOf(z.nr) !== -1); })
       .sort(function (a, b) { return a.utworzono < b.utworzono ? 1 : -1; });
     if (!moje.length) { zam.appendChild(el('p', 'kkarta__fine', s.email === AK.demoEmail ? 'Konto demo ma karnet bez zamówienia. Kup coś w cenniku, a zamówienie pojawi się tutaj.' : 'Brak zamówień.')); }
     var ol = el('ol', 'kzam');

@@ -397,7 +397,7 @@
     }
     var w = Math.max(56 * u.skala, Math.min(120 * u.skala, miejsce - odstep));
     var dyst = odstep + w / 2;
-    var h = w * 566 / 596;
+    var h = w * 586 / 596;
     var x = Math.round(q[0] - kier * dyst), y = Math.round(q[1] + 10 * u.skala);
     return '<g class="sz-kon-poz" transform="translate(' + x + ' ' + y + ')" aria-hidden="true"><g class="sz-kon" style="--od:' + (-kier * 70) + 'px">' +
       '<g transform="scale(' + kier + ' 1)"><g class="sz-kon__cialo"><image href="assets/img/konie/kon-jezdziec.svg" x="' + (-w / 2).toFixed(1) + '" y="' + (-h).toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h.toFixed(1) + '"/></g></g></g></g>';
@@ -405,7 +405,7 @@
 
   function konik() {
     var img = el('img', 'sz-strip__kon');
-    img.src = 'assets/img/konie/kon-jezdziec.svg'; img.alt = ''; img.width = 48; img.height = 46;
+    img.src = 'assets/img/konie/kon-jezdziec.svg'; img.alt = ''; img.width = 48; img.height = 47;
     return img;
   }
 

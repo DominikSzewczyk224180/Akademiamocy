@@ -27,19 +27,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="preload" href="assets/fonts/instrument-sans-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
-
-  <script>
-    /* Demo: drugi wariant krojów pod ?fonty=b. Wybór zapamiętuje przeglądarka. */
-    (function () {
-      var v = null;
-      try { v = new URLSearchParams(location.search).get('fonty'); } catch (e) {}
-      try {
-        if (v) { localStorage.setItem('akademia-fonty', v.toLowerCase()); }
-        else { v = localStorage.getItem('akademia-fonty'); }
-      } catch (e) {}
-      if (v && v.toLowerCase() === 'b') { document.documentElement.setAttribute('data-fonty', 'b'); }
-    })();
-  </script>
 </head>
 <body class="strona-cennik">
   <a class="skip" href="#tresc">Przejdź do treści</a>
@@ -101,7 +88,7 @@
             <div class="menu__flyout" id="menu-programy" data-drop-panel>
               <a class="fly fly--pink" href="program-ogolny.html"><span class="fly__icon"><svg class="ico" aria-hidden="true"><use href="#i-podkowa"/></svg></span><span class="fly__text"><strong>Ogólny program dla jeźdźców</strong><span>Siła i&nbsp;równowaga na cały sezon, 25&#8288;-&#8288;35&nbsp;min</span></span></a>
               <a class="fly fly--sage" href="program-gimnastyka.html"><span class="fly__icon"><svg class="ico" aria-hidden="true"><use href="#i-wstazka"/></svg></span><span class="fly__text"><strong>Gimnastyka dla jeźdźców</strong><span>Ruch bez blokad i&nbsp;symetryczny dosiad, 20&#8288;-&#8288;30&nbsp;min</span></span></a>
-              <a class="fly fly--butter" href="program-ranne-moce.html"><span class="fly__icon"><svg class="ico" aria-hidden="true"><use href="#i-slonce"/></svg></span><span class="fly__text"><strong>Ranne Moce Jeździeckie</strong><span>10&nbsp;minut każdego ranka, 10&#8288;-&#8288;15&nbsp;min</span></span></a>
+              <a class="fly fly--butter" href="program-poranne-moce.html"><span class="fly__icon"><svg class="ico" aria-hidden="true"><use href="#i-slonce"/></svg></span><span class="fly__text"><strong>Poranne Moce Jeździeckie</strong><span>10&nbsp;minut każdego ranka, 10&#8288;-&#8288;15&nbsp;min</span></span></a>
               <a class="fly fly--plain" href="lista.html"><span class="fly__text"><strong>Nie wiesz, który wybrać?</strong><span>Odpowiedz na kilka pytań, dobierzemy program</span></span></a>
             </div>
           </div>
@@ -314,7 +301,7 @@
           <ul>
             <li><a href="program-ogolny.html">Ogólny program</a></li>
             <li><a href="program-gimnastyka.html">Gimnastyka</a></li>
-            <li><a href="program-ranne-moce.html">Ranne Moce</a></li>
+            <li><a href="program-poranne-moce.html">Poranne Moce</a></li>
           </ul>
         </nav>
         <nav class="footer__col" aria-label="Akademia">
@@ -342,7 +329,6 @@
       <p class="footer__word" aria-hidden="true">Akademia Mocy</p>
       <div class="footer__bottom">
         <p>© <span data-rok>2026</span> Akademia Mocy Jeździeckich. Wersja demonstracyjna, treści i&nbsp;ceny są przykładowe.</p>
-        <p class="fontswitch">Kroje: <button type="button" data-fonty-set="a" aria-pressed="true">A</button><button type="button" data-fonty-set="b" aria-pressed="false">B</button></p>
       </div>
     </div>
   </footer>

@@ -361,8 +361,8 @@
     function lacz(lista) { return lista.length < 2 ? lista.join('') : lista.slice(0, -1).join(', ') + ' i ' + lista[lista.length - 1]; }
 
     function dobierz() {
-      var wynik = { 'ogolny': 0, 'gimnastyka': 0, 'ranne-moce': 0 };
-      var powody = { 'ogolny': [], 'gimnastyka': [], 'ranne-moce': [] };
+      var wynik = { 'ogolny': 0, 'gimnastyka': 0, 'poranne-moce': 0 };
+      var powody = { 'ogolny': [], 'gimnastyka': [], 'poranne-moce': [] };
       var mapa = {
         lydka: ['ogolny', 2, 'stabilność łydki i półsiad'],
         kondycja: ['ogolny', 2, 'kondycję'],
@@ -378,19 +378,19 @@
         wynik[m[0]] += m[1];
         powody[m[0]].push(m[2]);
         if (c === 'core') { wynik.gimnastyka += 1; powody.gimnastyka.push(m[2]); }
-        if (c === 'plecy') { wynik['ranne-moce'] += 1; powody['ranne-moce'].push(m[2]); }
+        if (c === 'plecy') { wynik['poranne-moce'] += 1; powody['poranne-moce'].push(m[2]); }
       });
-      if (czas === 'krotko') { wynik['ranne-moce'] += 3; }
+      if (czas === 'krotko') { wynik['poranne-moce'] += 3; }
       if (czas === 'dlugo') { wynik.ogolny += 1; }
       if (styl === 'sport') { wynik.ogolny += 1; }
-      if (czest === 'rzadko') { wynik['ranne-moce'] += 1; }
+      if (czest === 'rzadko') { wynik['poranne-moce'] += 1; }
 
-      var kolejnosc = ['gimnastyka', 'ogolny', 'ranne-moce'];
+      var kolejnosc = ['gimnastyka', 'ogolny', 'poranne-moce'];
       var najlepszy = kolejnosc.reduce(function (a, b) { return wynik[b] > wynik[a] ? b : a; });
       if (wybrany) { najlepszy = wybrany.id; }
 
       var czesci = [];
-      if (najlepszy === 'ranne-moce' && czas === 'krotko') { czesci.push('masz na trening 10-15 minut'); }
+      if (najlepszy === 'poranne-moce' && czas === 'krotko') { czesci.push('masz na trening 10-15 minut'); }
       if (powody[najlepszy].length) { czesci.push('chcesz poprawić ' + lacz(powody[najlepszy])); }
       var dlaczego = czesci.length ? 'Pasuje, bo ' + czesci.join(' i ') + '.' : 'Dobry start na Twój poziom i ilość czasu.';
       if (wybrany) { dlaczego = 'Ten program wybrano na jego stronie. ' + (czesci.length ? 'Dobrze pasuje, bo ' + czesci.join(' i ') + '.' : ''); }
@@ -454,23 +454,6 @@
     if (formEl) { new IntersectionObserver(function (w) { przyFormularzu = w[0].isIntersecting; odswiezDok(); }, { threshold: 0.15 }).observe(formEl); }
   }
 
-  /* 9. Demo: wariant krojów (A: Instrument Sans, B: Familjen Grotesk) */
-  var fontBtns = $$('[data-fonty-set]');
-  function ustawFonty(w, zapisz) {
-    if (w === 'b') { root.setAttribute('data-fonty', 'b'); } else { root.removeAttribute('data-fonty'); }
-    fontBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-fonty-set') === w ? 'true' : 'false'); });
-    if (zapisz) { try { localStorage.setItem('akademia-fonty', w); } catch (err) { /* tryb prywatny */ } }
-    pokazPigulke(aktywny);
-  }
-  ustawFonty(root.getAttribute('data-fonty') === 'b' ? 'b' : 'a', false);
-  fontBtns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var w = b.getAttribute('data-fonty-set');
-      ustawFonty(w, true);
-      toast(w === 'b' ? 'Kroje: wariant B, Familjen Grotesk' : 'Kroje: wariant A, Instrument Sans');
-    });
-  });
-
-  /* 10. Rok w stopce */
+  /* 9. Rok w stopce */
   $$('[data-rok]').forEach(function (n) { n.textContent = String(new Date().getFullYear()); });
 })();

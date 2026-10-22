@@ -28,19 +28,6 @@
   <link rel="preload" href="assets/fonts/instrument-sans-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/strefa.css">
-
-  <script>
-    /* Demo: drugi wariant krojów pod ?fonty=b. Wybór zapamiętuje przeglądarka. */
-    (function () {
-      var v = null;
-      try { v = new URLSearchParams(location.search).get('fonty'); } catch (e) {}
-      try {
-        if (v) { localStorage.setItem('akademia-fonty', v.toLowerCase()); }
-        else { v = localStorage.getItem('akademia-fonty'); }
-      } catch (e) {}
-      if (v && v.toLowerCase() === 'b') { document.documentElement.setAttribute('data-fonty', 'b'); }
-    })();
-  </script>
 </head>
 <body class="strefa-strona strona-mapa">
   <a class="skip" href="#tresc">Przejdź do treści</a>

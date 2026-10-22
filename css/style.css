@@ -19,7 +19,6 @@
 
 /* 1. Fonty ---------------------------------------------------------------
    Instrument Sans: szerokość 75-100%, grubość 400-700.
-   Familjen Grotesk: wariant B (cieplejszy), grubość 400-700.
    Polskie znaki siedzą w plikach latin-ext. Licencja SIL OFL. */
 
 @font-face {
@@ -40,24 +39,6 @@
   src: url("../assets/fonts/instrument-sans-latin-standard-normal.woff2") format("woff2-variations");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-@font-face {
-  font-family: "Familjen Grotesk Variable";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400 700;
-  src: url("../assets/fonts/familjen-grotesk-latin-ext-wght-normal.woff2") format("woff2-variations");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Familjen Grotesk Variable";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400 700;
-  src: url("../assets/fonts/familjen-grotesk-latin-wght-normal.woff2") format("woff2-variations");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-
 /* 2. Tokeny --------------------------------------------------------------- */
 
 :root {
@@ -88,7 +69,7 @@
   --blk-3: #E07D98;
   --blk-4: #E9D27F;
 
-  /* Kroje: wariant A */
+  /* Kroje */
   --font: "Instrument Sans Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display: var(--font);
   --display-stretch: 82%;
@@ -121,16 +102,6 @@
 
   --scallop: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cpath%20d%3D%22M50.00%207.00A7.72%207.72%200%200%201%2066.46%2010.27A7.72%207.72%200%200%201%2080.41%2019.59A7.72%207.72%200%200%201%2089.73%2033.54A7.72%207.72%200%200%201%2093.00%2050.00A7.72%207.72%200%200%201%2089.73%2066.46A7.72%207.72%200%200%201%2080.41%2080.41A7.72%207.72%200%200%201%2066.46%2089.73A7.72%207.72%200%200%201%2050.00%2093.00A7.72%207.72%200%200%201%2033.54%2089.73A7.72%207.72%200%200%201%2019.59%2080.41A7.72%207.72%200%200%201%2010.27%2066.46A7.72%207.72%200%200%201%207.00%2050.00A7.72%207.72%200%200%201%2010.27%2033.54A7.72%207.72%200%200%201%2019.59%2019.59A7.72%207.72%200%200%201%2033.54%2010.27A7.72%207.72%200%200%201%2050.00%207.00Z%22/%3E%3C/svg%3E");
 }
-
-/* Wariant B: Familjen Grotesk, cieplejszy i bardziej ręczny charakter */
-:root[data-fonty="b"] {
-  --font: "Familjen Grotesk Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --display-stretch: 100%;
-  --display-bold: 640;
-  --display-light: 440;
-  --display-track: -0.03em;
-}
-
 
 /* 3. Baza ----------------------------------------------------------------- */
 
@@ -1569,17 +1540,6 @@ p { text-wrap: pretty; }
   font-size: var(--fs-xs);
   color: var(--cocoa-2);
 }
-.fontswitch { display: inline-flex; align-items: center; gap: 0.35rem; }
-.fontswitch button {
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--line-2);
-  border-radius: 50%;
-  background: var(--white);
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-.fontswitch button[aria-pressed="true"] { background: var(--cocoa); border-color: var(--cocoa); color: var(--on-dark); }
 @media (min-width: 720px) {
   .footer__grid { grid-template-columns: 1.4fr repeat(3, 1fr); }
 }
@@ -2393,3 +2353,11 @@ button.menu__item {
   .course__kon { animation: kon-klus 0.5s ease-in-out infinite alternate; }
 }
 @keyframes kon-klus { from { transform: translateY(0); } to { transform: translateY(-2.5px); } }
+
+/* 15. Zespół w trzech osobach --------------------------------------------------------------------------- */
+.person__photo--butter { background: var(--butter); }
+@media (min-width: 1080px) {
+  .people { grid-template-columns: repeat(3, 1fr); gap: 2.25rem; }
+  .person { grid-template-columns: 1fr; align-items: start; gap: 1.1rem; }
+  .person__photo { width: 100%; aspect-ratio: 4 / 3; }
+}

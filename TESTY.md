@@ -112,11 +112,11 @@ Zacznij od `https://dominikszewczyk224180.github.io/AkademiaMocy/cennik.html`. C
 
 | Nr | Co zrobić | Co powinno się stać |
 |---|---|---|
-| Z1 | Cennik, „Wybieram program”, wybierz Ranne Moce, wpisz imię i e-mail, kod START10 | Do zapłaty 161,10 zł, dostęp od dziś na 12 miesięcy |
+| Z1 | Cennik, „Wybieram program”, wybierz Poranne Moce, wpisz imię i e-mail, kod START10 | Do zapłaty 161,10 zł, dostęp od dziś na 12 miesięcy |
 | Z2 | Przejdź do płatności, wpisz BLIK 000 000 | Komunikat o błędnym kodzie, można wpisać nowy |
 | Z3 | Wpisz BLIK 111 111 | Po chwili „Płatność odrzucona w aplikacji banku”, nic nie zostało pobrane |
 | Z4 | „Spróbuj jeszcze raz”, wpisz dowolny inny kod | „Potwierdź w aplikacji banku”, potem strona „Gotowe, program jest odblokowany” |
-| Z5 | „Wejdź do strefy kursantki” | Panel z Rannymi Mocami, przeszkoda 1 z 14, w „Twoje programy” dwa programy do kupienia |
+| Z5 | „Wejdź do strefy kursantki” | Panel z Porannymi Mocami, przeszkoda 1 z 14, w „Twoje programy” dwa programy do kupienia |
 | Z6 | Konto i zakupy, potem „Wyloguj się”. Zaloguj się tym samym adresem | Wraca to samo konto z tym samym programem |
 | Z7 | Wejdź jako kursantka demo, kup karnet „Na prezent, jako voucher” | Strona „Voucher jest gotowy” z kodem, PDF ma imię, podpis i życzenia |
 | Z8 | Wyloguj się, otwórz „Aktywuj voucher”, wpisz kod z Z7, załóż nowe konto | „Voucher aktywny”, panel ma wszystkie 3 programy, mapa ma zakładki programów |

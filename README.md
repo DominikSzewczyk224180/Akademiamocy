@@ -10,7 +10,7 @@ Wygląd, kroje i kolory są te same co w etapie 1. Testy na telefonach: `TESTY.m
 | `index.html` | Strona główna |
 | `program-ogolny.html` | Ogólny program dla jeźdźców |
 | `program-gimnastyka.html` | Gimnastyka dla jeźdźców |
-| `program-ranne-moce.html` | Ranne Moce Jeździeckie |
+| `program-poranne-moce.html` | Poranne Moce Jeździeckie |
 | `cennik.html` | Oferta, porównanie, dodatki, vouchery, płatności |
 | `o-akademii.html` | Historia, zasady, ludzie, jak powstają programy, GOT’S for Horses |
 | `faq.html` | Wszystkie pytania z wyszukiwarką i kategoriami |
@@ -122,7 +122,7 @@ Na dole każdej strony strefy jest „Panel demo”. Przełącza stan konta, że
 - Przedłużenie: kupno tego samego dostępu, który jeszcze trwa, zaczyna nowy okres zaraz po obecnym. Panel przypomina o końcu dostępu 14 dni wcześniej.
 - Vouchery: zakup na prezent daje kod (AMJ-XXXX-XXXX) i voucher w PDF. Osoba obdarowana aktywuje go w `aktywuj.html`, a dostęp liczy się od aktywacji. Kod działa raz. Do testów jest gotowy kod AMJ-DEMO-2026 (karnet 3 miesiące).
 - Logowanie: bez hasła, linkiem na e-mail (w demo przycisk „Otwórz link z maila”). Konta przetrwają wylogowanie, więc ten sam adres wraca do tego samego konta. Dla nieznanego adresu strona podpowiada zakup albo voucher, ale nie zdradza, czy konto istnieje.
-- Strefa: „Twoje programy” w panelu (odblokowane i do kupienia), zakładki programów na mapie, menu „Konto i zakupy” i „Aktywuj voucher”. Ogólny program i Ranne Moce mają teraz własne parkury (12 i 14 przeszkód) i Próby Mocy, więc każdy kupiony program ma treść.
+- Strefa: „Twoje programy” w panelu (odblokowane i do kupienia), zakładki programów na mapie, menu „Konto i zakupy” i „Aktywuj voucher”. Ogólny program i Poranne Moce mają teraz własne parkury (12 i 14 przeszkód) i Próby Mocy, więc każdy kupiony program ma treść.
 - Panel demo ma nowy stan „Dostęp się kończy”, żeby pokazać przypomnienie o przedłużeniu.
 
 Dane: `data/sklep.js` (produkty, ceny, kody, voucher demo). Konta i dostępy prowadzi `js/kursantka.js`, a ekrany sklepu i konta `js/sklep.js`. Zamówienia i vouchery w demo leżą w przeglądarce (`akademia-zamowienia`, `akademia-vouchery`), konta pod `akademia-konta`.
@@ -179,8 +179,8 @@ Logika jest w `js/main.js` (funkcja `dobierz`). Każda odpowiedź dodaje punkty 
 - łydka i półsiad, kondycja: Ogólny program
 - symetria, biodra: Gimnastyka
 - równowaga i tułów: Ogólny i trochę Gimnastyka
-- komfort pleców: Gimnastyka i trochę Ranne Moce
-- 10-15 minut na trening: mocno Ranne Moce
+- komfort pleców: Gimnastyka i trochę Poranne Moce
+- 10-15 minut na trening: mocno Poranne Moce
 
 Przy remisie wygrywa Gimnastyka, potem Ogólny. Osoby, które startują regularnie, dostają podpowiedź o teście wejściowym do Kłusa. Wagi łatwo zmienić, jeśli Justyna zechce inaczej.
 
@@ -197,7 +197,6 @@ Demo działa też po dwukliku w `index.html` na dysku, bez serwera.
 
 - Strona główna: `https://dominikszewczyk224180.github.io/AkademiaMocy/`
 - Program: `.../program-gimnastyka.html`, cennik: `.../cennik.html`, lista chętnych: `.../lista.html`
-- Wariant krojów B: dopisz `?fonty=b` do dowolnego adresu. W stopce są też przyciski „Kroje: A / B”.
 
 ## Do podmiany przed startem
 

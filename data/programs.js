@@ -121,12 +121,12 @@ window.AKADEMIA = {
       }
     },
     {
-      "id": "ranne-moce",
+      "id": "poranne-moce",
       "kolor": "butter",
       "ikona": "i-slonce",
-      "nazwa": "Ranne Moce Jeździeckie",
-      "krotka": "Ranne Moce",
-      "krotkaBiernik": "Ranne Moce",
+      "nazwa": "Poranne Moce Jeździeckie",
+      "krotka": "Poranne Moce",
+      "krotkaBiernik": "Poranne Moce",
       "haslo": "10 minut każdego ranka",
       "krotko": "Krótka poranna rutyna: aktywacja, oddech i mobilność na dobry start dnia.",
       "opis": "Krótka poranna rutyna, która mieści się przed obrządkiem i pracą. Oddech, aktywacja i mobilność, żeby ciało było gotowe na cały dzień i na jazdę.",
@@ -156,7 +156,7 @@ window.AKADEMIA = {
         { "q": "Czy to wystarczy?", "a": "Na start tak. Kiedy złapiesz nawyk, możesz dołożyć Gimnastykę albo Ogólny program." }
       ],
       "trening": {
-        "opis": "Ranne Moce, Stęp, poranek 1",
+        "opis": "Poranne Moce, Stęp, poranek 1",
         "cwiczenia": [
           { "blok": 0, "nazwa": "Oddech przeponowy", "czas": 40, "wskazowka": "Dłoń na brzuchu, powolny wydech" },
           { "blok": 0, "nazwa": "Krążenia ramion", "czas": 30, "wskazowka": "Duże koła, ramiona luźno" },

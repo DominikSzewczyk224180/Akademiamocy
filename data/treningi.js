@@ -7,7 +7,7 @@
   Klip: "mp4" w repo (demo). W produkcji dopisujemy "hls" z Bunny Stream.
   "lustro": true pozwala pokazać drugą stronę ćwiczenia przez odbicie klipu.
   Blok: "rundy" powtarza ćwiczenia bloku, "przerwa" jest po każdym ćwiczeniu, "przerwaRundy" między rundami.
-  Parkur ("kursy"): level jako 12 przeszkód (w Rannych Mocach 14), treningi A, B, C na zmianę, na końcu Próba Mocy.
+  Parkur ("kursy"): level jako 12 przeszkód (w Porannych Mocach 14), treningi A, B, C na zmianę, na końcu Próba Mocy.
   "progProby": jaka część przeszkód musi być zaliczona, żeby odblokować Próbę (1 = wszystkie, 0.8 = 80%).
 */
 window.AKADEMIA_TRENINGI = {
@@ -167,8 +167,8 @@ window.AKADEMIA_TRENINGI = {
       ]
     },
     {
-      "id": "ranne-moce-step-a", "program": "ranne-moce", "level": "step", "nazwa": "Poranek A",
-      "naglowek": "Ranne Moce Jeździeckie, Stęp",
+      "id": "poranne-moce-step-a", "program": "poranne-moce", "level": "step", "nazwa": "Poranek A",
+      "naglowek": "Poranne Moce Jeździeckie, Stęp",
       "opis": "Krótki poranek: aktywacja, mobilność i rozciąganie.",
       "sprzet": ["Bez sprzętu"], "przygotowanie": 4, "zmianaStrony": 4,
       "bloki": [
@@ -179,8 +179,8 @@ window.AKADEMIA_TRENINGI = {
       ]
     },
     {
-      "id": "ranne-moce-step-b", "program": "ranne-moce", "level": "step", "nazwa": "Poranek B",
-      "naglowek": "Ranne Moce Jeździeckie, Stęp",
+      "id": "poranne-moce-step-b", "program": "poranne-moce", "level": "step", "nazwa": "Poranek B",
+      "naglowek": "Poranne Moce Jeździeckie, Stęp",
       "opis": "Poranek z mostkiem: pobudka dla pośladków przed dniem w stajni.",
       "sprzet": ["Bez sprzętu"], "przygotowanie": 4, "zmianaStrony": 4,
       "bloki": [
@@ -191,8 +191,8 @@ window.AKADEMIA_TRENINGI = {
       ]
     },
     {
-      "id": "ranne-moce-step-c", "program": "ranne-moce", "level": "step", "nazwa": "Poranek C",
-      "naglowek": "Ranne Moce Jeździeckie, Stęp",
+      "id": "poranne-moce-step-c", "program": "poranne-moce", "level": "step", "nazwa": "Poranek C",
+      "naglowek": "Poranne Moce Jeździeckie, Stęp",
       "opis": "Najkrótszy poranek, gdy czasu jest naprawdę mało.",
       "sprzet": ["Bez sprzętu"], "przygotowanie": 4, "zmianaStrony": 4,
       "bloki": [
@@ -235,14 +235,14 @@ window.AKADEMIA_TRENINGI = {
       "przeszkody": ["ogolny-step-a", "ogolny-step-b", "ogolny-step-c", "ogolny-step-a", "ogolny-step-b", "ogolny-step-c", "ogolny-step-a", "ogolny-step-b", "ogolny-step-c", "ogolny-step-a", "ogolny-step-b", "ogolny-step-c"]
     },
     {
-      "id": "ranne-moce-step",
-      "program": "ranne-moce",
+      "id": "poranne-moce-step",
+      "program": "poranne-moce",
       "level": "step",
       "nazwa": "Parkur Stęp",
       "progProby": 1,
-      "proba": "ranne-moce-step",
+      "proba": "poranne-moce-step",
       "nastepny": "",
-      "przeszkody": ["ranne-moce-step-a", "ranne-moce-step-b", "ranne-moce-step-c", "ranne-moce-step-a", "ranne-moce-step-b", "ranne-moce-step-c", "ranne-moce-step-a", "ranne-moce-step-b", "ranne-moce-step-c", "ranne-moce-step-a", "ranne-moce-step-b", "ranne-moce-step-c", "ranne-moce-step-a", "ranne-moce-step-b"]
+      "przeszkody": ["poranne-moce-step-a", "poranne-moce-step-b", "poranne-moce-step-c", "poranne-moce-step-a", "poranne-moce-step-b", "poranne-moce-step-c", "poranne-moce-step-a", "poranne-moce-step-b", "poranne-moce-step-c", "poranne-moce-step-a", "poranne-moce-step-b", "poranne-moce-step-c", "poranne-moce-step-a", "poranne-moce-step-b"]
     }
   ]
 };

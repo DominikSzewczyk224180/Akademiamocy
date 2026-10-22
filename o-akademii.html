@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>O Akademii | Akademia Mocy Jeździeckich</title>
-  <meta name="description" content="Akademia Mocy Jeździeckich łączy jeździecką codzienność z fizjoterapią. Krótkie treningi, które czuć w siodle.">
+  <meta name="description" content="Akademia Mocy Jeździeckich łączy jeździecką codzienność z fizjoterapią i rehabilitacją medyczną. Krótkie treningi, które czuć w siodle.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#FFF9F8">
   <meta name="color-scheme" content="light">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:title" content="O Akademii Mocy Jeździeckich">
-  <meta property="og:description" content="Akademia Mocy Jeździeckich łączy jeździecką codzienność z fizjoterapią. Krótkie treningi, które czuć w siodle.">
+  <meta property="og:description" content="Akademia Mocy Jeździeckich łączy jeździecką codzienność z fizjoterapią i rehabilitacją medyczną. Krótkie treningi, które czuć w siodle.">
   <meta property="og:image" content="https://dominikszewczyk224180.github.io/AkademiaMocy/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -27,19 +27,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="preload" href="assets/fonts/instrument-sans-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
-
-  <script>
-    /* Demo: drugi wariant krojów pod ?fonty=b. Wybór zapamiętuje przeglądarka. */
-    (function () {
-      var v = null;
-      try { v = new URLSearchParams(location.search).get('fonty'); } catch (e) {}
-      try {
-        if (v) { localStorage.setItem('akademia-fonty', v.toLowerCase()); }
-        else { v = localStorage.getItem('akademia-fonty'); }
-      } catch (e) {}
-      if (v && v.toLowerCase() === 'b') { document.documentElement.setAttribute('data-fonty', 'b'); }
-    })();
-  </script>
 </head>
 <body class="strona-o-akademii">
   <a class="skip" href="#tresc">Przejdź do treści</a>
@@ -101,7 +88,7 @@
             <div class="menu__flyout" id="menu-programy" data-drop-panel>
               <a class="fly fly--pink" href="program-ogolny.html"><span class="fly__icon"><svg class="ico" aria-hidden="true"><use href="#i-podkowa"/></svg></span><span class="fly__text"><strong>Ogólny program dla jeźdźców</strong><span>Siła i&nbsp;równowaga na cały sezon, 25&#8288;-&#8288;35&nbsp;min</span></span></a>
               <a class="fly fly--sage" href="program-gimnastyka.html"><span class="fly__icon"><svg class="ico" aria-hidden="true"><use href="#i-wstazka"/></svg></span><span class="fly__text"><strong>Gimnastyka dla jeźdźców</strong><span>Ruch bez blokad i&nbsp;symetryczny dosiad, 20&#8288;-&#8288;30&nbsp;min</span></span></a>
-              <a class="fly fly--butter" href="program-ranne-moce.html"><span class="fly__icon"><svg class="ico" aria-hidden="true"><use href="#i-slonce"/></svg></span><span class="fly__text"><strong>Ranne Moce Jeździeckie</strong><span>10&nbsp;minut każdego ranka, 10&#8288;-&#8288;15&nbsp;min</span></span></a>
+              <a class="fly fly--butter" href="program-poranne-moce.html"><span class="fly__icon"><svg class="ico" aria-hidden="true"><use href="#i-slonce"/></svg></span><span class="fly__text"><strong>Poranne Moce Jeździeckie</strong><span>10&nbsp;minut każdego ranka, 10&#8288;-&#8288;15&nbsp;min</span></span></a>
               <a class="fly fly--plain" href="lista.html"><span class="fly__text"><strong>Nie wiesz, który wybrać?</strong><span>Odpowiedz na kilka pytań, dobierzemy program</span></span></a>
             </div>
           </div>
@@ -130,7 +117,7 @@
     <section class="page-hero" aria-labelledby="o-tytul">
       <div class="wrap">
         <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Akademia</a><span aria-hidden="true">/</span><span aria-current="page">O&nbsp;Akademii</span></nav>
-        <h1 class="page-title page-title--wide" id="o-tytul"><span class="page-title__l1">Trening, który czuć w&nbsp;siodle</span><span class="page-title__l2">Jeździecka codzienność i&nbsp;fizjoterapia w&nbsp;jednym miejscu</span></h1>
+        <h1 class="page-title page-title--wide" id="o-tytul"><span class="page-title__l1">Trening, który czuć w&nbsp;siodle</span><span class="page-title__l2">Jeździecka codzienność, fizjoterapia i&nbsp;rehabilitacja w&nbsp;jednym miejscu</span></h1>
       </div>
     </section>
 
@@ -164,7 +151,7 @@
       <div class="wrap">
         <header class="section-head section-head--row">
           <h2 class="h2" id="ludzie-tytul">Kto tworzy programy</h2>
-          <p class="lead">Dwie perspektywy: ktoś, kto zna stajnię od środka, i&nbsp;ktoś, kto pilnuje bezpieczeństwa ruchu.</p>
+          <p class="lead">Trzy perspektywy: ktoś, kto zna stajnię od środka, ktoś, kto pilnuje bezpieczeństwa ruchu, i&nbsp;lekarka, która patrzy na zdrowie całego ciała.</p>
         </header>
         <div class="people people--big">
           <article class="person">
@@ -185,6 +172,15 @@
               <p>Tu dopiszemy doświadczenie i&nbsp;specjalizację, np. praca z&nbsp;jeźdźcami i&nbsp;sportowcami.</p>
             </div>
           </article>
+          <article class="person">
+            <figure class="person__photo person__photo--butter"><span class="person__initial" aria-hidden="true">L</span><figcaption>Tu zdjęcie</figcaption></figure>
+            <div class="person__text">
+              <h3 class="h3">Imię i&nbsp;nazwisko</h3>
+              <p class="person__role">Lekarka rehabilitacji medycznej</p>
+              <p>Patrzy na program okiem lekarza: pilnuje przeciwwskazań i&nbsp;bezpiecznego tempa, w&nbsp;jakim rośnie obciążenie.</p>
+              <p>Tu dopiszemy specjalizację i&nbsp;doświadczenie, np. praca z&nbsp;jeźdźcami po urazach.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -197,7 +193,7 @@
         </header>
         <ol class="process">
           <li class="process__step"><span class="process__num">1</span><h3 class="h3">Cel w&nbsp;siodle</h3><p>Zaczynamy od problemu, który zna każdy jeździec, na przykład uciekającej łydki.</p></li>
-          <li class="process__step"><span class="process__num">2</span><h3 class="h3">Dobór ćwiczeń</h3><p>Justyna i&nbsp;fizjoterapia wybierają ćwiczenia oraz ich łatwiejsze i&nbsp;trudniejsze wersje.</p></li>
+          <li class="process__step"><span class="process__num">2</span><h3 class="h3">Dobór ćwiczeń</h3><p>Justyna, fizjoterapia i&nbsp;rehabilitacja medyczna wybierają ćwiczenia oraz ich łatwiejsze i&nbsp;trudniejsze wersje.</p></li>
           <li class="process__step"><span class="process__num">3</span><h3 class="h3">Nagrania</h3><p>Każde ćwiczenie dostaje film w&nbsp;pętli i&nbsp;instrukcję z&nbsp;najczęstszym błędem.</p></li>
           <li class="process__step"><span class="process__num">4</span><h3 class="h3">Próba Mocy</h3><p>Na koniec levelu dokładamy test, który pokazuje postęp i&nbsp;daje rozetę.</p></li>
         </ol>
@@ -247,7 +243,7 @@
           <ul>
             <li><a href="program-ogolny.html">Ogólny program</a></li>
             <li><a href="program-gimnastyka.html">Gimnastyka</a></li>
-            <li><a href="program-ranne-moce.html">Ranne Moce</a></li>
+            <li><a href="program-poranne-moce.html">Poranne Moce</a></li>
           </ul>
         </nav>
         <nav class="footer__col" aria-label="Akademia">
@@ -275,7 +271,6 @@
       <p class="footer__word" aria-hidden="true">Akademia Mocy</p>
       <div class="footer__bottom">
         <p>© <span data-rok>2026</span> Akademia Mocy Jeździeckich. Wersja demonstracyjna, treści i&nbsp;ceny są przykładowe.</p>
-        <p class="fontswitch">Kroje: <button type="button" data-fonty-set="a" aria-pressed="true">A</button><button type="button" data-fonty-set="b" aria-pressed="false">B</button></p>
       </div>
     </div>
   </footer>

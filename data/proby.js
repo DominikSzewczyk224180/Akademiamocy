@@ -126,9 +126,9 @@ window.AKADEMIA_PROBY = {
       }
     ]
   },
-  "ranne-moce-step": {
+  "poranne-moce-step": {
     "nazwa": "Próba Mocy: Stęp",
-    "program": "ranne-moce",
+    "program": "poranne-moce",
     "level": "step",
     "otwiera": "Kłus",
     "czas": "ok. 8 minut",

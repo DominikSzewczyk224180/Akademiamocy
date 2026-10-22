@@ -38,6 +38,7 @@
   var DNI = ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'];
   var DNI_KROTKO = ['Pn', 'Wt', 'Śr', 'Cz', 'Pt', 'So', 'Nd'];
   function data(s, opcje) {
+    if (!s) { return ''; }
     var d = typeof s === 'string' ? zIso(s) : s;
     opcje = opcje || {};
     var t = d.getDate() + ' ' + MIESIACE[d.getMonth()];
@@ -94,6 +95,23 @@
     return pamiecKont || {};
   }
   function zapiszKonta(k) { pamiecKont = k; try { localStorage.setItem(KLUCZ_KONTA, JSON.stringify(k)); } catch (e) { /* tryb prywatny: zostaje w pamięci */ } }
+  /* Jednorazowa migracja: program „Ranne Moce” ma teraz nazwę i identyfikator „Poranne Moce”.
+     Przepisuje dane zapisane wcześniej w tej przeglądarce (konta, zamówienia, vouchery, postępy). */
+  (function () {
+    try {
+      if (localStorage.getItem('akademia-migracja-poranne')) { return; }
+      var klucze = [];
+      for (var i = 0; i < localStorage.length; i++) { var kl = localStorage.key(i); if (kl && kl.indexOf('akademia') === 0) { klucze.push(kl); } }
+      klucze.forEach(function (kl) {
+        var v = localStorage.getItem(kl);
+        if (!v) { return; }
+        var n = v.replace(/(^|[^a-z])ranne-moce/g, '$1poranne-moce').replace(/Ranne Moce/g, 'Poranne Moce').replace(/Rannych Moc/g, 'Porannych Moc').replace(/Rannymi Mocami/g, 'Porannymi Mocami');
+        if (n !== v) { localStorage.setItem(kl, n); }
+      });
+      localStorage.setItem('akademia-migracja-poranne', '1');
+    } catch (e) { /* tryb prywatny albo brak pamięci */ }
+  })();
+
   function sesja() { try { return localStorage.getItem(KLUCZ_SESJA) || ''; } catch (e) { return ''; } }
   function ustawSesje(email) { try { if (email) { localStorage.setItem(KLUCZ_SESJA, email); } else { localStorage.removeItem(KLUCZ_SESJA); } } catch (e) { /* brak */ } }
   function klucz(email) { return String(email || '').trim().toLowerCase(); }
@@ -120,7 +138,7 @@
   }
 
   /* Dostępy: co kursantka kupiła albo aktywowała voucherem */
-  var WSZYSTKIE = ['gimnastyka', 'ogolny', 'ranne-moce'];
+  var WSZYSTKIE = ['gimnastyka', 'ogolny', 'poranne-moce'];
   function plusMiesiace(d, m) { var x = new Date(d.getTime()); x.setMonth(x.getMonth() + m); return x; }
   function uzupelnij(s) {
     if (!s.dostepy) { s.dostepy = []; }

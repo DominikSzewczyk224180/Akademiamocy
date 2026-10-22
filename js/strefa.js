@@ -712,7 +712,11 @@
       if (t.typ === 'wybor') { return w.wybor; }
       return t.strony ? 'lewa ' + w.lewa + ' s, prawa ' + w.prawa + ' s' : w.czas + ' s';
     }
-    function tabelaWynikow(w) {
+    function liczbaWyniku(t, r) {
+      if (!r || t.typ === 'wybor') { return null; }
+      return t.strony ? Math.min(r.lewa, r.prawa) : r.czas;      /* w testach na dwie strony liczy się słabsza */
+    }
+    function tabelaWynikow(w, poprz) {
       var ul = el('ul', 'pr-results');
       def.testy.forEach(function (t) {
         var r = w[t.id];
@@ -721,6 +725,14 @@
         var b = el('div');
         b.appendChild(el('strong', '', t.nazwa));
         b.appendChild(el('span', '', wynikTekst(t, r) + (t.typ === 'czas' ? ', cel ' + t.cel + ' s' : '') + (r && !r.technika ? ', technika do poprawy' : '')));
+        if (poprz && poprz[t.id]) {
+          var a1 = liczbaWyniku(t, r), a0 = liczbaWyniku(t, poprz[t.id]);
+          var lin = el('span', 'pr-results__prev', 'Poprzednio: ' + wynikTekst(t, poprz[t.id]));
+          if (a1 !== null && a0 !== null && a1 !== a0) {
+            lin.appendChild(el('em', 'pr-delta ' + (a1 > a0 ? 'pr-delta--plus' : 'pr-delta--minus'), (a1 > a0 ? '+' : '\u2212') + Math.abs(a1 - a0) + ' s'));
+          }
+          b.appendChild(lin);
+        }
         li.appendChild(b);
         ul.appendChild(li);
       });
@@ -757,12 +769,14 @@
       var ros = el('div', 'pr-ros pr-ros--big'); ros.appendChild(rozeta(k.level)); lewa.appendChild(ros);
       grid.appendChild(lewa);
       var prawa = el('div', 'pr-intro__copy');
-      prawa.appendChild(naglowek(def.nazwa, obejscie ? 'Podejście dla zaawansowanych' : 'Ostatnia przeszkoda parkuru'));
-      prawa.appendChild(el('p', 'sz-lead', def.testy.length + ' ' + odmiana(def.testy.length, 'test', 'testy', 'testów') + ', ' + def.czas + '. Sprawdzasz, czy ciało jest gotowe na ' + def.otwiera + '.'));
+      var juz = AK.statusProby(k.id).stan === 'zaliczona';
+      prawa.appendChild(naglowek(def.nazwa, juz ? 'Powtórka Próby' : (obejscie ? 'Podejście dla zaawansowanych' : 'Ostatnia przeszkoda parkuru')));
+      prawa.appendChild(el('p', 'sz-lead', juz ? 'Rozeta ' + lvNazwa + ' i odblokowany level zostają bez względu na wynik. Sprawdzasz, ile urosła Twoja moc od ostatniego razu.' : def.testy.length + ' ' + odmiana(def.testy.length, 'test', 'testy', 'testów') + ', ' + def.czas + '. Sprawdzasz, czy ciało jest gotowe na ' + def.otwiera + '.'));
       var zasady = el('ul', 'pr-rules');
+      (juz ? [['i-rozeta', 'Rozeta ' + lvNazwa + ' zostaje w kolekcji, a kolejny level dalej jest otwarty.'], ['i-powtorz', 'Na końcu zobaczysz każdy test obok poprzedniego wyniku.'], ['i-zegar', 'Czas mierzy licznik, a technikę odhaczasz przy każdym teście.']] :
       [['i-rozeta', 'Zaliczasz wszystkie testy: rozeta ' + lvNazwa + ', certyfikat i parkur ' + def.otwiera + ' (w cenie programu).'],
        ['i-kalendarz', 'Jeszcze nie: tydzień w ' + (k.level === 'step' ? 'stępie' : 'kłusie') + ' z 3 krótkimi treningami celowanymi i drugie podejście.'],
-       ['i-zegar', 'Czas mierzy licznik, a technikę odhaczasz na krótkiej liście przy każdym teście.']].forEach(function (z) {
+       ['i-zegar', 'Czas mierzy licznik, a technikę odhaczasz na krótkiej liście przy każdym teście.']]).forEach(function (z) {
         var li = el('li'); li.appendChild(ikona(z[0])); li.appendChild(el('span', '', z[1])); zasady.appendChild(li);
       });
       prawa.appendChild(zasady);
@@ -974,8 +988,37 @@
     }
 
     function zakoncz() {
+      var przed = AK.statusProby(k.id);
+      var poprzednia = przed.proby && przed.proby.length ? przed.proby[przed.proby.length - 1] : null;
       var wynik = AK.zapiszProbe(k.id, wyniki);
-      if (wynik.zaliczona) { ekranZaliczona(true); } else { ekranCzeka(true); }
+      if (wynik.powtorka) { ekranPowtorka(poprzednia); }
+      else if (wynik.zaliczona) { ekranZaliczona(true); } else { ekranCzeka(true); }
+    }
+
+    /* Wynik powtórki: każdy test obok poprzedniego podejścia, rozeta zostaje */
+    function ekranPowtorka(poprzednia) {
+      wyczysc();
+      var st = AK.statusProby(k.id);
+      var box = el('div', 'pr-center pr-win');
+      var ros = el('div', 'pr-ros'); ros.appendChild(rozeta(k.level)); box.appendChild(ros);
+      box.appendChild(naglowek('Nowy wynik Próby', 'Powtórka' + (st.ostatnia ? ', ' + AK.data(st.ostatnia.data) : '')));
+      var lepiej = 0, liczone = 0;
+      def.testy.forEach(function (t) {
+        var a1 = liczbaWyniku(t, wyniki[t.id]), a0 = poprzednia ? liczbaWyniku(t, poprzednia.wyniki[t.id]) : null;
+        if (a1 !== null && a0 !== null) { liczone++; if (a1 > a0) { lepiej++; } }
+      });
+      var opis = liczone ? (lepiej ? 'Lepiej w ' + lepiej + ' z ' + liczone + ' ' + odmiana(liczone, 'testu', 'testów', 'testów') + ' na czas. ' : 'Tym razem bez rekordu, a to normalne: forma zmienia się z dnia na dzień. ') : '';
+      box.appendChild(el('p', 'sz-lead', opis + 'Rozeta ' + lvNazwa + ' zostaje w kolekcji.'));
+      box.appendChild(tabelaWynikow(wyniki, poprzednia ? poprzednia.wyniki : null));
+      var akcje = el('div', 'pr-actions');
+      var znowu = przycisk('Zrób Próbę jeszcze raz', null, 'btn btn--dark', 'i-powtorz');
+      znowu.addEventListener('click', function () { ekranStart(); });
+      akcje.appendChild(znowu);
+      akcje.appendChild(przycisk('Postępy', 'postepy.html', 'btn btn--light'));
+      box.appendChild(akcje);
+      box.appendChild(przycisk('Wróć do panelu', 'panel.html', 'link'));
+      ekran.appendChild(box);
+      fokus();
     }
 
     function ekranZaliczona(swiezo) {
@@ -988,9 +1031,14 @@
       var nast = k.nastepny ? AK.kurs(k.nastepny) : null;
       box.appendChild(el('p', 'sz-lead', nast ? 'Level ' + AK.level(nast.level).nazwa + ' odblokowany. Nowy parkur czeka, z trudniejszymi wersjami ćwiczeń.' : 'Kolejny level pojawi się wkrótce.'));
       box.appendChild(tabelaWynikow(st.wynik.wyniki));
+      var powt = (st.proby || []).filter(function (x) { return x.powtorka; });
+      if (powt.length) { box.appendChild(el('p', 'pr-note', 'Powtórki: ' + powt.length + '. Ostatnia ' + AK.data(powt[powt.length - 1].data) + ', wyniki w Postępach.')); }
       var akcje = el('div', 'pr-actions');
       if (nast) { akcje.appendChild(przycisk('Zobacz parkur ' + AK.level(nast.level).nazwa, 'mapa.html?level=' + nast.level, 'btn btn--dark')); }
       akcje.appendChild(przycisk('Certyfikat PDF', 'certyfikat.html?kurs=' + encodeURIComponent(k.id), 'btn btn--light', 'i-certyfikat'));
+      var znowu = przycisk('Zrób Próbę jeszcze raz', null, 'btn btn--light', 'i-powtorz');
+      znowu.addEventListener('click', function () { ekranStart(); });
+      akcje.appendChild(znowu);
       box.appendChild(akcje);
       box.appendChild(przycisk('Wróć do panelu', 'panel.html', 'link'));
       ekran.appendChild(box);
@@ -1180,7 +1228,7 @@
           td.appendChild(doc.createTextNode(r ? (t.typ === 'wybor' ? r.wybor : (t.strony ? r.lewa + ' / ' + r.prawa + ' s' : r.czas + ' s')) : '?'));
           tr.appendChild(td);
         });
-        tr.appendChild(el('td', '', pr2.zaliczona ? 'zaliczona' : 'jeszcze nie'));
+        tr.appendChild(el('td', '', pr2.powtorka ? 'powtórka' : (pr2.zaliczona ? 'zaliczona' : 'jeszcze nie')));
         tb.appendChild(tr);
       });
       tbl.appendChild(tb);

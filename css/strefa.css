@@ -733,3 +733,10 @@
 @keyframes kon-klus { from { transform: translateY(0); } to { transform: translateY(-3px); } }
 .sz-strip__list.ma-konia { padding-top: 3.4rem; }
 .sz-strip__kon { position: absolute; left: 50%; bottom: calc(100% - 2px); width: 48px; height: auto; transform: translateX(-56%); pointer-events: none; }
+
+/* Powtórka Próby: porównanie z poprzednim podejściem */
+.pr-results__prev { display: block; margin-top: 0.15rem; font-size: 0.84em; color: #7A6666; }
+.pr-delta { display: inline-block; margin-left: 0.45rem; padding: 0.05rem 0.5rem; border-radius: 99px; font-style: normal; font-weight: 700; font-size: 0.92em; }
+.pr-delta--plus { background: #DDE8D8; color: #3E5A36; }
+.pr-delta--minus { background: #F6E3E8; color: #8A4B5A; }
+.pr-note { margin: 0.6rem 0 0; font-size: 0.9rem; color: #7A6666; }

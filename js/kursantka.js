@@ -235,7 +235,7 @@
     if (!k || !def || !stan) { return { stan: 'brak' }; }
     var proby = stan.proby.filter(function (x) { return x.kurs === kursId; });
     var zal = proby.filter(function (x) { return x.zaliczona; })[0];
-    if (zal) { return { stan: 'zaliczona', data: zal.data, wynik: zal, def: def, proby: proby }; }
+    if (zal) { return { stan: 'zaliczona', data: zal.data, wynik: zal, ostatnia: proby[proby.length - 1], def: def, proby: proby }; }
     var p = postep(kursId);
     var prog = Math.ceil(p.liczba * (k.progProby || 1));
     if (p.zrobione.length < prog) { return { stan: 'zablokowana', zostalo: prog - p.zrobione.length, def: def, proby: proby }; }
@@ -386,7 +386,12 @@
       var def = proba(k.proba);
       var brakuje = def.testy.filter(function (t) { return !(wyniki[t.id] && wyniki[t.id].zalicza); }).map(function (t) { return t.id; });
       var zaliczona = brakuje.length === 0;
-      stan.proby.push({ kurs: kursId, data: iso(dzis()), wyniki: wyniki, zaliczona: zaliczona });
+      /* Powtórka po zaliczeniu: sprawdzian formy bez ryzyka. Rozeta, level i plan zostają bez zmian. */
+      var powtorka = stan.proby.some(function (x) { return x.kurs === kursId && x.zaliczona; });
+      var wpis = { kurs: kursId, data: iso(dzis()), wyniki: wyniki, zaliczona: zaliczona };
+      if (powtorka) { wpis.powtorka = true; }
+      stan.proby.push(wpis);
+      if (powtorka) { zapisz(); return { zaliczona: zaliczona, brakuje: brakuje, powtorka: true }; }
       if (zaliczona) {
         stan.rozety.push({ kurs: kursId, program: k.program, level: k.level, data: iso(dzis()) });
         if (k.nastepny) { stan.kurs = k.nastepny; }

@@ -129,6 +129,10 @@ Dane: `data/sklep.js` (produkty, ceny, kody, voucher demo). Konta i dostępy pro
 
 Do sprawdzenia z prawnikiem przed startem: treść zgody na natychmiastowy dostęp i utratę prawa odstąpienia, zasady zwrotu voucherów, dokument zakupu (paragon albo faktura).
 
+## Powtórka Próby Mocy
+
+Zaliczoną Próbę można powtarzać jako sprawdzian formy: na stronie Próby jest przycisk „Zrób Próbę jeszcze raz”. Powtórka nie zmienia rozety, odblokowanego levelu ani certyfikatu i nie uruchamia tygodnia celowanego, nawet przy słabszym wyniku. Na końcu każdy test stoi obok poprzedniego podejścia z różnicą w sekundach (w testach na dwie strony liczy się słabsza strona). Powtórki są oznaczone w tabeli w Postępach.
+
 ## Konie na stronie
 
 Pliki są w `assets/img/konie/`: koń w kresce (`kon.svg`), koń z jeźdźczynią (`kon-jezdziec.svg`), blada sylwetka do tła (`kon-sylwetka.svg`), znak z głową konia (`glowa-konia.svg`) i kafelek wzoru (`wzor-konie.svg`).

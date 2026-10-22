@@ -133,6 +133,8 @@ Do sprawdzenia z prawnikiem przed startem: treść zgody na natychmiastowy dost�
 
 Pliki są w `assets/img/konie/`: koń w kresce (`kon.svg`), koń z jeźdźczynią (`kon-jezdziec.svg`), blada sylwetka do tła (`kon-sylwetka.svg`), znak z głową konia (`glowa-konia.svg`) i kafelek wzoru (`wzor-konie.svg`).
 
+W hero kadr „Na macie” pokazuje tę samą kobietę, która w kadrze „W siodle” siedzi na koniu, tym razem w mostku biodrowym: `assets/img/kadr-mata-ruch.svg` to wersja w ruchu (unoszenie, przytrzymanie, opuszczanie w 4,2 s), a `assets/img/kadr-mata.svg` to nieruchoma pozycja szczytowa dla osób z wyłączonymi animacjami i do obrazka udostępniania.
+
 Gdzie są użyte: kadr „W siodle” w hero i obrazek udostępniania (`assets/img/kadr-siodlo.svg`, `assets/og.png`), koń przy „Co poczujesz w siodle”, koń na starcie planu parkuru, wzór w pasie cennika (strona główna i cennik), sylwetka w zachęcie na końcu stron, znak przy GOT'S for Horses (O Akademii), koń z jeźdźczynią na mapie parkuru w strefie (wjeżdża do bieżącej przeszkody) i nad bieżącą przeszkodą w panelu. Ruch koni wyłącza się, gdy ktoś ma w systemie ograniczenie animacji.
 
 Podstawa sylwetki konia: rysunek „Horse” autorstwa Andreasa Preussa (marauder) z openclipart, udostępniony jako CC0 (bez ograniczeń praw autorskich), dostępny w zestawie danych scikit-image. Kreska, anatomia, grzywa, ogon, cieniowanie, jeźdźczyni, siodło i ogłowie to rysunek własny.

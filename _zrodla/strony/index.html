@@ -32,7 +32,10 @@ body_klasa: strona-glowna
           <figure class="story story--mata">
             <div class="story__bars" aria-hidden="true"><i class="is-done"></i><i class="is-run"></i><i></i></div>
             <div class="story__top" aria-hidden="true">{{> grafiki/znak.svg}}<span>Akademia Mocy</span><em>Mobilność</em></div>
-            <img src="assets/img/kadr-mata.svg" width="360" height="640" alt="Kadr z ćwiczenia na macie. Tu będzie krótki film z treningu.">
+            <picture>
+              <source media="(prefers-reduced-motion: no-preference)" srcset="assets/img/kadr-mata-ruch.svg">
+              <img src="assets/img/kadr-mata.svg" width="360" height="640" alt="Kobieta na macie robi mostek biodrowy: barki i stopy na macie, biodra w górze.">
+            </picture>
             <figcaption class="story__cap"><strong>Na macie</strong><span>Mostek biodrowy, 0:35</span></figcaption>
           </figure>
           <figure class="story story--siodlo">
